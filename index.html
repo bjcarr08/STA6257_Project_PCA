@@ -230,103 +230,101 @@ div.csl-indent {
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading packages </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paletteer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p><strong>Conspiracy Data</strong></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(bacteria))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>conspiracy<span class="ot">&lt;-</span> (<span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv"</span>, <span class="at">stringsAsFactors =</span> T))[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">Desc</span>(conspiracy)[[<span class="dv">1</span>]]<span class="sc">$</span>abstract</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped">
-<thead>
-<tr class="header">
-<th style="text-align: left;">y</th>
-<th style="text-align: left;">ap</th>
-<th style="text-align: left;">hilo</th>
-<th style="text-align: right;">week</th>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">trt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">p</td>
-<td style="text-align: left;">hi</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">X01</td>
-<td style="text-align: left;">placebo</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">p</td>
-<td style="text-align: left;">hi</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">X01</td>
-<td style="text-align: left;">placebo</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">p</td>
-<td style="text-align: left;">hi</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">X01</td>
-<td style="text-align: left;">placebo</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">p</td>
-<td style="text-align: left;">hi</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">X01</td>
-<td style="text-align: left;">placebo</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">a</td>
-<td style="text-align: left;">hi</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">X02</td>
-<td style="text-align: left;">drug+</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">a</td>
-<td style="text-align: left;">hi</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">X02</td>
-<td style="text-align: left;">drug+</td>
-</tr>
-</tbody>
-</table>
+<div class="cell-output cell-output-stdout">
+<pre><code>------------------------------------------------------------------------------ 
+Describe conspiracy (data.frame):
+
+data frame: 2000 obs. of  9 variables
+        1945 complete cases (97.2%)
+
+  Nr  ColName       Class    NAs        Levels                           
+  1   truther911    integer   4 (0.2%)                                   
+  2   obamabirth    integer   .                                          
+  3   fincrisis     integer   4 (0.2%)                                   
+  4   fluorolights  integer  12 (0.6%)                                   
+  5   endtimes      integer   1 (0.1%)                                   
+  6   sorosplot     integer   6 (0.3%)                                   
+  7   iraqjews      integer   6 (0.3%)                                   
+  8   vaportrail    integer  11 (0.5%)                                   
+  9   y             factor   11 (0.5%)  (8): 1-Conservative, 2-Liberal,  
+                                        3-Middle of the Road, 4-Not Sure,
+                                        5-Somewhat Conservative, ...     </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplot1 = murders %&gt;% ggplot(mapping = aes(x=population/10^6, y=total)) </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ggplot1 + geom_point(aes(col=region), size = 4) +</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_text_repel(aes(label=abb)) +</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_x_log10() +</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_y_log10() +</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_smooth(formula = "y~x", method=lm,se = F)+</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#xlab("Populations in millions (log10 scale)") + </span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ylab("Total number of murders (log10 scale)") +</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ggtitle("US Gun Murders in 2010") +</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_color_discrete(name = "Region")+</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#    theme_wsj()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># REMOVE ROWS WITH NAs</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>conspiracy<span class="ot">&lt;-</span> conspiracy[<span class="fu">complete.cases</span>(conspiracy),]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># STANDARDIZED VARIABLES</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>conspiracy.Stdz<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols=</span>truther911<span class="sc">:</span>vaportrail, scale))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># LONG DATA</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>conspiracy.Long<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"score"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">score=</span>as.numeric))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>conspiracy.Stdz.Long<span class="ot">&lt;-</span> conspiracy.Stdz <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"stdzScore"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">stdzScore=</span>as.numeric))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># FREQUENCY HISTOGRAMS</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(conspiracy.Long, <span class="fu">aes</span>(score, <span class="at">fill=</span>conspiracy, <span class="at">color=</span>conspiracy)) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  lemon<span class="sc">::</span><span class="fu">facet_rep_wrap</span>(.<span class="sc">~</span>conspiracy, <span class="at">nrow=</span><span class="dv">4</span>, <span class="at">labeller=</span><span class="st">"label_both"</span>, <span class="at">repeat.tick.labels=</span>T) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Raw Scores"</span>) <span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(conspiracy.Stdz.Long, <span class="fu">aes</span>(stdzScore, <span class="at">fill=</span>conspiracy, <span class="at">color=</span>conspiracy)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  lemon<span class="sc">::</span><span class="fu">facet_rep_wrap</span>(.<span class="sc">~</span>conspiracy, <span class="at">nrow=</span><span class="dv">4</span>, <span class="at">labeller=</span><span class="st">"label_both"</span>, <span class="at">repeat.tick.labels=</span>T) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Standardized Scores"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </section>
 <section id="statistical-modeling" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-modeling"><span style="color: #191970;">Statistical Modeling</span></h2>
+<p><strong>Conspiracy Data</strong></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>conspiracy<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(y<span class="sc">!=</span><span class="st">"Not Sure"</span>) <span class="co"># removed rows where participant marked 'not sure' as political party</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Re LEVEL Political Ideology</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>conspiracy<span class="sc">$</span>y<span class="ot">&lt;-</span> <span class="fu">factor</span>(conspiracy<span class="sc">$</span>y, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Very Liberal"</span>, <span class="st">"Liberal"</span>, <span class="st">"Somewhat Liberal"</span>, <span class="st">"Middle of the Road"</span>, <span class="st">"Somewhat Conservative"</span>, <span class="st">"Conservative"</span>, <span class="st">"Very Conservative"</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span> conspiracy[,<span class="sc">-</span><span class="dv">9</span>]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">prcomp</span>(df, <span class="at">scale.=</span>T), </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">data=</span>conspiracy, <span class="at">colour=</span><span class="st">"y"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">loadings=</span>T, <span class="at">loadings.label=</span>T, <span class="at">loadings.colour=</span><span class="st">"black"</span>, <span class="at">loadings.label.colour=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">paletteer_d</span>(<span class="st">"rcartocolor::Temps"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="conlusion" class="level2">
 <h2 class="anchored" data-anchor-id="conlusion"><span style="color: #191970;">Conlusion</span></h2>

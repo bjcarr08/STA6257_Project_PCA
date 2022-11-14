@@ -461,35 +461,65 @@ ap and hilo]{style="color: #8B814C;"}
 
 ```{r, warning=FALSE, echo=T, message=FALSE}
 # loading packages 
-library(tidyverse)
-library(knitr)
-library(ggthemes)
-library(ggrepel)
-library(dslabs)
+library(dplyr)
+library(ggplot2)
+library(data.table)
+library(ggfortify)
 library(MASS)
-
+library(tidyr)
+library(paletteer)
 ```
 
+**Conspiracy Data**
 ```{r, warning=FALSE, echo=TRUE}
 # Load Data
-kable(head(bacteria))
+conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv", stringsAsFactors = T))[,-1]
+DescTools::Desc(conspiracy)[[1]]$abstract
 
-#ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
+# REMOVE ROWS WITH NAs
+conspiracy<- conspiracy[complete.cases(conspiracy),]
 
-  #ggplot1 + geom_point(aes(col=region), size = 4) +
-  #geom_text_repel(aes(label=abb)) +
-  #scale_x_log10() +
-  #scale_y_log10() +
-  #geom_smooth(formula = "y~x", method=lm,se = F)+
-  #xlab("Populations in millions (log10 scale)") + 
-  #ylab("Total number of murders (log10 scale)") +
-  #ggtitle("US Gun Murders in 2010") +
-  #scale_color_discrete(name = "Region")+
-  #    theme_wsj()
+# STANDARDIZED VARIABLES
+conspiracy.Stdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
+
+# LONG DATA
+conspiracy.Long<- conspiracy %>% pivot_longer(!y, names_to="conspiracy", values_to="score", values_transform=list(score=as.numeric))
+conspiracy.Stdz.Long<- conspiracy.Stdz %>% pivot_longer(!y, names_to="conspiracy", values_to="stdzScore", values_transform=list(stdzScore=as.numeric))
+
+# FREQUENCY HISTOGRAMS
+ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
+  geom_histogram(alpha=0.2, breaks=seq(0,5,1)) +
+  lemon::facet_rep_wrap(.~conspiracy, nrow=4, labeller="label_both", repeat.tick.labels=T) +
+  labs(title="Raw Scores") +
+  theme_bw() +
+  theme(legend.position="none")
+
+ggplot(conspiracy.Stdz.Long, aes(stdzScore, fill=conspiracy, color=conspiracy)) +
+  geom_histogram(alpha=0.2, breaks=seq(-2,3,1)) +
+  lemon::facet_rep_wrap(.~conspiracy, nrow=4, labeller="label_both", repeat.tick.labels=T) +
+  labs(title="Standardized Scores") +
+  theme_bw() +
+  theme(legend.position="none")
 
 ```
 
 ## [Statistical Modeling]{style="color: #191970;"}
+
+**Conspiracy Data**
+
+```{r, warning=FALSE, echo=TRUE}
+conspiracy<- conspiracy %>% filter(y!="Not Sure") # removed rows where participant marked 'not sure' as political party
+
+# Re LEVEL Political Ideology
+conspiracy$y<- factor(conspiracy$y, levels=c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative"))
+
+df<- conspiracy[,-9]
+autoplot(prcomp(df, scale.=T), 
+         data=conspiracy, colour="y",
+         loadings=T, loadings.label=T, loadings.colour="black", loadings.label.colour="black") + 
+  scale_colour_manual(values = paletteer_d("rcartocolor::Temps"))
+  
+```
 
 ## [Conlusion]{style="color: #191970;"}
 

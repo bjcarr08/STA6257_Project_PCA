@@ -1,10 +1,72 @@
-#library(AER); data(CASchools); View(CASchools)
-#library(MASS); data(bacteria); View(bacteria)
-
-
 library(dplyr)
 library(ggplot2)
 library(data.table)
+library(ggfortify)
+library(tidyr)
+library(paletteer)
+
+#library(AER); data(CASchools); View(CASchools)
+#library(MASS); data(bacteria); View(bacteria)
+
+### subset using only scale/factor variables -- group PCA analysis by flatearth scaled groups
+# rename headers
+# remove missing/NA values
+# order/level factors
+# standardize all vars
+# scatter plot first 2 PCs color points based off flatearth group
+# analyze loadings between groups
+
+DKU<- read.table("https://raw.githubusercontent.com/bjcarr08/sampleData/main/CCES18_DKU_OUTPUT_vv.tab", header=T, sep="\t")
+
+keepHeaders<- c("DKU397","educ","race","marstat","votereg","region","CC18_301","CC18_302","CC18_316","CC18_335","ownhome","immstat","employ","urbancity","union","internethome","internetwork","sexuality","trans","religpew","DKU312","DKU313","DKU387","DKU391","birthyr","CC18_308a","CC18_308b","CC18_308c","CC18_308d","CC18_334A","CC18_334D","CC18_334E","CC18_334F","pid3","pid7","pew_religimp","pew_churatd","pew_prayer","ideo5","newsint","faminc_new","DKU305","DKU306","DKU307","DKU308","DKU309","DKU310","DKU311","DKU373","DKU374","DKU375","DKU376","DKU377","DKU378","DKU379","DKU380","DKU398")
+DKU2<- DKU[,names(DKU) %in% keepHeaders]
+
+# new header names
+names(DKU2)<- c("BirthYear","Education","Race","MaritalStatus","VoterRegistrationStatus","Region","NationalEconomy","PastYearHouseholdIncome","JobApproval_Trump","JobApproval_Congress","JobApproval_SupremeCourt","JobApproval_StateGovernor","Vote2016","IdeologicalPlacement_Yourself","IdeologicalPlacement_DemocraticParty","IdeologicalPlacement_RepublicanParty","IdeologicalPlacement_SupremeCourt","TrumpRussiaCollusion","3PointPartyID","7PointPartyID","HomeOwnership","ImmigrationBackground","EmploymentStatus","TypeOfAreaLivingIn","LaborUnionMember","InternetAccess_Home","InternetAccess_work","SexualOrientation","Transgender","ImportanceOfReligion","ChurchAttendance","FrequencyOfPrayer","Religion","Ideology","PoliticalInterest","FamilyIncome","IssueImportance_Abortion","IssueImportance_DefenseSpending","IssueImportance_GunControl","IssueImportance_Healthcare","IssueImportance_Immigration","IssueImportance_InternationalTrade","IssueImportance_PersonalIncomeTaxes","MostImportant","LeastImportant","DemTrait_Intelligent","DemTrait_OpenMinded","DemTrait_Hardworking","DemTrait_Honest","RepTrait_Intelligent","RepTrait_OpenMinded","RepTrait_Hardworking","RepTrait_Honest","JuvenileCrimeAge","GunOwnership","FlatEarth","PizzaGate")
+
+DescTools::Desc(DKU2)[[1]]$abstract
+
+DKU2$BirthYear<- 2000-DKU2$BirthYear+18
+
+names(DKU2)[1]<- "Age"
+
+DKU2$FlatEarth2<- ifelse(DKU2$FlatEarth<3, "No", ifelse(DKU2$FlatEarth==8, 8, "Yes"))
+
+
+DKU3<- DKU2 %>% filter(
+  FlatEarth!=8, 
+  Ideology<6, 
+  #PoliticalInterest<7, 
+  #FamilyIncome<17, 
+  NationalEconomy<6,
+  #PastYearHouseholdIncome<8,
+  JobApproval_Trump<5
+  #JobApproval_StateGovernor<5,
+  #IdeologicalPlacement_Yourself<8
+)
+
+df<- DKU3[,c(7,9,30,31,32,34,35,c(37:43))]
+autoplot(prcomp(df, scale.=T), data=DKU3, colour="FlatEarth2", 
+         loadings=T, loadings.label=T, loadings.colour="darkgray", loadings.label.colour="black")
+
+
+#Flat earth
+
+#Count   Code   Label
+#-----   ----   -----
+#851      1      Definitely  not true
+#76       2      Probably  not true
+#53       3      Probably  true
+#17       4      Definitely  true
+#3        8      skipped
+
+
+
+
+
+################################################################################################
+################################################################################################
+
 
 
 # READ & VIEW DATA
@@ -22,7 +84,6 @@ conspiracy.Stdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scal
 
 
 # LONG DATA
-library(tidyr)
 conspiracy.Long<- conspiracy %>% pivot_longer(!y, names_to="conspiracy", values_to="score", values_transform=list(score=as.numeric))
 conspiracy.Stdz.Long<- conspiracy.Stdz %>% pivot_longer(!y, names_to="conspiracy", values_to="stdzScore", values_transform=list(stdzScore=as.numeric))
 
@@ -50,9 +111,17 @@ ggplot(conspiracy.Stdz.Long, aes(stdzScore, fill=conspiracy, color=conspiracy)) 
 #screeplot(pc.cr, type="lines", col="blueviolet", main="Screeplot")
 
 
-
-# PCA
 conspiracy<- conspiracy %>% filter(y!="Not Sure") # removed rows where participant marked 'not sure' as political party
+
+# Re LEVEL Political Ideology
+conspiracy$y<- factor(conspiracy$y, levels=c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative"))
+
+df<- conspiracy[,-9]
+autoplot(prcomp(df, scale.=T), 
+         data=conspiracy, colour="y",
+         loadings=T, loadings.label=T, loadings.colour="black", loadings.label.colour="black") + 
+  scale_colour_manual(values = paletteer_d("rcartocolor::Temps"))
+
 
 yLabs<- c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative")
 
@@ -135,9 +204,38 @@ CC18_325f_new == 1 (support)
 # scatter plot first 2 PCs color points based off flatearth group
 # analyze loadings between groups
 
+DKU<- read.table("https://raw.githubusercontent.com/bjcarr08/sampleData/main/CCES18_DKU_OUTPUT_vv.tab", header=T, sep="\t")
 
-keepHeaders<- c("educ","race","marstat","votereg","region","CC18_301","CC18_302","CC18_316","CC18_335","ownhome","immstat","employ","urbancity","union","internethome","internetwork","sexuality","trans","religpew","DKU312","DKU313","DKU387","DKU391","birthyr","DKU385","DKU386","CC18_308a","CC18_308b","CC18_308c","CC18_308d","CC18_334A","CC18_334D","CC18_334E","CC18_334F","pid3","pid7","pew_religimp","pew_churatd","pew_prayer","ideo5","newsint","faminc_new","DKU305","DKU306","DKU307","DKU308","DKU309","DKU310","DKU311","DKU360","DKU361","DKU362","DKU363","DKU364","DKU373","DKU374","DKU375","DKU376","DKU377","DKU378","DKU379","DKU380","DKU393","DKU394","DKU395","DKU396","DKU397","DKU398")
+keepHeaders<- c("DKU397","educ","race","marstat","votereg","region","CC18_301","CC18_302","CC18_316","CC18_335","ownhome","immstat","employ","urbancity","union","internethome","internetwork","sexuality","trans","religpew","DKU312","DKU313","DKU387","DKU391","birthyr","CC18_308a","CC18_308b","CC18_308c","CC18_308d","CC18_334A","CC18_334D","CC18_334E","CC18_334F","pid3","pid7","pew_religimp","pew_churatd","pew_prayer","ideo5","newsint","faminc_new","DKU305","DKU306","DKU307","DKU308","DKU309","DKU310","DKU311","DKU373","DKU374","DKU375","DKU376","DKU377","DKU378","DKU379","DKU380","DKU398")
 DKU2<- DKU[,names(DKU) %in% keepHeaders]
+
+# new header names
+names(DKU2)<- c("BirthYear","Education","Race","MaritalStatus","VoterRegistrationStatus","Region","NationalEconomy","PastYearHouseholdIncome","JobApproval_Trump","JobApproval_Congress","JobApproval_SupremeCourt","JobApproval_StateGovernor","Vote2016","IdeologicalPlacement_Yourself","IdeologicalPlacement_DemocraticParty","IdeologicalPlacement_RepublicanParty","IdeologicalPlacement_SupremeCourt","TrumpRussiaCollusion","3PointPartyID","7PointPartyID","HomeOwnership","ImmigrationBackground","EmploymentStatus","TypeOfAreaLivingIn","LaborUnionMember","InternetAccess_Home","InternetAccess_work","SexualOrientation","Transgender","ImportanceOfReligion","ChurchAttendance","FrequencyOfPrayer","Religion","Ideology","PoliticalInterest","FamilyIncome","IssueImportance_Abortion","IssueImportance_DefenseSpending","IssueImportance_GunControl","IssueImportance_Healthcare","IssueImportance_Immigration","IssueImportance_InternationalTrade","IssueImportance_PersonalIncomeTaxes","MostImportant","LeastImportant","DemTrait_Intelligent","DemTrait_OpenMinded","DemTrait_Hardworking","DemTrait_Honest","RepTrait_Intelligent","RepTrait_OpenMinded","RepTrait_Hardworking","RepTrait_Honest","JuvenileCrimeAge","GunOwnership","FlatEarth","PizzaGate")
+
+DescTools::Desc(DKU2)[[1]]$abstract
+
+DKU2$BirthYear<- 2000-DKU2$BirthYear+18
+
+names(DKU2)[1]<- "Age"
+
+DKU2$FlatEarth2<- ifelse(DKU2$FlatEarth<3, "No", ifelse(DKU2$FlatEarth==8, 8, "Yes"))
+
+library(ggfortify)
+
+df<- (DKU2 %>% filter(FlatEarth!=8))[,c(1,2,3,4,14,21,22,23,24,25,26,28,29,30,31,34,c(37:43),55,57)]
+autoplot(prcomp(df, scale.=T), 
+         data=DKU2 %>% filter(FlatEarth!=8), 
+         colour="FlatEarth2", loadings=T, loadings.label=T, loadings.colour="darkgray", loadings.label.colour="black")
+
+#Flat earth
+
+#Count   Code   Label
+#-----   ----   -----
+#851      1      Definitely  not true
+#76       2      Probably  not true
+#53       3      Probably  true
+#17       4      Definitely  true
+#3        8      skipped
 
 
 
