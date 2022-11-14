@@ -39,7 +39,7 @@ editor:
 
 [Taking a look into a real world example, say we have a dataset consisting of 1,000 students with exam scores from 7 different courses: Advanced Statistics, Probability Theory, Intro to Dance, World Religions, and Religion in America. We could group Advanced Statistics and Probability Theory into a new variable called Stats, group World Religions and Religion in America into a new variable Religion, and keep Intro to Dance by itself. We have Reduced the data set from 7 variables to 3 without much loss in variation. This is the main concept behind PCA except variables are not manually regrouped but instead the new variables (principal components) are derived from certain linear combinations of the original variables [@lang2021applied].]{style="color: #8B814C;"}
 
-
+[PCA can also be useful when studying mental disorders, data consisting of symptoms and the connections between them. When many symptoms are being observed, it can be difficult to visually represent the connections between them, both the strength of the connections and the proximity to each other. Plotting using the first 2 principal components allows for the placement on the x or y axis to become interpretable, that is, observations far left differ in some dimension (the first principal component) compared to ones far right. The same can be said in the y direction [@Jones].]{style="color: #8B814C;"}
 
 
 **Individual Lit Reviews (will be removed when intro is completed)**
