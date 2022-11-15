@@ -514,14 +514,19 @@ approximation of a set of data points makes the variance of the
 coordinates on the line or plane as large as
 possible.]{style="color: #8B814C;"}
 
+[**Given a sample of data:**
+${\{x_1}, ... , {x_n}\}, where\ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T$]{style="color: #8B814C;"}
 
-[**Given a sample of data: ** ${\{x_1}, ... , {x_n}\}, where\ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T$]{style="color: #8B814C;"}
-
-[**We will estimate the sample mean vector $\overline{x} = \hat{\mu}$ and the sample cov matrix $S = \hat{\sum}$**]{style="color: #8B814C;"}
+[**We will estimate the sample mean vector** $\overline{x} = \hat{\mu}$
+and the sample cov matrix $S = \hat{\sum}$]{style="color: #8B814C;"}
 
 [$$\overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_i \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ S = {(\hat{\sigma}_{ij})}_{p{\sf x}p} = \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$]{style="color: #8B814C;"}
 
-[PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores). [@lang2021applied]]{style="color: #8B814C;"}
+[PCA results depend on the scale or units of the variables so, for
+unscaled data, calculations should either be preformed on the
+correlation matrix (instead of the covariance matrix) or the data should
+be standardized with mean 0 and variance 1 (z scores).
+[@lang2021applied]]{style="color: #8B814C;"}
 
 ## [Analysis and Results]{style="color: #191970;"}
 
@@ -565,6 +570,7 @@ library(ggfortify)
 library(MASS)
 library(tidyr)
 library(paletteer)
+library(knitr)
 ```
 
 **Conspiracy Data**
@@ -572,7 +578,7 @@ library(paletteer)
 ```{r, warning=FALSE, echo=TRUE}
 # Load Data
 conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv", stringsAsFactors = T))[,-1]
-DescTools::Desc(conspiracy)[[1]]$abstract
+kable((DescTools::Desc(conspiracy)[[1]]$abstract)[,-6])
 
 # REMOVE ROWS WITH NAs
 conspiracy<- conspiracy[complete.cases(conspiracy),]
@@ -590,15 +596,30 @@ ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
   lemon::facet_rep_wrap(.~conspiracy, nrow=4, labeller="label_both", repeat.tick.labels=T) +
   labs(title="Raw Scores") +
   theme_bw() +
-  theme(legend.position="none")
+  theme(legend.position = "none",
+        panel.border = element_rect(color = "#8B814C"),
+        strip.background = element_rect(fill = "#EAEAD6", color = "#8B814C"),
+        strip.text = element_text(color = "#8B814C"),
+        plot.background = element_rect(fill = "#FAFAF5"),
+        axis.text = element_text(color = "#8B814C"),
+        axis.title = element_text(color = "#8B814C"),
+        plot.title = element_text(color = "#8B814C"),
+        axis.ticks = element_line(color = "#8B814C"))
 
 ggplot(conspiracy.Stdz.Long, aes(stdzScore, fill=conspiracy, color=conspiracy)) +
   geom_histogram(alpha=0.2, breaks=seq(-2,3,1)) +
   lemon::facet_rep_wrap(.~conspiracy, nrow=4, labeller="label_both", repeat.tick.labels=T) +
   labs(title="Standardized Scores") +
   theme_bw() +
-  theme(legend.position="none")
-
+  theme(legend.position = "none",
+        panel.border = element_rect(color = "#8B814C"),
+        strip.background = element_rect(fill = "#EAEAD6", color = "#8B814C"),
+        strip.text = element_text(color = "#8B814C"),
+        plot.background = element_rect(fill = "#FAFAF5"),
+        axis.text = element_text(color = "#8B814C"),
+        axis.title = element_text(color = "#8B814C"),
+        plot.title = element_text(color = "#8B814C"),
+        axis.ticks = element_line(color = "#8B814C"))
 ```
 
 ## [Statistical Modeling]{style="color: #191970;"}
