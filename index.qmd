@@ -253,7 +253,6 @@ autoplot(prcomp(df, scale.=T),
         axis.text = element_text(color = "#8B814C"),
         axis.title = element_text(color = "#8B814C"),
         axis.ticks = element_line(color = "#8B814C"))
-  
 ```
 
 ## [Conclusion]{style="color: #191970;"}
