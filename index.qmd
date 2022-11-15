@@ -627,6 +627,7 @@ ggplot(conspiracy.Stdz.Long, aes(stdzScore, fill=conspiracy, color=conspiracy)) 
 **Conspiracy Data**
 
 ```{r, warning=FALSE, echo=TRUE}
+
 conspiracy<- conspiracy %>% filter(y!="Not Sure") # removed rows where participant marked 'not sure' as political party
 
 # Re LEVEL Political Ideology
