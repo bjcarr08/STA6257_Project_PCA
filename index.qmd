@@ -114,6 +114,9 @@ that is, observations far left differ in some dimension (the first
 principal component) compared to ones far right. The same can be said in
 the y direction [@Jones].]{style="color: #8B814C;"}
 
+![](index_files/figure-html/machineLearning_fig1.png)
+
+
 **Individual Lit Reviews (will be removed when intro is completed)**
 
 [**1. A comparative dimensionality reduction study in telecom customer
