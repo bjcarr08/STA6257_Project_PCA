@@ -151,37 +151,6 @@ be standardized with mean 0 and variance 1 (z scores).
 
 ## [Analysis and Results]{style="color: #191970;"}
 
-## [Data and Vizualisation]{style="color: #191970;"}
-
-[Bacteria dataset from MASS package (220 rows by 6
-columns)]{style="color: #8B814C;"}
-
-[Dr A. Leach tested the effects of a drug on 50 children with a history
-of otitis media in the Northern Territory of Australia. The children
-were randomized to the drug or the a placebo, and also to receive active
-encouragement to comply with taking the drug. The presence of H.
-influenzae was checked at weeks 0, 2, 4, 6 and 11: 30 of the checks were
-missing and are not included in this data
-frame.]{style="color: #8B814C;"}
-
-[**Variables**]{style="color: #8B814C;"}
-
-[**y** - presence or absence: a factor with levels n and
-y]{style="color: #8B814C;"}
-
-[**ap** - active/placebo: a factor with levels a and
-p]{style="color: #8B814C;"}
-
-[**hilo** - hi/low compliance: a factor with levels hi amd
-lo]{style="color: #8B814C;"}
-
-[**week** - numeric: week of test]{style="color: #8B814C;"}
-
-[**ID** - subject ID: a factor]{style="color: #8B814C;"}
-
-[**trt** - a factor with levels placebo, drug and drug+, a re-coding of
-ap and hilo]{style="color: #8B814C;"}
-
 ```{r, warning=FALSE, echo=T, message=FALSE}
 # loading packages 
 library(dplyr)
@@ -194,12 +163,14 @@ library(paletteer)
 library(knitr)
 ```
 
-**Conspiracy Data**
+## [Data and Vizualisation]{style="color: #191970;"}
+
+[**Conspiracy Data**]{style="color: #8B814C;"}
 
 ```{r, warning=FALSE, echo=TRUE}
 # Load Data
 conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv", stringsAsFactors = T))[,-1]
-kable((DescTools::Desc(conspiracy)[[1]]$abstract)[,-6])
+DescTools::Desc(conspiracy)[[1]]$abstract
 
 # REMOVE ROWS WITH NAs
 conspiracy<- conspiracy[complete.cases(conspiracy),]
@@ -254,11 +225,24 @@ conspiracy<- conspiracy %>% filter(y!="Not Sure") # removed rows where participa
 # Re LEVEL Political Ideology
 conspiracy$y<- factor(conspiracy$y, levels=c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative"))
 
+# re name y variable
+names(conspiracy)[9]<- "PoliticalIdeology"
+
 df<- conspiracy[,-9]
 autoplot(prcomp(df, scale.=T), 
-         data=conspiracy, colour="y",
-         loadings=T, loadings.label=T, loadings.colour="black", loadings.label.colour="black") + 
-  scale_colour_manual(values = paletteer_d("rcartocolor::Temps"))
+         data=conspiracy, colour="PoliticalIdeology",
+         loadings=T, loadings.label=T, loadings.colour=alpha("#191970", 0.3), loadings.label.colour="#191970") + 
+  scale_colour_manual(values = alpha(paletteer_d("rcartocolor::Temps"), 0.4)) +
+  theme_bw() +
+  theme(legend.key = element_rect(fill = "#FAFAF5"),
+        legend.background = element_rect(fill = "#FAFAF5"),
+        legend.text = element_text(color = "#8B814C"),
+        legend.title = element_text(color = "#8B814C"),
+        panel.border = element_rect(color = "#8B814C"),
+        plot.background = element_rect(fill = "#FAFAF5"),
+        axis.text = element_text(color = "#8B814C"),
+        axis.title = element_text(color = "#8B814C"),
+        axis.ticks = element_line(color = "#8B814C"))
   
 ```
 
