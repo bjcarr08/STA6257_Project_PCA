@@ -1,6 +1,9 @@
 ---
 title: "PCA (principal component analysis)"
-author: "Brandy, Lee, Tavish"
+author: 
+- Brandy Carr
+- Lee
+- Tavish
 date: '`r Sys.Date()`'
 format:
   html:
@@ -9,6 +12,8 @@ format:
 course: STA 6257 - Advance Statistical Modeling
 bibliography: references.bib # file contains bibtex for references
 always_allow_html: true # this allows to get PDF with HTML features
+#reference-section-title: References
+#suppress-bibliography: true
 editor: 
   markdown: 
     wrap: 72
@@ -31,6 +36,12 @@ editor:
  body {
     background-color: #FAFAF5;
   }
+ .bibliography {
+    background-color: #FAFAF5;
+}
+ .reference-section-title {
+    color: #191970;
+}
 </style>
 ```
 ## [Introduction]{style="color: #191970;"}
@@ -115,7 +126,6 @@ principal component) compared to ones far right. The same can be said in
 the y direction [@Jones].]{style="color: #8B814C;"}
 
 ![](index_files/figure-html/machineLearning_fig1.png)
-
 
 ## [Methods]{style="color: #191970;"}
 
@@ -246,6 +256,6 @@ autoplot(prcomp(df, scale.=T),
   
 ```
 
-## [Conlusion]{style="color: #191970;"}
+## [Conclusion]{style="color: #191970;"}
 
-## [References]{style="color: #191970;"}
+## References {#refs .bibliography style="background-color: #FAFAF5; color: #8B814C"}
