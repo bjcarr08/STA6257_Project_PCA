@@ -35,13 +35,25 @@ editor:
 ```
 ## [Introduction]{style="color: #191970;"}
 
-[Principal Component Analysis and Machine Learning Methods. In our research, we learn the applications of how important and groundbreaking Principal Component Analysis and Machine Learning Methods are. In these papers we see how promising the impact is of PCA
-with recognizing Microanerysm in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic Retinopathy.
-Other research papers show a framework for coronary artery disease risk assessment in intravascular ultrasound. The paper reflects on a novel strategy for risk stratification based on plaque morphology embedded with principal component analysis (PCA) for plaque feature dimensionality reduction and dominant feature selection technique.
-Facial recognition with PCA and machine learning methods, From this Paper the authors have identified that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM).
-Lastly we see the importance of PCA with it  identifying that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as  well as Support Vector Machine (SVM).
-]{style="color: #8B814C;"}
-
+[Principal Component Analysis and Machine Learning Methods. In our
+research, we learn the applications of how important and groundbreaking
+Principal Component Analysis and Machine Learning Methods are. In these
+papers we see how promising the impact is of PCA with recognizing
+Microanerysm in medicine and how groundbreaking has been critical for
+diagnosis and treatment of Diabetic Retinopathy. Other research papers
+show a framework for coronary artery disease risk assessment in
+intravascular ultrasound. The paper reflects on a novel strategy for
+risk stratification based on plaque morphology embedded with principal
+component analysis (PCA) for plaque feature dimensionality reduction and
+dominant feature selection technique.[@Gorg2021] Facial recognition with
+PCA and machine learning methods, From this Paper the authors have
+identified that the best way to compare and evaluate the Facial
+Recognition results with speed and accuracy was with PCA (Principal
+Component Analysis) and as well as Support Vector Machine (SVM). Lastly
+we see the importance of PCA with it identifying that the best way to
+compare and evaluate the Facial Recognition results with speed and
+accuracy was with PCA (Principal Component Analysis) and as well as
+Support Vector Machine (SVM)[@Camargo].]{style="color: #8B814C;"}
 
 [Principal Component Analysis (PCA) is the name for a process of
 reducing the dimension of a large data set (when the observations one
@@ -485,6 +497,31 @@ visuals and then examines some adaptations of PCA with examples
 included. [@Jolliffe]]{style="color: #8B814C;"}
 
 ## [Methods]{style="color: #191970;"}
+
+[How PCA is used PCA is a tool for identifying the main axes of variance
+within a data set and allows for easy data exploration to understand the
+key variables in the data and spot outliers. Properly applied, it is one
+of the most powerful tools in the data analysis tool kit. PCA forms the
+basis of multivariate data analysis based on projection methods. The
+most important use of PCA is to represent a multivariate data table as
+smaller set of variables (summary indices) to observe trends, jumps,
+clusters and outliers. This overview may uncover the relationships
+between observations and variables, and among the variables.
+Statistically, PCA finds lines, planes and hyper-planes in the
+K-dimensional space that approximate the data as well as possible in the
+least squares sense. A line or plane that is the least squares
+approximation of a set of data points makes the variance of the
+coordinates on the line or plane as large as
+possible.]{style="color: #8B814C;"}
+
+
+[**Given a sample of data: ** ${\{x_1}, ... , {x_n}\}, where\ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T$]{style="color: #8B814C;"}
+
+[**We will estimate the sample mean vector $\overline{x} = \hat{\mu}$ and the sample cov matrix $S = \hat{\sum}$**]{style="color: #8B814C;"}
+
+[$$\overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_i \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ S = {(\hat{\sigma}_{ij})}_{p{\sf x}p} = \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$]{style="color: #8B814C;"}
+
+[PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores). [@lang2021applied]]{style="color: #8B814C;"}
 
 ## [Analysis and Results]{style="color: #191970;"}
 
