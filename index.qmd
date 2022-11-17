@@ -9,6 +9,7 @@ format:
   html:
     code-fold: true
     highlight: pygments
+    css: styles.css
 course: STA 6257 - Advance Statistical Modeling
 bibliography: references.bib # file contains bibtex for references
 always_allow_html: true # this allows to get PDF with HTML features
@@ -145,13 +146,132 @@ approximation of a set of data points makes the variance of the
 coordinates on the line or plane as large as
 possible.]{style="color: #8B814C;"}
 
-[**Given a sample of data:**
-${\{x_1}, ... , {x_n}\}, where\ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T$]{style="color: #8B814C;"}
+<br>
 
-[**We will estimate the sample mean vector** $\overline{x} = \hat{\mu}$
-and the sample cov matrix $S = \hat{\sum}$]{style="color: #8B814C;"}
 
-[$$\overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_i \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ S = {(\hat{\sigma}_{ij})}_{p{\sf x}p} = \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$]{style="color: #8B814C;"}
+[**Sample Data:**]{style="color: #8B814C;"}
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 8px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 8px;word-break:normal;}
+.tg .tg-vi5l{background-color:#eaead6;border-color:#8b814c;color:#8b814c;text-align:center;vertical-align:top}
+.tg .tg-pi0b{background-color:#fafaf5;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 792px">
+<colgroup>
+<col style="width: 132px">
+<col style="width: 132px">
+<col style="width: 132px">
+<col style="width: 132px">
+<col style="width: 132px">
+<col style="width: 132px">
+</colgroup>
+<thead>
+  <tr>
+    <th class="tg-pi0b">Observation</th>
+    <th class="tg-pi0b">Feature 1</th>
+    <th class="tg-pi0b">Feature 2</th>
+    <th class="tg-pi0b">Feature 3</th>
+    <th class="tg-pi0b">Feature ...</th>
+    <th class="tg-pi0b">Feature p</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-pi0b">1</td>
+    <td class="tg-vi5l"><span class="math inline">$x_{1,1}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{1,2}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{1,3}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{1,...}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{1,p}$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-pi0b">2</td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,1}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{2,2}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{2,3}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{2,...}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{2,p}$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-pi0b">3</td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,1}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{3,2}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{2,3}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{3,...}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{3,p}$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-pi0b">...</td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,1}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,2}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,3}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,...}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,p}$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-pi0b">n</td>
+    <td class="tg-vi5l"><span class="math inline">$x_{...,1}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{n,2}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{n,3}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{n,...}$</span></td>
+    <td class="tg-vi5l"><span class="math inline">$x_{n,p}$</span></td>
+  </tr>
+</tbody>
+</table>
+
+::: {.callout-note collapse="true"}
+
+[No assumptions about the feature distributions needed]{style="color: #1A79E1; font-size:12px;"}
+
+:::
+
+<br>
+
+::: {.border style="border-color: #8B814C; border-radius: 6px; box-shadow: 2px 2px 2px 2px rgba(0.5450980,0.5058824,0.2980392,0.2);"}
+
+[\ \ **Estimates for the Sample Mean Vector & Sample Covariance Matrix:**]{style="color: #8B814C;"}
+
+[$$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$]{style="color: #8B814C; background-color: #EAEAD6;"}
+
+[$$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$]{style="color: #8B814C; background-color: #EAEAD6;"}
+
+:::
+
+::: {.callout-note collapse="true"}
+
+[The sample mean vector represents the center of the random vector x]{style="color: #1A79E1; font-size:12px;"}
+
+[The sample covariance matrix represents the variations (diagonal elements) & correlations (off-diagonal elements) of the random vector x]{style="color: #1A79E1; font-size:12px;"}
+
+:::
+
+<br>
+
+::: {.border style="border-color: #8B814C; border-radius: 6px; box-shadow: 2px 2px 2px 2px rgba(0.5450980,0.5058824,0.2980392,0.2);"}
+
+[\ \ **Random Vector:**]{style="color: #8B814C;"}
+
+[$${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T$$]{style="color: #8B814C;"}
+
+:::
+
+<br>
+
+<br>
+
+::: {.border style="border-color: #8B814C; border-radius: 6px; box-shadow: 2px 2px 2px 2px rgba(0.5450980,0.5058824,0.2980392,0.2);"}
+
+[\ \ **Principal Components:**]{style="color: #8B814C;"}
+
+[$${\hat{y}_{i,j}}\ =\ {\hat{a}^T_{j}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ j\ =\ \{1,2,...,p\}$$]{style="color: #8B814C;"}
+
+:::
+
+<br>
 
 [PCA results depend on the scale or units of the variables so, for
 unscaled data, calculations should either be preformed on the
