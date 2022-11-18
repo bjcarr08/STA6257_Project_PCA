@@ -45,10 +45,13 @@ DKU3<- DKU2 %>% filter(
   #IdeologicalPlacement_Yourself<8
 )
 
-df<- DKU3[,c(7,9,30,31,32,34,35,c(37:43))]
-autoplot(prcomp(df, scale.=T), data=DKU3, colour="FlatEarth2", 
+df<- Affairs[,-c(1,2,5,10)]
+autoplot(prcomp(df, scale.=T), data=Affairs, colour="affairs2", 
          loadings=T, loadings.label=T, loadings.colour="darkgray", loadings.label.colour="black")
 
+df<- Affairs[,c(7,9,30,31,32,34,35,c(37:43))]
+autoplot(prcomp(df, scale.=T), data=DKU3, colour="FlatEarth2", 
+         loadings=T, loadings.label=T, loadings.colour="darkgray", loadings.label.colour="black")
 
 #Flat earth
 
@@ -116,11 +119,35 @@ conspiracy<- conspiracy %>% filter(y!="Not Sure") # removed rows where participa
 # Re LEVEL Political Ideology
 conspiracy$y<- factor(conspiracy$y, levels=c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative"))
 
-df<- conspiracy[,-9]
+Liberal<- c("Very Liberal", "Liberal", "Somewhat Liberal")
+Conservative<- c("Somewhat Conservative", "Conservative", "Very Conservative")
+
+conspiracy$y2<- ifelse(conspiracy$y %in% Liberal, "Liberal", ifelse(conspiracy$y %in% Conservative, "Conservative", "Middle"))
+
+df<- conspiracy[,-c(9,10)]
 autoplot(prcomp(df, scale.=T), 
-         data=conspiracy, colour="y",
+         data=conspiracy, colour="y2", frame=T, frame.colour = "y2",
          loadings=T, loadings.label=T, loadings.colour="black", loadings.label.colour="black") + 
-  scale_colour_manual(values = paletteer_d("rcartocolor::Temps"))
+  scale_colour_manual(values = paletteer_d("rcartocolor::Temps")[c(7,4,2)]) +
+  scale_fill_manual(values = paletteer_d("rcartocolor::Temps")[c(7,4,2)])
+
+
+
+
+autoplot(prcomp(df, scale.=T), 
+         data=A, colour="y2", frame=T, frame.colour = "y2",
+         loadings=T, loadings.label=T, loadings.colour="black", loadings.label.colour="black") + 
+  scale_colour_manual(values = paletteer_d("rcartocolor::Temps")[c(7,4,2)]) +
+  scale_fill_manual(values = paletteer_d("rcartocolor::Temps")[c(7,4,2)])
+
+
+
+
+prC<- prcomp(df, scale.=T, retx=F)
+prC$rotation
+
+
+(princomp(scale(df)))$loadings
 
 
 yLabs<- c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative")

@@ -279,6 +279,30 @@ correlation matrix (instead of the covariance matrix) or the data should
 be standardized with mean 0 and variance 1 (z scores).
 [@lang2021applied]]{style="color: #8B814C;"}
 
+<br>
+
+
+```{mermaid}
+
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
+
+flowchart LR
+A[(Clean<br/>Data)] --> B(Estimate<br/>Sample<br/>Mean<br/>Vector)
+B --> C((Are all<br/>variables the<br/>same scale or<br/>units?))
+C --- D((Yes))
+C --- E((No))
+D --> G(Estimate<br/>Sample<br/>Covariance<br/>Matrix)
+E -.- F(Standardize<br/>Data)
+E --> H(Estimate<br/>Sample<br/>Correlation<br/>Matrix)
+F -.- G
+G --> I(Eigenvalues<br/>Eigenvectors)
+H --> I
+
+```
+
+
+<br>
+
 ## [Analysis and Results]{style="color: #191970;"}
 
 ```{r, warning=FALSE, echo=T, message=FALSE}
