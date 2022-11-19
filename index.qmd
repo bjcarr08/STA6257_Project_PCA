@@ -7,21 +7,39 @@ author:
 date: '`r Sys.Date()`'
 format:
   html:
-    code-fold: true
     highlight: pygments
-    css: styles.css
+    anchor-sections: false
+    toc: true
+    mainfont: sans-serif
+    fontcolor: "#8B814C"
+    monobackgroundcolor: "#FAFAF5"
+    backgroundcolor: "#FAFAF5"
+    code-line-numbers: true
+    code-block-bg: "FFFFFF"
+    code-fold: true
+    code-background: true
+    cap-location: bottom
+    margin-left: "0in"
+    margin-right: "0in"
+    fig-width: 12
+    fig-height: 8
+execute: 
+  warning: false
+  echo: true
 course: STA 6257 - Advance Statistical Modeling
 bibliography: references.bib # file contains bibtex for references
 always_allow_html: true # this allows to get PDF with HTML features
-#reference-section-title: References
-#suppress-bibliography: true
 editor: 
-  markdown: 
-    wrap: 72
+  markdown:
+    wrap: 100
 ---
 
 ```{=html}
 <style>
+details > summary {
+  padding: 1px;
+  color: #8B814C;
+}
  .title {
     color: #191970;    
   }
@@ -31,10 +49,8 @@ editor:
   .author {
     color: #191970;
 }
- .date {
-    color: #191970;
-  }
  body {
+    color: #8B814C;
     background-color: #FAFAF5;
   }
  .bibliography {
@@ -45,7 +61,7 @@ editor:
 }
 </style>
 ```
-## [Introduction]{style="color: #191970;"}
+## [**1. Introduction**]{style="color: #191970;"}
 
 [Principal Component Analysis and Machine Learning Methods. In our
 research, we learn the applications of how important and groundbreaking
@@ -65,7 +81,7 @@ Component Analysis) and as well as Support Vector Machine (SVM). Lastly
 we see the importance of PCA with it identifying that the best way to
 compare and evaluate the Facial Recognition results with speed and
 accuracy was with PCA (Principal Component Analysis) and as well as
-Support Vector Machine (SVM)[@Camargo].]{style="color: #8B814C;"}
+Support Vector Machine (SVM)[@Camargo].]{style="color: ;"}
 
 [Principal Component Analysis (PCA) is the name for a process of
 reducing the dimension of a large data set (when the observations one
@@ -128,7 +144,7 @@ the y direction [@Jones].]{style="color: #8B814C;"}
 
 ![](index_files/figure-html/machineLearning_fig1.png)
 
-## [Methods]{style="color: #191970;"}
+## [**2. Methods**]{style="color: #191970;"}
 
 [How PCA is used PCA is a tool for identifying the main axes of variance
 within a data set and allows for easy data exploration to understand the
@@ -282,31 +298,31 @@ be standardized with mean 0 and variance 1 (z scores).
 <br>
 
 
-```{mermaid}
+```{mermaid, code-fold: hide}
 
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
 
 flowchart LR
-A[(Clean<br/>Data)] --> B(Estimate<br/>Sample<br/>Mean<br/>Vector)
-B --> C((Are all<br/>variables the<br/>same scale or<br/>units?))
+A[(Clean<br/>Data)] --> B(Est<br/>Sample<br/>Mean<br/>Vector)
+B --> C((Are all<br/>vars the same<br/>same scale/unit?))
 C --- D((Yes))
 C --- E((No))
-D --> G(Estimate<br/>Sample<br/>Covariance<br/>Matrix)
-E -.- F(Standardize<br/>Data)
-E --> H(Estimate<br/>Sample<br/>Correlation<br/>Matrix)
+D --> G(Est<br/>Sample<br/>Cov<br/>Matrix)
+E -.- F(Stdz<br/>Data)
+E --> H(Est<br/>Sample<br/>Corr<br/>Matrix)
 F -.- G
-G --> I(Eigenvalues<br/>Eigenvectors)
+G --> I(Eigenvals<br/>Eigenvecs)
 H --> I
 
 ```
 
-
 <br>
 
-## [Analysis and Results]{style="color: #191970;"}
+## [**3. Analysis and Results**]{style="color: #191970;"}
 
-```{r, warning=FALSE, echo=T, message=FALSE}
-# loading packages 
+##### [Packages]{style="color: #191970;"}
+
+```{r, packages}
 library(dplyr)
 library(ggplot2)
 library(data.table)
@@ -317,26 +333,31 @@ library(paletteer)
 library(knitr)
 ```
 
-## [Data and Vizualisation]{style="color: #191970;"}
+##### [Read Data]{style="color: #191970;"}
 
-[**Conspiracy Data**]{style="color: #8B814C;"}
-
-```{r, warning=FALSE, echo=TRUE}
-# Load Data
+```{r}
+# READ DATA FROM A GITHUB CSV FILE
 conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv", stringsAsFactors = T))[,-1]
-DescTools::Desc(conspiracy)[[1]]$abstract
 
-# REMOVE ROWS WITH NAs
-conspiracy<- conspiracy[complete.cases(conspiracy),]
+# VARIABLES
+#kable(DescTools::Desc(conspiracy)[[1]]$abstract)
+str(conspiracy)
+```
 
-# STANDARDIZED VARIABLES
-conspiracy.Stdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
+##### [Clean Data]{style="color: #191970;"}
 
-# LONG DATA
+```{r}
+# REMOVE ROWS WITH NAs & IMPOSSIBLE VALUES (removed rows where participant marked 'not sure' as political ideology)
+conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
+```
+
+##### [Visualize Distributions]{style="color: #191970;"}
+
+```{r, plot1, fig.height=7, fig.width=12}
+# TRANSFORM TO LONG DATA FOR PLOTS
 conspiracy.Long<- conspiracy %>% pivot_longer(!y, names_to="conspiracy", values_to="score", values_transform=list(score=as.numeric))
-conspiracy.Stdz.Long<- conspiracy.Stdz %>% pivot_longer(!y, names_to="conspiracy", values_to="stdzScore", values_transform=list(stdzScore=as.numeric))
 
-# FREQUENCY HISTOGRAMS
+# HISTOGRAMS
 ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
   geom_histogram(alpha=0.2, breaks=seq(0,5,1)) +
   lemon::facet_rep_wrap(.~conspiracy, nrow=4, labeller="label_both", repeat.tick.labels=T) +
@@ -351,54 +372,67 @@ ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
         axis.title = element_text(color = "#8B814C"),
         plot.title = element_text(color = "#8B814C"),
         axis.ticks = element_line(color = "#8B814C"))
-
-ggplot(conspiracy.Stdz.Long, aes(stdzScore, fill=conspiracy, color=conspiracy)) +
-  geom_histogram(alpha=0.2, breaks=seq(-2,3,1)) +
-  lemon::facet_rep_wrap(.~conspiracy, nrow=4, labeller="label_both", repeat.tick.labels=T) +
-  labs(title="Standardized Scores") +
-  theme_bw() +
-  theme(legend.position = "none",
-        panel.border = element_rect(color = "#8B814C"),
-        strip.background = element_rect(fill = "#EAEAD6", color = "#8B814C"),
-        strip.text = element_text(color = "#8B814C"),
-        plot.background = element_rect(fill = "#FAFAF5"),
-        axis.text = element_text(color = "#8B814C"),
-        axis.title = element_text(color = "#8B814C"),
-        plot.title = element_text(color = "#8B814C"),
-        axis.ticks = element_line(color = "#8B814C"))
 ```
 
-## [Statistical Modeling]{style="color: #191970;"}
+##### [PCA]{style="color: #191970;"}
 
-**Conspiracy Data**
+```{r}
+options(width = 100)
 
-```{r, warning=FALSE, echo=TRUE}
+# STANDARDIZE DATA
+conspiracy.Stdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
 
-conspiracy<- conspiracy %>% filter(y!="Not Sure") # removed rows where participant marked 'not sure' as political party
-
-# Re LEVEL Political Ideology
+# RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)
 conspiracy$y<- factor(conspiracy$y, levels=c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative"))
 
-# re name y variable
+# RE-NAMED VARIABLE 'y'
 names(conspiracy)[9]<- "PoliticalIdeology"
 
+# DATA FOR PCA FUNCTION (only keep numeric variables)
 df<- conspiracy[,-9]
-autoplot(prcomp(df, scale.=T), 
-         data=conspiracy, colour="PoliticalIdeology",
-         loadings=T, loadings.label=T, loadings.colour=alpha("#191970", 0.3), loadings.label.colour="#191970") + 
-  scale_colour_manual(values = alpha(paletteer_d("rcartocolor::Temps"), 0.4)) +
+
+# PCA
+pc1<- prcomp(df, scale.=T)
+
+summary(pc1)
+```
+
+##### [SCREE-PLOT]{style="color: #191970;"}
+
+```{r}
+
+```
+
+##### [BIPLOT]{style="color: #191970;"}
+
+```{r}
+autoplot(pc1,
+  # AUTOPLOT OPTIONS
+  data=conspiracy, 
+  colour="PoliticalIdeology", 
+  loadings=T, loadings.colour=alpha("#191970", 0.5), 
+  loadings.label=T, loadings.label.colour="#191970", loadings.label.size=5, loadings.label.hjust=0) + 
+  # CUSTOM COLORS FOR POLITICAL IDEOLOGY GROUPS
+  scale_colour_manual(values = alpha(paletteer_d("rcartocolor::Temps"), 0.5)) +
+  # GGPLOT THEME OPTIONS
   theme_bw() +
   theme(legend.key = element_rect(fill = "#FAFAF5"),
         legend.background = element_rect(fill = "#FAFAF5"),
-        legend.text = element_text(color = "#8B814C"),
-        legend.title = element_text(color = "#8B814C"),
+        legend.text = element_text(color = "#8B814C", size = 14),
+        legend.title = element_text(color = "#8B814C", size = 16),
         panel.border = element_rect(color = "#8B814C"),
         plot.background = element_rect(fill = "#FAFAF5"),
-        axis.text = element_text(color = "#8B814C"),
-        axis.title = element_text(color = "#8B814C"),
+        axis.text = element_text(color = "#8B814C", size = 14),
+        axis.title = element_text(color = "#8B814C", size = 16),
         axis.ticks = element_line(color = "#8B814C"))
+```
+
+##### [LOADINGS]{style="color: #191970;"}
+
+```{r}
+
 ```
 
 ## [Conclusion]{style="color: #191970;"}
 
-## References {#refs .bibliography style="background-color: #FAFAF5; color: #8B814C"}
+## {.bibliography style="background-color: #FAFAF5; color: #8B814C"}
