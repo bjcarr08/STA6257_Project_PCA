@@ -360,7 +360,7 @@ conspiracy.Long<- conspiracy %>% pivot_longer(!y, names_to="conspiracy", values_
 # HISTOGRAMS
 ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
   geom_histogram(alpha=0.2, breaks=seq(0,5,1)) +
-  lemon::facet_rep_wrap(.~conspiracy, nrow=4, labeller="label_both", repeat.tick.labels=T) +
+  lemon::facet_rep_wrap(.~conspiracy, nrow=2, labeller="label_both", repeat.tick.labels=T) +
   labs(title="Raw Scores") +
   theme_bw() +
   theme(legend.position = "none",
@@ -380,7 +380,8 @@ ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
 options(width = 100)
 
 # STANDARDIZE DATA
-conspiracy.Stdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
+#conspiracy.Stdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
+#conspiracy<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
 
 # RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)
 conspiracy$y<- factor(conspiracy$y, levels=c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative"))
@@ -392,7 +393,8 @@ names(conspiracy)[9]<- "PoliticalIdeology"
 df<- conspiracy[,-9]
 
 # PCA
-pc1<- prcomp(df, scale.=T)
+#pc1<- prcomp(df, scale.=T)
+pc1<- prcomp(df)
 
 summary(pc1)
 ```
@@ -400,7 +402,7 @@ summary(pc1)
 ##### [SCREE-PLOT]{style="color: #191970;"}
 
 ```{r}
-
+plot(pc1, type="line")
 ```
 
 ##### [BIPLOT]{style="color: #191970;"}
@@ -429,8 +431,10 @@ autoplot(pc1,
 
 ##### [LOADINGS]{style="color: #191970;"}
 
-```{r}
+The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors). 
 
+```{r}
+(princomp(df))$loadings
 ```
 
 ## [Conclusion]{style="color: #191970;"}
