@@ -118,6 +118,7 @@ div.csl-indent {
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
 <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
 <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
 <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -134,11 +135,26 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span style="color: #191970;"><strong>1. Introduction</strong></span></a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span style="color: #191970;"><strong>2. Methods</strong></span></a></li>
-  <li><a href="#analysis-and-results" id="toc-analysis-and-results" class="nav-link" data-scroll-target="#analysis-and-results"><span style="color: #191970;"><strong>3. Analysis and Results</strong></span></a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span style="color: #191970;"><strong>4. Conclusion</strong></span></a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">1</span>  Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">2</span>  Methods</a>
+  <ul class="collapse">
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="toc-section-number">2.1</span>  Assumptions</a></li>
+  <li><a href="#sample-data" id="toc-sample-data" class="nav-link" data-scroll-target="#sample-data"><span class="toc-section-number">2.2</span>  Sample Data</a></li>
+  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations"><span class="toc-section-number">2.3</span>  Equations</a></li>
+  </ul></li>
+  <li><a href="#analysis-and-results" id="toc-analysis-and-results" class="nav-link" data-scroll-target="#analysis-and-results"><span class="toc-section-number">3</span>  Analysis and Results</a>
+  <ul class="collapse">
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="toc-section-number">3.1</span>  Data Description</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="toc-section-number">3.2</span>  Packages</a></li>
+  <li><a href="#sec-cleanData" id="toc-sec-cleanData" class="nav-link" data-scroll-target="#sec-cleanData"><span class="toc-section-number">3.3</span>  Read &amp; Clean Data</a></li>
+  <li><a href="#sec-linearity" id="toc-sec-linearity" class="nav-link" data-scroll-target="#sec-linearity"><span class="toc-section-number">3.4</span>  Visualize Data</a></li>
+  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca"><span class="toc-section-number">3.5</span>  PCA</a></li>
+  <li><a href="#scree-plot" id="toc-scree-plot" class="nav-link" data-scroll-target="#scree-plot"><span class="toc-section-number">3.6</span>  SCREE-PLOT</a></li>
+  <li><a href="#biplot" id="toc-biplot" class="nav-link" data-scroll-target="#biplot"><span class="toc-section-number">3.7</span>  BIPLOT</a></li>
+  <li><a href="#loadings" id="toc-loadings" class="nav-link" data-scroll-target="#loadings"><span class="toc-section-number">3.8</span>  LOADINGS</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="toc-section-number">4</span>  Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="toc-section-number">5</span>  References</a></li>
   </ul>
 </nav>
 </div>
@@ -191,7 +207,22 @@ details > summary {
  body {
     color: #8B814C;
     background-color: #FAFAF5;
+    font-size: 12pt;
+    font-weight: lighter;
   }
+  h1 {
+    color: #191970;
+    font-weight: bold;
+}
+  h2 {
+    color: #191970;  
+}
+  h3 {
+    color: #191970;  
+}
+  h4 {
+    color: #191970;  
+}
  .bibliography {
     background-color: #FAFAF5;
 }
@@ -199,8 +230,8 @@ details > summary {
     color: #191970;
 }
 </style>
-<section id="introduction" class="level2">
-<h2 data-anchor-id="introduction"><span style="color: #191970;"><strong>1. Introduction</strong></span></h2>
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
 <ul>
 <li>Explains the background of research on a topic.</li>
 <li>Demonstrates why a topic is significant to a subject area.</li>
@@ -209,7 +240,8 @@ details > summary {
 <li>Identifies critical gaps and points of disagreement.</li>
 <li>Discusses further research questions that logically come out of the previous studies.</li>
 </ul>
-<p>Principal Component Analysis (PCA) is an unsupervised machine learning method (<a href="#fig-machineLearning">Figure&nbsp;1</a>) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden pattern in the data, it’s also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>. Using a clustering algorithm, such as k-means, after data is transformed using PCA is a powerful method to use on high dimensional data containing linearly correlated features <span class="citation" data-cites="Alkha">(<a href="#ref-Alkha" role="doc-biblioref">Alkhayrat, Aljnidi, and Aljoumaa 2020</a>)</span>.</p>
+<p>Principal Component Analysis (PCA) is an unsupervised machine learning method (<a href="#fig-machineLearning">Figure&nbsp;1</a>) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden patterns in the data, it’s also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>. Using a clustering algorithm, such as k-means, after the data has been transformed with PCA is a powerful method to use on high dimensional data containing linearly correlated features <span class="citation" data-cites="Alkha">(<a href="#ref-Alkha" role="doc-biblioref">Alkhayrat, Aljnidi, and Aljoumaa 2020</a>)</span>.</p>
+<p>The most important use of PCA is to represent a multivariate data table as smaller set of variables (summary indices) to observe hidden trends, jumps, clusters, patterns and outliers.</p>
 <p>PCA is a broadly used statistical method whose use stretches across many scientific disciplines, and in turn many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline. PCA was developed first by Pearson (1901) and Hotelling (1933) <span class="citation" data-cites="Camargo">(<a href="#ref-Camargo" role="doc-biblioref">A 2022</a>)</span>. This technique transforms some number of possibly correlated variables into a smaller number of variables, the variables in this smaller matrix are referred to as the Principal Components (PC). This is achieved using a vector space transform. By mathematical projection we can interpret the original data set with just a few variables, namely the principal components achieved through calculation. The purpose of reducing dimension size in large data sets is to make it easier to spot trends, patterns, and outliers in data where that information would have previously been hidden by the size of data set of interest (Richardson). The information being preserved in the process of reduction is the variability in the data (i.e.&nbsp;the statistical information present in the data). In order to preserve as much variability as possible we should “…find new variables that are linear functions of those in the original data set, that successively maximize variance and that are uncorrelated with each other” <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>. PCA assumes no distribution in data in a descriptive context which is one of it’s key features that makes it so widely adaptive as an exploratory method across disciplines and data types <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>. To lists all of PCA’s applications would be tedious and excessive, but some examples where PCA has been used is in facial recognition, image analysis, analysis of web data, and cyber security analysis. Essentially anywhere that large data sets are found PCA can be used to aid in discovering trends amongst the variables of that data. One key field PCA has seen use is in the analysis of cyber security network data. PCA could see many applications in web data analysis as the amount of data for this purpose is always increasing and becoming more relevant.</p>
 <p>Principal Component Analysis and Machine Learning Methods. In our research, we learn the applications of how important and groundbreaking Principal Component Analysis and Machine Learning Methods are. In these papers we see how promising the impact is of PCA with recognizing Microanerysm in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic Retinopathy <span class="citation" data-cites="Cao2018">(<a href="#ref-Cao2018" role="doc-biblioref">Cao et al. 2018</a>)</span>. Other research papers show a framework for coronary artery disease risk assessment in intravascular ultrasound. The paper reflects on a novel strategy for risk stratification based on plaque morphology embedded with principal component analysis (PCA) for plaque feature dimensionality reduction and dominant feature selection technique.<span class="citation" data-cites="Gorg2021">(<a href="#ref-Gorg2021" role="doc-biblioref">Gorgoglione et al. 2021</a>)</span> Facial recognition with PCA and machine learning methods, From this Paper the authors have identified that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM). Lastly we see the importance of PCA with it identifying that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM)<span class="citation" data-cites="Camargo">(<a href="#ref-Camargo" role="doc-biblioref">A 2022</a>)</span>.</p>
 <p>Taking a look into a real world example, say we have a dataset consisting of 1,000 students with exam scores from 7 different courses: Advanced Statistics, Probability Theory, Intro to Dance, World Religions, and Religion in America. We could group Advanced Statistics and Probability Theory into a new variable called Stats, group World Religions and Religion in America into a new variable Religion, and keep Intro to Dance by itself. We have Reduced the data set from 7 variables to 3 without much loss in variation. This is the main concept behind PCA except variables are not manually regrouped but instead the new variables (principal components) are derived from certain linear combinations of the original variables <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>.</p>
@@ -221,11 +253,62 @@ details > summary {
 </figure>
 </div>
 </section>
-<section id="methods" class="level2">
-<h2 data-anchor-id="methods"><span style="color: #191970;"><strong>2. Methods</strong></span></h2>
-<p><span style="color: #8B814C;">How PCA is used PCA is a tool for identifying the main axes of variance within a data set and allows for easy data exploration to understand the key variables in the data and spot outliers. Properly applied, it is one of the most powerful tools in the data analysis tool kit. PCA forms the basis of multivariate data analysis based on projection methods. The most important use of PCA is to represent a multivariate data table as smaller set of variables (summary indices) to observe trends, jumps, clusters and outliers. This overview may uncover the relationships between observations and variables, and among the variables. Statistically, PCA finds lines, planes and hyper-planes in the K-dimensional space that approximate the data as well as possible in the least squares sense. A line or plane that is the least squares approximation of a set of data points makes the variance of the coordinates on the line or plane as large as possible.</span></p>
-<p><br></p>
-<p><span style="color: #8B814C; font-size: 22px;"><strong>Sample Data:</strong></span></p>
+<section id="methods" class="level2" data-number="2">
+<h2 data-number="2" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
+<p>PCA forms the basis of multivariate data analysis based on projection methods. The variability in the original (correlated) variables will be explained through a smaller (uncorrelated) set of new variables i.e.&nbsp;the principal components (PC’s). PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores) <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>flowchart LR</span>
+<span id="cb1-4"><a href="#cb1-4"></a>A[(Clean&lt;br/&gt;Data)] --&gt; B((Are all&lt;br/&gt;vars the same&lt;br/&gt;scale/unit?))</span>
+<span id="cb1-5"><a href="#cb1-5"></a>B --&gt; C((Yes))</span>
+<span id="cb1-6"><a href="#cb1-6"></a>B --&gt; D((No))</span>
+<span id="cb1-7"><a href="#cb1-7"></a>D -.- |Standardize&lt;br/&gt;Data| E(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>C --&gt; E</span>
+<span id="cb1-9"><a href="#cb1-9"></a>D --&gt; F(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>E --&gt; G(Estimate&lt;br/&gt;Sample&lt;br/&gt;Covariance&lt;br/&gt;Matrix)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>F --&gt; H(Estimate&lt;br/&gt;Sample&lt;br/&gt;Correlation&lt;br/&gt;Matrix)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>G --&gt; I(Eigenvalues&lt;br/&gt;Eigenvectors)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>H --&gt; I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
+
+flowchart LR
+A[(Clean&lt;br/&gt;Data)] --&gt; B((Are all&lt;br/&gt;vars the same&lt;br/&gt;scale/unit?))
+B --&gt; C((Yes))
+B --&gt; D((No))
+D -.- |Standardize&lt;br/&gt;Data| E(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)
+C --&gt; E
+D --&gt; F(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)
+E --&gt; G(Estimate&lt;br/&gt;Sample&lt;br/&gt;Covariance&lt;br/&gt;Matrix)
+F --&gt; H(Estimate&lt;br/&gt;Sample&lt;br/&gt;Correlation&lt;br/&gt;Matrix)
+G --&gt; I(Eigenvalues&lt;br/&gt;Eigenvectors)
+H --&gt; I
+
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<section id="assumptions" class="level3" data-number="2.1">
+<h3 data-number="2.1" data-anchor-id="assumptions"><span class="header-section-number">2.1</span> Assumptions</h3>
+<ul>
+<li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
+<li>Variables should all be the same scale/units (<a href="#eq-stdzData">Equation&nbsp;1</a>)</li>
+<li>Variables are linearly related - visually check scatter plot matrices (see <a href="#sec-linearity">Section&nbsp;3.4</a> for an example)</li>
+<li>Outliers &amp; missing or impossible values should be removed (see <a href="#sec-cleanData">Section&nbsp;3.3</a> for an example)</li>
+</ul>
+</section>
+<section id="sample-data" class="level3" data-number="2.2">
+<h3 data-number="2.2" data-anchor-id="sample-data"><span class="header-section-number">2.2</span> Sample Data</h3>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
@@ -412,6 +495,13 @@ details > summary {
 </tbody>
 
 </table>
+</section>
+<section id="equations" class="level3" data-number="2.3">
+<h3 data-number="2.3" data-anchor-id="equations"><span class="header-section-number">2.3</span> Equations</h3>
+<p><strong>Standardized Data:</strong> <span id="eq-stdzData"><span class="math display">\[z_{ij}\ =\ \frac{x_{ij} - \overline{x_j}}{\sqrt{\hat{{\sigma}_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\} \tag{1}\]</span></span></p>
+<p><strong>Random Vector:</strong> <span id="eq-randomVector"><span class="math display">\[{x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\} \tag{2}\]</span></span></p>
+<p><strong>Sample Mean Vector:</strong> <span id="eq-meanVector"><span class="math display">\[\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i \tag{3}\]</span></span></p>
+<p><strong>Sample Covariance Matrix:</strong> <span id="eq-covMatrix"><span class="math display">\[\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T \tag{4}\]</span></span></p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -424,86 +514,24 @@ Note
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span style="color: #1A79E1; font-size:12px;">No assumptions about the variable distributions needed</span></p>
+<p><span style="color: #1A79E1; font-size:12px;">The <strong>sample mean vector</strong> represents the center of the random vector (<span class="math inline">\(x_i\)</span>)</span></p>
+<p><span style="color: #1A79E1; font-size:12px;">The <strong>sample covariance matrix</strong> represents the variations (diagonal elements) &amp; correlations (off-diagonal elements) of the random vector (<span class="math inline">\(x_i\)</span>)</span></p>
 </div>
 </div>
 </div>
-<p><span style="color: #8B814C; font-size: 22px;"><strong>Random Vector:</strong></span></p>
-<p><span style="color: #8B814C;"><span class="math inline">\({x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}\)</span></span></p>
-<p><span style="color: #8B814C; font-size: 22px;"><strong>Estimates for the Sample Mean Vector &amp; Sample Covariance Matrix:</strong></span></p>
-<p><span style="color: #8B814C;"><span class="math inline">\(\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i\)</span></span></p>
-<p><span style="color: #8B814C;"><span class="math inline">\(\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T\)</span></span></p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span style="color: #1A79E1; font-size:12px;">The sample mean vector represents the centers of the random vectors x</span></p>
-<p><span style="color: #1A79E1; font-size:12px;">The sample covariance matrix represents the variations (diagonal elements) &amp; correlations (off-diagonal elements) of the random vector x</span></p>
-</div>
-</div>
-</div>
-<p><span style="color: #8B814C; font-size: 22px;"><strong>Principal Components:</strong></span></p>
-<p><span style="color: #8B814C;"><span class="math inline">\({\hat{a}_{k}}\)</span>’s are the eigenvectors of the sample covariance matrix <strong>S</strong> (or the sample correlation matrix <strong>R</strong>)</span></p>
-<p><span style="color: #8B814C;"><span class="math inline">\({\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}\)</span></span></p>
-<p><br></p>
-<p><span style="color: #8B814C;">PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores). <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span></span></p>
-<p><br></p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>flowchart LR</span>
-<span id="cb1-4"><a href="#cb1-4"></a>A[(Clean&lt;br/&gt;Data)] --&gt; B((Are all&lt;br/&gt;vars the same&lt;br/&gt;scale/unit?))</span>
-<span id="cb1-5"><a href="#cb1-5"></a>B --&gt; C((Yes))</span>
-<span id="cb1-6"><a href="#cb1-6"></a>B --&gt; D((No))</span>
-<span id="cb1-7"><a href="#cb1-7"></a>D -.- |Standardize&lt;br/&gt;Data| E(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>C --&gt; E</span>
-<span id="cb1-9"><a href="#cb1-9"></a>D --&gt; F(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>E --&gt; G(Estimate&lt;br/&gt;Sample&lt;br/&gt;Covariance&lt;br/&gt;Matrix)</span>
-<span id="cb1-11"><a href="#cb1-11"></a>F --&gt; H(Estimate&lt;br/&gt;Sample&lt;br/&gt;Correlation&lt;br/&gt;Matrix)</span>
-<span id="cb1-12"><a href="#cb1-12"></a>G --&gt; I(Eigenvalues&lt;br/&gt;Eigenvectors)</span>
-<span id="cb1-13"><a href="#cb1-13"></a>H --&gt; I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
-
-flowchart LR
-A[(Clean&lt;br/&gt;Data)] --&gt; B((Are all&lt;br/&gt;vars the same&lt;br/&gt;scale/unit?))
-B --&gt; C((Yes))
-B --&gt; D((No))
-D -.- |Standardize&lt;br/&gt;Data| E(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)
-C --&gt; E
-D --&gt; F(Estimate&lt;br/&gt;Sample&lt;br/&gt;Mean&lt;br/&gt;Vector)
-E --&gt; G(Estimate&lt;br/&gt;Sample&lt;br/&gt;Covariance&lt;br/&gt;Matrix)
-F --&gt; H(Estimate&lt;br/&gt;Sample&lt;br/&gt;Correlation&lt;br/&gt;Matrix)
-G --&gt; I(Eigenvalues&lt;br/&gt;Eigenvectors)
-H --&gt; I
-
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
+<p><strong>Eigenvectors:</strong> <span id="eq-eigenvec"><span class="math display">\[{\hat{a}_{k}} \tag{5}\]</span></span></p>
+<p><strong>Eigenvalues:</strong> <span id="eq-eigenval"><span class="math display">\[{\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\} \tag{6}\]</span></span></p>
 <p><br></p>
 </section>
-<section id="analysis-and-results" class="level2">
-<h2 data-anchor-id="analysis-and-results"><span style="color: #191970;"><strong>3. Analysis and Results</strong></span></h2>
-<section id="packages" class="level5">
-<h5 data-anchor-id="packages"><span style="color: #191970;">Packages</span></h5>
+</section>
+<section id="analysis-and-results" class="level2" data-number="3">
+<h2 data-number="3" data-anchor-id="analysis-and-results"><span class="header-section-number">3</span> Analysis and Results</h2>
+<section id="data-description" class="level3" data-number="3.1">
+<h3 data-number="3.1" data-anchor-id="data-description"><span class="header-section-number">3.1</span> Data Description</h3>
+<p>To Do</p>
+</section>
+<section id="packages" class="level3" data-number="3.2">
+<h3 data-number="3.2" data-anchor-id="packages"><span class="header-section-number">3.2</span> Packages</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -514,100 +542,92 @@ H --&gt; I
 <span id="cb2-5"><a href="#cb2-5"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb2-6"><a href="#cb2-6"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb2-7"><a href="#cb2-7"></a><span class="fu">library</span>(paletteer)</span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="fu">library</span>(DescTools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="read-data" class="level5">
-<h5 data-anchor-id="read-data"><span style="color: #191970;">Read Data</span></h5>
+<section id="sec-cleanData" class="level3" data-number="3.3">
+<h3 data-number="3.3" data-anchor-id="sec-cleanData"><span class="header-section-number">3.3</span> Read &amp; Clean Data</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># READ DATA FROM A GITHUB CSV FILE</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>conspiracy<span class="ot">&lt;-</span> (<span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv"</span>, <span class="at">stringsAsFactors =</span> T))[,<span class="sc">-</span><span class="dv">1</span>]</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># VARIABLES</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#kable(DescTools::Desc(conspiracy)[[1]]$abstract)</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="fu">str</span>(conspiracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   2000 obs. of  9 variables:
- $ truther911  : int  2 1 1 5 1 1 1 1 1 2 ...
- $ obamabirth  : int  2 3 4 3 2 1 3 3 1 5 ...
- $ fincrisis   : int  2 3 2 3 4 5 3 1 3 3 ...
- $ fluorolights: int  1 2 1 3 2 1 2 3 1 2 ...
- $ endtimes    : int  1 1 3 2 5 3 3 3 4 5 ...
- $ sorosplot   : int  1 3 5 3 2 3 4 3 1 4 ...
- $ iraqjews    : int  1 1 2 3 1 3 2 1 1 3 ...
- $ vaportrail  : int  1 1 3 3 3 1 2 1 1 3 ...
- $ y           : Factor w/ 8 levels "Conservative",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-</div>
-</div>
-</section>
-<section id="clean-data" class="level5">
-<h5 data-anchor-id="clean-data"><span style="color: #191970;">Clean Data</span></h5>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># REMOVE ROWS WITH NAs &amp; IMPOSSIBLE VALUES (removed rows where participant marked 'not sure' as political ideology)</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>conspiracy<span class="ot">&lt;-</span> conspiracy[<span class="fu">complete.cases</span>(conspiracy),] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(y<span class="sc">!=</span><span class="st">"Not Sure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># REMOVE ROWS WITH NAs &amp; IMPOSSIBLE VALUES (removed rows where participant marked 'not sure' as political ideology)</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>conspiracy<span class="ot">&lt;-</span> conspiracy[<span class="fu">complete.cases</span>(conspiracy),] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(y<span class="sc">!=</span><span class="st">"Not Sure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="visualize-distributions" class="level5">
-<h5 data-anchor-id="visualize-distributions"><span style="color: #191970;">Visualize Distributions</span></h5>
+<section id="sec-linearity" class="level3" data-number="3.4">
+<h3 data-number="3.4" data-anchor-id="sec-linearity"><span class="header-section-number">3.4</span> Visualize Data</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># TRANSFORM TO LONG DATA FOR PLOTS</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>conspiracy.Long<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"score"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">score=</span>as.numeric))</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># HISTOGRAMS</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">ggplot</span>(conspiracy.Long, <span class="fu">aes</span>(score, <span class="at">fill=</span>conspiracy, <span class="at">color=</span>conspiracy)) <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>  lemon<span class="sc">::</span><span class="fu">facet_rep_wrap</span>(.<span class="sc">~</span>conspiracy, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">labeller=</span><span class="st">"label_both"</span>, <span class="at">repeat.tick.labels=</span>T) <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Raw Scores"</span>) <span class="sc">+</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb6-12"><a href="#cb6-12"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#EAEAD6"</span>, <span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb6-13"><a href="#cb6-13"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb6-14"><a href="#cb6-14"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb6-15"><a href="#cb6-15"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb6-16"><a href="#cb6-16"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb6-17"><a href="#cb6-17"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb6-18"><a href="#cb6-18"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">PlotPairs</span>(<span class="fu">sapply</span>(conspiracy[,<span class="sc">-</span><span class="dv">9</span>], <span class="cf">function</span>(x) <span class="fu">jitter</span>(x, <span class="dv">5</span>)), </span>
+<span id="cb4-4"><a href="#cb4-4"></a>                     <span class="at">g=</span>conspiracy<span class="sc">$</span>y,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                     <span class="at">col=</span><span class="fu">alpha</span>(<span class="st">"#8B814C"</span>, <span class="fl">0.1</span>), </span>
+<span id="cb4-6"><a href="#cb4-6"></a>                     <span class="at">col.smooth=</span><span class="st">"#8B814C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/plot0-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># TRANSFORM TO LONG DATA FOR PLOTS</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>conspiracy.Long<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"score"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">score=</span>as.numeric))</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># HISTOGRAMS</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">ggplot</span>(conspiracy.Long, <span class="fu">aes</span>(score, <span class="at">fill=</span>conspiracy, <span class="at">color=</span>conspiracy)) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  lemon<span class="sc">::</span><span class="fu">facet_rep_wrap</span>(.<span class="sc">~</span>conspiracy, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">labeller=</span><span class="st">"label_both"</span>, <span class="at">repeat.tick.labels=</span>T) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Raw Scores"</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb5-12"><a href="#cb5-12"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#EAEAD6"</span>, <span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb5-14"><a href="#cb5-14"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb5-15"><a href="#cb5-15"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb5-16"><a href="#cb5-16"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb5-18"><a href="#cb5-18"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/plot1-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 </section>
-<section id="pca" class="level5">
-<h5 data-anchor-id="pca"><span style="color: #191970;">PCA</span></h5>
+<section id="pca" class="level3" data-number="3.5">
+<h3 data-number="3.5" data-anchor-id="pca"><span class="header-section-number">3.5</span> PCA</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">100</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># STANDARDIZE DATA</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#conspiracy.Stdz&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#conspiracy&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co"># RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>conspiracy<span class="sc">$</span>y<span class="ot">&lt;-</span> <span class="fu">factor</span>(conspiracy<span class="sc">$</span>y, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Very Liberal"</span>, <span class="st">"Liberal"</span>, <span class="st">"Somewhat Liberal"</span>, <span class="st">"Middle of the Road"</span>, <span class="st">"Somewhat Conservative"</span>, <span class="st">"Conservative"</span>, <span class="st">"Very Conservative"</span>))</span>
-<span id="cb7-9"><a href="#cb7-9"></a></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co"># RE-NAMED VARIABLE 'y'</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="fu">names</span>(conspiracy)[<span class="dv">9</span>]<span class="ot">&lt;-</span> <span class="st">"PoliticalIdeology"</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co"># DATA FOR PCA FUNCTION (only keep numeric variables)</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>df<span class="ot">&lt;-</span> conspiracy[,<span class="sc">-</span><span class="dv">9</span>]</span>
-<span id="cb7-15"><a href="#cb7-15"></a></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="co"># PCA</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#pc1&lt;- prcomp(df, scale.=T)</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a>pc1<span class="ot">&lt;-</span> <span class="fu">prcomp</span>(df)</span>
-<span id="cb7-19"><a href="#cb7-19"></a></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="fu">summary</span>(pc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">100</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># STANDARDIZE DATA</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#conspiracy.Stdz&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#conspiracy&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>conspiracy<span class="sc">$</span>y<span class="ot">&lt;-</span> <span class="fu">factor</span>(conspiracy<span class="sc">$</span>y, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Very Liberal"</span>, <span class="st">"Liberal"</span>, <span class="st">"Somewhat Liberal"</span>, <span class="st">"Middle of the Road"</span>, <span class="st">"Somewhat Conservative"</span>, <span class="st">"Conservative"</span>, <span class="st">"Very Conservative"</span>))</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># RE-NAMED VARIABLE 'y'</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="fu">names</span>(conspiracy)[<span class="dv">9</span>]<span class="ot">&lt;-</span> <span class="st">"PoliticalIdeology"</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co"># DATA FOR PCA FUNCTION (only keep numeric variables)</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>df<span class="ot">&lt;-</span> conspiracy[,<span class="sc">-</span><span class="dv">9</span>]</span>
+<span id="cb6-15"><a href="#cb6-15"></a></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co"># PCA</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#pc1&lt;- prcomp(df, scale.=T)</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a>pc1<span class="ot">&lt;-</span> <span class="fu">prcomp</span>(df)</span>
+<span id="cb6-19"><a href="#cb6-19"></a></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="fu">summary</span>(pc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Importance of components:
@@ -618,55 +638,55 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 </div>
 </div>
 </section>
-<section id="scree-plot" class="level5">
-<h5 data-anchor-id="scree-plot"><span style="color: #191970;">SCREE-PLOT</span></h5>
+<section id="scree-plot" class="level3" data-number="3.6">
+<h3 data-number="3.6" data-anchor-id="scree-plot"><span class="header-section-number">3.6</span> SCREE-PLOT</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">plot</span>(pc1, <span class="at">type=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">plot</span>(pc1, <span class="at">type=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+</section>
+<section id="biplot" class="level3" data-number="3.7">
+<h3 data-number="3.7" data-anchor-id="biplot"><span class="header-section-number">3.7</span> BIPLOT</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">autoplot</span>(pc1,</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="co"># AUTOPLOT OPTIONS</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">data=</span>conspiracy, </span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="at">colour=</span><span class="st">"PoliticalIdeology"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="at">loadings=</span>T, <span class="at">loadings.colour=</span><span class="fu">alpha</span>(<span class="st">"#191970"</span>, <span class="fl">0.5</span>), </span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="at">loadings.label=</span>T, <span class="at">loadings.label.colour=</span><span class="st">"#191970"</span>, <span class="at">loadings.label.size=</span><span class="dv">5</span>, <span class="at">loadings.label.hjust=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="co"># CUSTOM COLORS FOR POLITICAL IDEOLOGY GROUPS</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">alpha</span>(<span class="fu">paletteer_d</span>(<span class="st">"rcartocolor::Temps"</span>), <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="co"># GGPLOT THEME OPTIONS</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">theme</span>(<span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb9-12"><a href="#cb9-12"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb9-13"><a href="#cb9-13"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb9-14"><a href="#cb9-14"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb9-15"><a href="#cb9-15"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb9-16"><a href="#cb9-16"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb9-17"><a href="#cb9-17"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb9-18"><a href="#cb9-18"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb9-19"><a href="#cb9-19"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 </section>
-<section id="biplot" class="level5">
-<h5 data-anchor-id="biplot"><span style="color: #191970;">BIPLOT</span></h5>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">autoplot</span>(pc1,</span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="co"># AUTOPLOT OPTIONS</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">data=</span>conspiracy, </span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="at">colour=</span><span class="st">"PoliticalIdeology"</span>, </span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="at">loadings=</span>T, <span class="at">loadings.colour=</span><span class="fu">alpha</span>(<span class="st">"#191970"</span>, <span class="fl">0.5</span>), </span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="at">loadings.label=</span>T, <span class="at">loadings.label.colour=</span><span class="st">"#191970"</span>, <span class="at">loadings.label.size=</span><span class="dv">5</span>, <span class="at">loadings.label.hjust=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
-<span id="cb10-7"><a href="#cb10-7"></a>  <span class="co"># CUSTOM COLORS FOR POLITICAL IDEOLOGY GROUPS</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">alpha</span>(<span class="fu">paletteer_d</span>(<span class="st">"rcartocolor::Temps"</span>), <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>  <span class="co"># GGPLOT THEME OPTIONS</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a>  <span class="fu">theme</span>(<span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb10-12"><a href="#cb10-12"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb10-13"><a href="#cb10-13"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb10-14"><a href="#cb10-14"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
-<span id="cb10-15"><a href="#cb10-15"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb10-16"><a href="#cb10-16"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb10-17"><a href="#cb10-17"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb10-18"><a href="#cb10-18"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
-<span id="cb10-19"><a href="#cb10-19"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1152"></p>
-</div>
-</div>
-</section>
-<section id="loadings" class="level5">
-<h5 data-anchor-id="loadings"><span style="color: #191970;">LOADINGS</span></h5>
+<section id="loadings" class="level3" data-number="3.8">
+<h3 data-number="3.8" data-anchor-id="loadings"><span class="header-section-number">3.8</span> LOADINGS</h3>
 <p>The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors).</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>(<span class="fu">princomp</span>(df))<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>(<span class="fu">princomp</span>(df))<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -689,15 +709,15 @@ Cumulative Var  0.125  0.250  0.375  0.500  0.625  0.750  0.875  1.000</code></p
 </div>
 </section>
 </section>
-<section id="conclusion" class="level2">
-<h2 data-anchor-id="conclusion"><span style="color: #191970;"><strong>4. Conclusion</strong></span></h2>
+<section id="conclusion" class="level2" data-number="4">
+<h2 data-number="4" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
 </section>
-<section id="section" class="level2 unnumbered bibliography" style="background-color: #FAFAF5; color: #8B814C">
+<section id="references" class="level2 unnumbered bibliography" style="background-color: #FAFAF5; color: #8B814C" data-number="5">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">5 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-Camargo" class="csl-entry" role="doc-biblioentry">
 A, Camargo. 2022. <span>“PCAtest: Testing the Statistical Significance of Principal Component Analysis in r.”</span> <em>PeerJ</em>. <a href="https://doi.org/10.7717/peerj.12967">https://doi.org/10.7717/peerj.12967</a>.
 </div>
@@ -816,4 +836,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="index_files/libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

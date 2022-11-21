@@ -9,11 +9,13 @@ format:
   html:
     highlight: pygments
     anchor-sections: false
+    smooth-scroll: true
     toc: true
     mainfont: sans-serif
     fontcolor: "#8B814C"
     monobackgroundcolor: "#FAFAF5"
     backgroundcolor: "#FAFAF5"
+    headercolor: "#191970"
     code-line-numbers: true
     code-block-bg: "FFFFFF"
     code-fold: true
@@ -29,6 +31,7 @@ execute:
 course: STA 6257 - Advance Statistical Modeling
 bibliography: references.bib # file contains bibtex for references
 always_allow_html: true # this allows to get PDF with HTML features
+number-sections: true
 editor: 
   markdown:
     wrap: 100
@@ -52,7 +55,22 @@ details > summary {
  body {
     color: #8B814C;
     background-color: #FAFAF5;
+    font-size: 12pt;
+    font-weight: lighter;
   }
+  h1 {
+    color: #191970;
+    font-weight: bold;
+}
+  h2 {
+    color: #191970;  
+}
+  h3 {
+    color: #191970;  
+}
+  h4 {
+    color: #191970;  
+}
  .bibliography {
     background-color: #FAFAF5;
 }
@@ -61,7 +79,8 @@ details > summary {
 }
 </style>
 ```
-## [**1. Introduction**]{style="color: #191970;"}
+
+## Introduction
 
 - Explains the background of research on a topic.
 - Demonstrates why a topic is significant to a subject area.
@@ -70,7 +89,9 @@ details > summary {
 - Identifies critical gaps and points of disagreement.
 - Discusses further research questions that logically come out of the previous studies.
 
-Principal Component Analysis (PCA) is an unsupervised machine learning method (@fig-machineLearning) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden pattern in the data, it's also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model [@lang2021applied]. Using a clustering algorithm, such as k-means, after data is transformed using PCA is a powerful method to use on high dimensional data containing linearly correlated features [@Alkha]. 
+Principal Component Analysis (PCA) is an unsupervised machine learning method (@fig-machineLearning) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden patterns in the data, it's also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model [@lang2021applied]. Using a clustering algorithm, such as k-means, after the data has been transformed with PCA is a powerful method to use on high dimensional data containing linearly correlated features [@Alkha]. 
+
+The most important use of PCA is to represent a multivariate data table as smaller set of variables (summary indices) to observe hidden trends, jumps, clusters, patterns and outliers.
 
 PCA is a broadly used statistical method
 whose use stretches across many scientific disciplines, and in turn many
@@ -149,28 +170,38 @@ the y direction [@Jones].
 
 ![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
 
-## [**2. Methods**]{style="color: #191970;"}
+## Methods
 
-[How PCA is used PCA is a tool for identifying the main axes of variance
-within a data set and allows for easy data exploration to understand the
-key variables in the data and spot outliers. Properly applied, it is one
-of the most powerful tools in the data analysis tool kit. PCA forms the
-basis of multivariate data analysis based on projection methods. The
-most important use of PCA is to represent a multivariate data table as
-smaller set of variables (summary indices) to observe trends, jumps,
-clusters and outliers. This overview may uncover the relationships
-between observations and variables, and among the variables.
-Statistically, PCA finds lines, planes and hyper-planes in the
-K-dimensional space that approximate the data as well as possible in the
-least squares sense. A line or plane that is the least squares
-approximation of a set of data points makes the variance of the
-coordinates on the line or plane as large as
-possible.]{style="color: #8B814C;"}
+PCA forms the basis of multivariate data analysis based on projection methods. The variability in the original (correlated) variables will be explained through a smaller (uncorrelated) set of new variables i.e. the principal components (PC's). PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores) [@lang2021applied].
 
-<br>
+```{mermaid, code-fold: hide}
+
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
+
+flowchart LR
+A[(Clean<br/>Data)] --> B((Are all<br/>vars the same<br/>scale/unit?))
+B --> C((Yes))
+B --> D((No))
+D -.- |Standardize<br/>Data| E(Estimate<br/>Sample<br/>Mean<br/>Vector)
+C --> E
+D --> F(Estimate<br/>Sample<br/>Mean<br/>Vector)
+E --> G(Estimate<br/>Sample<br/>Covariance<br/>Matrix)
+F --> H(Estimate<br/>Sample<br/>Correlation<br/>Matrix)
+G --> I(Eigenvalues<br/>Eigenvectors)
+H --> I
+
+```
+
+### Assumptions
+
+- Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
+- Variables should all be the same scale/units (@eq-stdzData)
+- Variables are linearly related - visually check scatter plot matrices (see @sec-linearity for an example)
+- Outliers & missing or impossible values should be removed (see @sec-cleanData for an example)
 
 
-[**Sample Data:**]{style="color: #8B814C; font-size: 22px;"}
+
+### Sample Data
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -260,72 +291,38 @@ possible.]{style="color: #8B814C;"}
 </tbody>
 </table>
 
-::: {.callout-note collapse="true"}
 
-[No assumptions about the variable distributions needed]{style="color: #1A79E1; font-size:12px;"}
+### Equations
 
-:::
+**Standardized Data:** $$z_{ij}\ =\ \frac{x_{ij} - \overline{x_j}}{\sqrt{\hat{{\sigma}_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
+**Random Vector:** $${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
 
-[**Random Vector:**]{style="color: #8B814C; font-size: 22px;"}
+**Sample Mean Vector:** $$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
 
-[${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$]{style="color: #8B814C;"}
-
-
-[**Estimates for the Sample Mean Vector & Sample Covariance Matrix:**]{style="color: #8B814C; font-size: 22px;"}
-
-[$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$]{style="color: #8B814C;"}
-
-[$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$]{style="color: #8B814C;"}
+**Sample Covariance Matrix:** $$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
 
 ::: {.callout-note collapse="true"}
 
-[The sample mean vector represents the centers of the random vectors x]{style="color: #1A79E1; font-size:12px;"}
+[The **sample mean vector** represents the center of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
 
-[The sample covariance matrix represents the variations (diagonal elements) & correlations (off-diagonal elements) of the random vector x]{style="color: #1A79E1; font-size:12px;"}
+[The **sample covariance matrix** represents the variations (diagonal elements) & correlations (off-diagonal elements) of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
 
 :::
 
-[**Principal Components:**]{style="color: #8B814C; font-size: 22px;"}
+**Eigenvectors:** $${\hat{a}_{k}}$$ {#eq-eigenvec}
 
-[${\hat{a}_{k}}$'s are the eigenvectors of the sample covariance matrix **S** (or the sample correlation matrix **R**)]{style="color: #8B814C;"}
-
-[${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$]{style="color: #8B814C;"}
+**Eigenvalues:** $${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
 
 <br>
 
-[PCA results depend on the scale or units of the variables so, for
-unscaled data, calculations should either be preformed on the
-correlation matrix (instead of the covariance matrix) or the data should
-be standardized with mean 0 and variance 1 (z scores).
-[@lang2021applied]]{style="color: #8B814C;"}
+## Analysis and Results
 
-<br>
+### Data Description
 
+To Do
 
-```{mermaid, code-fold: hide}
-
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
-
-flowchart LR
-A[(Clean<br/>Data)] --> B((Are all<br/>vars the same<br/>scale/unit?))
-B --> C((Yes))
-B --> D((No))
-D -.- |Standardize<br/>Data| E(Estimate<br/>Sample<br/>Mean<br/>Vector)
-C --> E
-D --> F(Estimate<br/>Sample<br/>Mean<br/>Vector)
-E --> G(Estimate<br/>Sample<br/>Covariance<br/>Matrix)
-F --> H(Estimate<br/>Sample<br/>Correlation<br/>Matrix)
-G --> I(Eigenvalues<br/>Eigenvectors)
-H --> I
-
-```
-
-<br>
-
-## [**3. Analysis and Results**]{style="color: #191970;"}
-
-##### [Packages]{style="color: #191970;"}
+### Packages
 
 ```{r, packages}
 library(dplyr)
@@ -336,29 +333,31 @@ library(MASS)
 library(tidyr)
 library(paletteer)
 library(knitr)
+library(DescTools)
 ```
 
-##### [Read Data]{style="color: #191970;"}
+### Read & Clean Data {#sec-cleanData}
 
 ```{r}
 # READ DATA FROM A GITHUB CSV FILE
 conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv", stringsAsFactors = T))[,-1]
 
-# VARIABLES
-#kable(DescTools::Desc(conspiracy)[[1]]$abstract)
-str(conspiracy)
-```
-
-##### [Clean Data]{style="color: #191970;"}
-
-```{r}
 # REMOVE ROWS WITH NAs & IMPOSSIBLE VALUES (removed rows where participant marked 'not sure' as political ideology)
 conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
 ```
 
-##### [Visualize Distributions]{style="color: #191970;"}
+### Visualize Data {#sec-linearity}
 
-```{r, plot1, fig.height=7, fig.width=12}
+```{r, plot0, fig.height=12, fig.width=12}
+# SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION
+par(col.axis="#8B814C",col.lab="#8B814C",col.main="#8B814C",col.sub="#8B814C",pch=20, col="#8B814C", bg="transparent")
+PlotPairs(sapply(conspiracy[,-9], function(x) jitter(x, 5)), 
+                     g=conspiracy$y,
+                     col=alpha("#8B814C", 0.1), 
+                     col.smooth="#8B814C")
+```
+
+```{r, plot1, fig.height=6, fig.width=12}
 # TRANSFORM TO LONG DATA FOR PLOTS
 conspiracy.Long<- conspiracy %>% pivot_longer(!y, names_to="conspiracy", values_to="score", values_transform=list(score=as.numeric))
 
@@ -379,7 +378,7 @@ ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
         axis.ticks = element_line(color = "#8B814C"))
 ```
 
-##### [PCA]{style="color: #191970;"}
+### PCA
 
 ```{r}
 options(width = 100)
@@ -404,13 +403,13 @@ pc1<- prcomp(df)
 summary(pc1)
 ```
 
-##### [SCREE-PLOT]{style="color: #191970;"}
+### SCREE-PLOT
 
 ```{r}
 plot(pc1, type="line")
 ```
 
-##### [BIPLOT]{style="color: #191970;"}
+### BIPLOT
 
 ```{r}
 autoplot(pc1,
@@ -434,7 +433,7 @@ autoplot(pc1,
         axis.ticks = element_line(color = "#8B814C"))
 ```
 
-##### [LOADINGS]{style="color: #191970;"}
+### LOADINGS
 
 The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors). 
 
@@ -442,6 +441,6 @@ The matrix of variable loadings (i.e., a matrix whose columns contain the eigenv
 (princomp(df))$loadings
 ```
 
-## [**4. Conclusion**]{style="color: #191970;"}
+## Conclusion
 
-## {.bibliography style="background-color: #FAFAF5; color: #8B814C"}
+## References {.bibliography style="background-color: #FAFAF5; color: #8B814C"}

@@ -281,3 +281,127 @@ autoplot(prcomp(df, scale.=T),
 #                                                    ifelse(y=="Middle of the Road", 3, 
 #                                                           ifelse(y=="Somewhat Conservative", 4, 
 #                                                                  ifelse(y=="Conservative", 5, 6)))))))
+
+
+
+
+
+
+
+
+
+
+#########################
+
+
+
+# packages
+library(dplyr)
+library(ggplot2)
+library(data.table)
+library(ggfortify)
+library(MASS)
+library(tidyr)
+library(paletteer)
+library(knitr)
+
+# READ DATA FROM A GITHUB CSV FILE
+conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv", stringsAsFactors = T))[,-1]
+
+# VARIABLES
+str(conspiracy)
+
+# REMOVE ROWS WITH NAs & IMPOSSIBLE VALUES (removed rows where participant marked 'not sure' as political ideology)
+conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
+
+# STANDARDIZED
+cStdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
+
+# NORMALIZED 
+cNorm<- BBmisc::normalize(conspiracy[,-9], method="range", range=c(0, 1))
+cNorm<- cbind(cNorm, conspiracy$y)
+
+
+# SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION
+pairs(sapply(conspiracy[,-9], function(x) jitter(x, 5)), col=alpha("#8B814C", 0.1), cex.labels="#8B814C")
+
+pairs(sapply(cStdz[,-9], function(x) jitter(x, 5)), col=alpha("#8B814C", 0.1))
+pairs(sapply(cNorm[,-9], function(x) jitter(x, 5)), col=alpha("#8B814C", 0.1))
+
+
+DescTools::PlotPairs(sapply(conspiracy[,-9], function(x) jitter(x, 5)), 
+                     g=conspiracy$y, 
+                     col=c(alpha(hred, 0.1), alpha(hblue, 0.1), alpha(hgreen, 0.1)), 
+                     col.smooth=c("black", hred, hblue, hgreen),
+                     cex.labels="#8B814C")
+
+par(col.axis="#8B814C",col.lab="#8B814C",col.main="#8B814C",col.sub="#8B814C",pch=20, col="#8B814C")
+DescTools::PlotPairs(sapply(conspiracy[,-9], function(x) jitter(x, 5)), 
+                     g=conspiracy$y,
+                     col=alpha("#8B814C", 0.1), 
+                     col.smooth="#8B814C")
+
+# TRANSFORM TO LONG DATA FOR PLOTS
+conspiracy.Long<- conspiracy %>% pivot_longer(!y, names_to="conspiracy", values_to="score", values_transform=list(score=as.numeric))
+  
+# HISTOGRAMS
+  ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
+    geom_histogram(alpha=0.2, breaks=seq(0,5,1)) +
+    lemon::facet_rep_wrap(.~conspiracy, nrow=2, labeller="label_both", repeat.tick.labels=T) +
+    labs(title="Raw Scores") +
+    theme_bw() +
+    theme(legend.position = "none",
+          panel.border = element_rect(color = "#8B814C"),
+          strip.background = element_rect(fill = "#EAEAD6", color = "#8B814C"),
+          strip.text = element_text(color = "#8B814C"),
+          plot.background = element_rect(fill = "#FAFAF5"),
+          axis.text = element_text(color = "#8B814C"),
+          axis.title = element_text(color = "#8B814C"),
+          plot.title = element_text(color = "#8B814C"),
+          axis.ticks = element_line(color = "#8B814C"))
+ 
+  
+
+options(width = 100)
+  
+
+  
+# RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)
+conspiracy$y<- factor(conspiracy$y, levels=c("Very Liberal", "Liberal", "Somewhat Liberal", "Middle of the Road", "Somewhat Conservative", "Conservative", "Very Conservative"))
+  
+# RE-NAMED VARIABLE 'y'
+names(conspiracy)[9]<- "PoliticalIdeology"
+  
+# DATA FOR PCA FUNCTION (only keep numeric variables)
+df<- conspiracy[,-9]
+  
+# PCA
+#pc1<- prcomp(df, scale.=T)
+pc1<- prcomp(df)
+summary(pc1)
+
+# SCREE-PLOT
+plot(pc1, type="line")
+
+# BIPLOT
+autoplot(pc1,
+           data=conspiracy, 
+           colour="PoliticalIdeology", 
+           loadings=T, loadings.colour=alpha("#191970", 0.5), 
+           loadings.label=T, loadings.label.colour="#191970", loadings.label.size=5, loadings.label.hjust=0) + 
+    scale_colour_manual(values = alpha(paletteer_d("rcartocolor::Temps"), 0.5)) +
+    theme_bw() +
+    theme(legend.key = element_rect(fill = "#FAFAF5"),
+          legend.background = element_rect(fill = "#FAFAF5"),
+          legend.text = element_text(color = "#8B814C", size = 14),
+          legend.title = element_text(color = "#8B814C", size = 16),
+          panel.border = element_rect(color = "#8B814C"),
+          plot.background = element_rect(fill = "#FAFAF5"),
+          axis.text = element_text(color = "#8B814C", size = 14),
+          axis.title = element_text(color = "#8B814C", size = 16),
+          axis.ticks = element_line(color = "#8B814C"))
+  
+# LOADINGS
+(princomp(df))$loadings
+
+  
