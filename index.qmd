@@ -79,100 +79,91 @@ details > summary {
 }
 </style>
 ```
-
 ## Introduction
 
-- Explains the background of research on a topic.
-- Demonstrates why a topic is significant to a subject area.
-- Discovers relationships between research studies/ideas.
-- Identifies major themes, concepts, and researchers on a topic.
-- Identifies critical gaps and points of disagreement.
-- Discusses further research questions that logically come out of the previous studies.
+-   Explains the background of research on a topic.
+-   Demonstrates why a topic is significant to a subject area.
+-   Discovers relationships between research studies/ideas.
+-   Identifies major themes, concepts, and researchers on a topic.
+-   Identifies critical gaps and points of disagreement.
+-   Discusses further research questions that logically come out of the previous studies.
 
-Principal Component Analysis (PCA) is an unsupervised machine learning method (@fig-machineLearning) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden patterns in the data, it's also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model [@lang2021applied]. Using a clustering algorithm, such as k-means, after the data has been transformed with PCA is a powerful method to use on high dimensional data containing linearly correlated features [@Alkha]. 
+Principal Component Analysis (PCA) is an unsupervised machine learning method (@fig-machineLearning)
+that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of
+dimensions/features while retaining most of the original variability. Reducing the number of
+features makes it easier to graphically visualize hidden patterns in the data, it's also useful when
+encountering a high number of predictor variables or highly correlated variables when running a
+regression model [@lang2021applied]. Using a clustering algorithm, such as k-means, after the data
+has been transformed with PCA is a powerful method to use on high dimensional data containing
+linearly correlated features [@Alkha].
 
-The most important use of PCA is to represent a multivariate data table as smaller set of variables (summary indices) to observe hidden trends, jumps, clusters, patterns and outliers.
+The most important use of PCA is to represent a multivariate data table as smaller set of variables
+(summary indices) to observe hidden trends, jumps, clusters, patterns and outliers.
 
-PCA is a broadly used statistical method
-whose use stretches across many scientific disciplines, and in turn many
-different adaptations of PCA have been developed based on the variation
-in goals and data types associated with each respective discipline. PCA
-was developed first by Pearson (1901) and Hotelling (1933) [@Camargo].
-This technique transforms some number of possibly correlated variables
-into a smaller number of variables, the variables in this smaller matrix
-are referred to as the Principal Components (PC). This is achieved using
-a vector space transform. By mathematical projection we can interpret
-the original data set with just a few variables, namely the principal
-components achieved through calculation. The purpose of reducing
-dimension size in large data sets is to make it easier to spot trends,
-patterns, and outliers in data where that information would have
-previously been hidden by the size of data set of interest (Richardson).
-The information being preserved in the process of reduction is the
-variability in the data (i.e. the statistical information present in the
-data). In order to preserve as much variability as possible we should
-"...find new variables that are linear functions of those in the
-original data set, that successively maximize variance and that are
-uncorrelated with each other" [@Jolliffe]. PCA assumes no distribution
-in data in a descriptive context which is one of it's key features that
-makes it so widely adaptive as an exploratory method across disciplines
-and data types [@Jolliffe]. To lists all of PCA's applications would be
-tedious and excessive, but some examples where PCA has been used is in
-facial recognition, image analysis, analysis of web data, and cyber
-security analysis. Essentially anywhere that large data sets are found
-PCA can be used to aid in discovering trends amongst the variables of
-that data. One key field PCA has seen use is in the analysis of cyber
-security network data. PCA could see many applications in web data
-analysis as the amount of data for this purpose is always increasing and
-becoming more relevant.
+PCA is a broadly used statistical method whose use stretches across many scientific disciplines, and
+in turn many different adaptations of PCA have been developed based on the variation in goals and
+data types associated with each respective discipline. PCA was developed first by Pearson (1901) and
+Hotelling (1933) [@Camargo]. This technique transforms some number of possibly correlated variables
+into a smaller number of variables, the variables in this smaller matrix are referred to as the
+Principal Components (PC). This is achieved using a vector space transform. By mathematical
+projection we can interpret the original data set with just a few variables, namely the principal
+components achieved through calculation. The purpose of reducing dimension size in large data sets
+is to make it easier to spot trends, patterns, and outliers in data where that information would
+have previously been hidden by the size of data set of interest (Richardson). The information being
+preserved in the process of reduction is the variability in the data (i.e. the statistical
+information present in the data). In order to preserve as much variability as possible we should
+"...find new variables that are linear functions of those in the original data set, that
+successively maximize variance and that are uncorrelated with each other" [@Jolliffe]. PCA assumes
+no distribution in data in a descriptive context which is one of it's key features that makes it so
+widely adaptive as an exploratory method across disciplines and data types [@Jolliffe]. To lists all
+of PCA's applications would be tedious and excessive, but some examples where PCA has been used is
+in facial recognition, image analysis, analysis of web data, and cyber security analysis.
+Essentially anywhere that large data sets are found PCA can be used to aid in discovering trends
+amongst the variables of that data. One key field PCA has seen use is in the analysis of cyber
+security network data. PCA could see many applications in web data analysis as the amount of data
+for this purpose is always increasing and becoming more relevant.
 
-Principal Component Analysis and Machine Learning Methods. In our
-research, we learn the applications of how important and groundbreaking
-Principal Component Analysis and Machine Learning Methods are. In these
-papers we see how promising the impact is of PCA with recognizing
-Microanerysm in medicine and how groundbreaking has been critical for
-diagnosis and treatment of Diabetic Retinopathy [@Cao2018]. Other research papers
-show a framework for coronary artery disease risk assessment in
-intravascular ultrasound. The paper reflects on a novel strategy for
-risk stratification based on plaque morphology embedded with principal
-component analysis (PCA) for plaque feature dimensionality reduction and
-dominant feature selection technique.[@Gorg2021] Facial recognition with
-PCA and machine learning methods, From this Paper the authors have
-identified that the best way to compare and evaluate the Facial
-Recognition results with speed and accuracy was with PCA (Principal
-Component Analysis) and as well as Support Vector Machine (SVM). Lastly
-we see the importance of PCA with it identifying that the best way to
-compare and evaluate the Facial Recognition results with speed and
-accuracy was with PCA (Principal Component Analysis) and as well as
-Support Vector Machine (SVM)[@Camargo].
+Principal Component Analysis and Machine Learning Methods. In our research, we learn the
+applications of how important and groundbreaking Principal Component Analysis and Machine Learning
+Methods are. In these papers we see how promising the impact is of PCA with recognizing Microanerysm
+in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic
+Retinopathy [@Cao2018]. Other research papers show a framework for coronary artery disease risk
+assessment in intravascular ultrasound. The paper reflects on a novel strategy for risk
+stratification based on plaque morphology embedded with principal component analysis (PCA) for
+plaque feature dimensionality reduction and dominant feature selection technique.[@Gorg2021] Facial
+recognition with PCA and machine learning methods, From this Paper the authors have identified that
+the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with
+PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM). Lastly we see the
+importance of PCA with it identifying that the best way to compare and evaluate the Facial
+Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well
+as Support Vector Machine (SVM)[@Camargo].
 
-Taking a look into a real world example, say we have a dataset
-consisting of 1,000 students with exam scores from 7 different courses:
-Advanced Statistics, Probability Theory, Intro to Dance, World
-Religions, and Religion in America. We could group Advanced Statistics
-and Probability Theory into a new variable called Stats, group World
-Religions and Religion in America into a new variable Religion, and keep
-Intro to Dance by itself. We have Reduced the data set from 7 variables
-to 3 without much loss in variation. This is the main concept behind PCA
-except variables are not manually regrouped but instead the new
-variables (principal components) are derived from certain linear
-combinations of the original variables
-[@lang2021applied].
+Taking a look into a real world example, say we have a dataset consisting of 1,000 students with
+exam scores from 7 different courses: Advanced Statistics, Probability Theory, Intro to Dance, World
+Religions, and Religion in America. We could group Advanced Statistics and Probability Theory into a
+new variable called Stats, group World Religions and Religion in America into a new variable
+Religion, and keep Intro to Dance by itself. We have Reduced the data set from 7 variables to 3
+without much loss in variation. This is the main concept behind PCA except variables are not
+manually regrouped but instead the new variables (principal components) are derived from certain
+linear combinations of the original variables [@lang2021applied].
 
-PCA can also be useful when studying mental disorders, data consisting
-of symptoms and the connections between them. When many symptoms are
-being observed, it can be difficult to visually represent the
-connections between them, both the strength of the connections and the
-proximity to each other. Plotting using the first 2 principal components
-allows for the placement on the x or y axis to become interpretable,
-that is, observations far left differ in some dimension (the first
-principal component) compared to ones far right. The same can be said in
-the y direction [@Jones].
+PCA can also be useful when studying mental disorders, data consisting of symptoms and the
+connections between them. When many symptoms are being observed, it can be difficult to visually
+represent the connections between them, both the strength of the connections and the proximity to
+each other. Plotting using the first 2 principal components allows for the placement on the x or y
+axis to become interpretable, that is, observations far left differ in some dimension (the first
+principal component) compared to ones far right. The same can be said in the y direction [@Jones].
 
 ![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
 
 ## Methods
 
-PCA forms the basis of multivariate data analysis based on projection methods. The variability in the original (correlated) variables will be explained through a smaller (uncorrelated) set of new variables i.e. the principal components (PC's). PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores) [@lang2021applied].
+PCA forms the basis of multivariate data analysis based on projection methods. The variability in
+the original (correlated) variables will be explained through a smaller (uncorrelated) set of new
+variables i.e. the principal components (PC's). PCA results depend on the scale or units of the
+variables so, for unscaled data, calculations should either be preformed on the correlation matrix
+(instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z
+scores) [@lang2021applied].
 
 ```{mermaid, code-fold: hide}
 
@@ -194,15 +185,16 @@ H --> I
 
 ### Assumptions
 
-- Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
-- Variables should all be the same scale/units (@eq-stdzData)
-- Variables are linearly related - visually check scatter plot matrices (see @sec-linearity for an example)
-- Outliers & missing or impossible values should be removed (see @sec-cleanData for an example)
-
-
+-   Variables should be continuous, interval or ratio level of measurement (ordinal variables, such
+    as likert-scale, are also often used)
+-   Variables should all be the same scale/units (@eq-stdzData)
+-   Variables are linearly related - visually check scatter plot matrices (see @sec-linearity for an
+    example)
+-   Outliers & missing or impossible values should be removed (see @sec-cleanData for an example)
 
 ### Sample Data
 
+```{=html}
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
@@ -212,107 +204,49 @@ H --> I
 .tg .tg-vi6l{background-color:#ffffff;border-color:#8b814c;color:#8b814c;text-align:center;vertical-align:top}
 .tg .tg-pi0b{background-color:#eaead6;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
 </style>
-<table class="tg" style="undefined;table-layout: fixed; width: 791px">
-<colgroup>
-<col style="width: 126px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-pi0b"></th>
-    <th class="tg-pi0b">$X_1$</th>
-    <th class="tg-pi0b">$X_2$</th>
-    <th class="tg-pi0b">...</th>
-    <th class="tg-pi0b">$X_j$</th>
-    <th class="tg-pi0b">...</th>
-    <th class="tg-pi0b">$X_p$</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-pi0b">$x_1$</td>
-    <td class="tg-vi6l">$x_{11}$</td>
-    <td class="tg-vi6l">$x_{12}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{1j}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{1p}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_2$</td>
-    <td class="tg-vi6l">$x_{21}$</td>
-    <td class="tg-vi6l">$x_{22}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{2j}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{2p}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_i$</td>
-    <td class="tg-vi6l">$x_{i1}$</td>
-    <td class="tg-vi6l">$x_{i2}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{ij}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{ip}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_n$</td>
-    <td class="tg-vi6l">$x_{n1}$</td>
-    <td class="tg-vi6l">$x_{n2}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{nj}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{np}$</td>
-  </tr>
-</tbody>
-</table>
-
+```
++----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+|                                                                                                                            | \$X_1\$                                                                                                     | \$X_2\$                                                                                                     | \...                                                                                                        | \$X_j\$                                                                                                     | \...                                                                                                        | \$X_p\$                                                                                                     |
++============================================================================================================================+=============================================================================================================+=============================================================================================================+=============================================================================================================+=============================================================================================================+=============================================================================================================+=============================================================================================================+
+| \$x_1\$                                                                                                                    | \$x\_{11}\$                                                                                                 | \$x\_{12}\$                                                                                                 | \...                                                                                                        | \$x\_{1j}\$                                                                                                 | \...                                                                                                        | \$x\_{1p}\$                                                                                                 |
++----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| \$x_2\$                                                                                                                    | \$x\_{21}\$                                                                                                 | \$x\_{22}\$                                                                                                 | \...                                                                                                        | \$x\_{2j}\$                                                                                                 | \...                                                                                                        | \$x\_{2p}\$                                                                                                 |
++----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| \...                                                                                                                       | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        |
++----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| \$x_i\$                                                                                                                    | \$x\_{i1}\$                                                                                                 | \$x\_{i2}\$                                                                                                 | \...                                                                                                        | \$x\_{ij}\$                                                                                                 | \...                                                                                                        | \$x\_{ip}\$                                                                                                 |
++----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| \...                                                                                                                       | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        | \...                                                                                                        |
++----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| \$x_n\$                                                                                                                    | \$x\_{n1}\$                                                                                                 | \$x\_{n2}\$                                                                                                 | \...                                                                                                        | \$x\_{nj}\$                                                                                                 | \...                                                                                                        | \$x\_{np}\$                                                                                                 |
++----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
 
 ### Equations
 
-**Standardized Data:** $$z_{ij}\ =\ \frac{x_{ij} - \overline{x_j}}{\sqrt{\hat{{\sigma}_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
+**Standardized Data:**
+$$z_{ij}\ =\ \frac{x_{ij} - \overline{x_j}}{\sqrt{\hat{{\sigma}_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
-**Random Vector:** $${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
+**Random Vector:**
+$${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
 
-**Sample Mean Vector:** $$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
+**Sample Mean Vector:**
+$$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
 
-**Sample Covariance Matrix:** $$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
+**Sample Covariance Matrix:**
+$$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
 
 ::: {.callout-note collapse="true"}
+[The **sample mean vector** represents the center of the random vector
+($x_i$)]{style="color: #1A79E1; font-size:12px;"}
 
-[The **sample mean vector** represents the center of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
-
-[The **sample covariance matrix** represents the variations (diagonal elements) & correlations (off-diagonal elements) of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
-
+[The **sample covariance matrix** represents the variations (diagonal elements) & correlations
+(off-diagonal elements) of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
 :::
 
 **Eigenvectors:** $${\hat{a}_{k}}$$ {#eq-eigenvec}
 
-**Eigenvalues:** $${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
+**Eigenvalues:**
+$${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
 
 <br>
 
@@ -435,7 +369,7 @@ autoplot(pc1,
 
 #### Loadings
 
-The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors). 
+The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors).
 
 ```{r}
 (princomp(df))$loadings
