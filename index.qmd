@@ -318,10 +318,6 @@ H --> I
 
 ## Analysis and Results
 
-### Data Description
-
-To Do
-
 ### Packages
 
 ```{r, packages}
@@ -336,7 +332,11 @@ library(knitr)
 library(DescTools)
 ```
 
-### Read & Clean Data {#sec-cleanData}
+### Data
+
+Add description of variables & brief background on how data was collected etc
+
+#### Read & Clean Data {#sec-cleanData}
 
 ```{r}
 # READ DATA FROM A GITHUB CSV FILE
@@ -346,7 +346,7 @@ conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/ma
 conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
 ```
 
-### Visualize Data {#sec-linearity}
+#### Visualize Data {#sec-linearity}
 
 ```{r, plot0, fig.height=12, fig.width=12}
 # SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION
@@ -403,13 +403,13 @@ pc1<- prcomp(df)
 summary(pc1)
 ```
 
-### SCREE-PLOT
+#### Scree-Plot
 
 ```{r}
-plot(pc1, type="line")
+plot(pc1, type="line", bg="transparent", col="#8B814C")
 ```
 
-### BIPLOT
+#### Biplot
 
 ```{r}
 autoplot(pc1,
@@ -433,7 +433,7 @@ autoplot(pc1,
         axis.ticks = element_line(color = "#8B814C"))
 ```
 
-### LOADINGS
+#### Loadings
 
 The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors). 
 
