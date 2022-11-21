@@ -63,31 +63,16 @@ details > summary {
 ```
 ## [**1. Introduction**]{style="color: #191970;"}
 
-[Principal Component Analysis and Machine Learning Methods. In our
-research, we learn the applications of how important and groundbreaking
-Principal Component Analysis and Machine Learning Methods are. In these
-papers we see how promising the impact is of PCA with recognizing
-Microanerysm in medicine and how groundbreaking has been critical for
-diagnosis and treatment of Diabetic Retinopathy. Other research papers
-show a framework for coronary artery disease risk assessment in
-intravascular ultrasound. The paper reflects on a novel strategy for
-risk stratification based on plaque morphology embedded with principal
-component analysis (PCA) for plaque feature dimensionality reduction and
-dominant feature selection technique.[@Gorg2021] Facial recognition with
-PCA and machine learning methods, From this Paper the authors have
-identified that the best way to compare and evaluate the Facial
-Recognition results with speed and accuracy was with PCA (Principal
-Component Analysis) and as well as Support Vector Machine (SVM). Lastly
-we see the importance of PCA with it identifying that the best way to
-compare and evaluate the Facial Recognition results with speed and
-accuracy was with PCA (Principal Component Analysis) and as well as
-Support Vector Machine (SVM)[@Camargo].]{style="color: ;"}
+- Explains the background of research on a topic.
+- Demonstrates why a topic is significant to a subject area.
+- Discovers relationships between research studies/ideas.
+- Identifies major themes, concepts, and researchers on a topic.
+- Identifies critical gaps and points of disagreement.
+- Discusses further research questions that logically come out of the previous studies.
 
-[Principal Component Analysis (PCA) is the name for a process of
-reducing the dimension of a large data set (when the observations one
-wishes to compare is described by many variables) into a smaller
-simplified version of the original data set that retains the most
-salient features of the data. PCA is a broadly used statistical method
+Principal Component Analysis (PCA) is an unsupervised machine learning method (@fig-machineLearning) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden pattern in the data, it's also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model [@lang2021applied]. Using a clustering algorithm, such as k-means, after data is transformed using PCA is a powerful method to use on high dimensional data containing linearly correlated features [@Alkha]. 
+
+PCA is a broadly used statistical method
 whose use stretches across many scientific disciplines, and in turn many
 different adaptations of PCA have been developed based on the variation
 in goals and data types associated with each respective discipline. PCA
@@ -117,9 +102,29 @@ PCA can be used to aid in discovering trends amongst the variables of
 that data. One key field PCA has seen use is in the analysis of cyber
 security network data. PCA could see many applications in web data
 analysis as the amount of data for this purpose is always increasing and
-becoming more relevant.]{style="color: #8B814C;"}
+becoming more relevant.
 
-[Taking a look into a real world example, say we have a dataset
+Principal Component Analysis and Machine Learning Methods. In our
+research, we learn the applications of how important and groundbreaking
+Principal Component Analysis and Machine Learning Methods are. In these
+papers we see how promising the impact is of PCA with recognizing
+Microanerysm in medicine and how groundbreaking has been critical for
+diagnosis and treatment of Diabetic Retinopathy [@Cao2018]. Other research papers
+show a framework for coronary artery disease risk assessment in
+intravascular ultrasound. The paper reflects on a novel strategy for
+risk stratification based on plaque morphology embedded with principal
+component analysis (PCA) for plaque feature dimensionality reduction and
+dominant feature selection technique.[@Gorg2021] Facial recognition with
+PCA and machine learning methods, From this Paper the authors have
+identified that the best way to compare and evaluate the Facial
+Recognition results with speed and accuracy was with PCA (Principal
+Component Analysis) and as well as Support Vector Machine (SVM). Lastly
+we see the importance of PCA with it identifying that the best way to
+compare and evaluate the Facial Recognition results with speed and
+accuracy was with PCA (Principal Component Analysis) and as well as
+Support Vector Machine (SVM)[@Camargo].
+
+Taking a look into a real world example, say we have a dataset
 consisting of 1,000 students with exam scores from 7 different courses:
 Advanced Statistics, Probability Theory, Intro to Dance, World
 Religions, and Religion in America. We could group Advanced Statistics
@@ -130,9 +135,9 @@ to 3 without much loss in variation. This is the main concept behind PCA
 except variables are not manually regrouped but instead the new
 variables (principal components) are derived from certain linear
 combinations of the original variables
-[@lang2021applied].]{style="color: #8B814C;"}
+[@lang2021applied].
 
-[PCA can also be useful when studying mental disorders, data consisting
+PCA can also be useful when studying mental disorders, data consisting
 of symptoms and the connections between them. When many symptoms are
 being observed, it can be difficult to visually represent the
 connections between them, both the strength of the connections and the
@@ -140,9 +145,9 @@ proximity to each other. Plotting using the first 2 principal components
 allows for the placement on the x or y axis to become interpretable,
 that is, observations far left differ in some dimension (the first
 principal component) compared to ones far right. The same can be said in
-the y direction [@Jones].]{style="color: #8B814C;"}
+the y direction [@Jones].
 
-![](index_files/figure-html/machineLearning_fig1.png)
+![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
 
 ## [**2. Methods**]{style="color: #191970;"}
 
@@ -303,15 +308,15 @@ be standardized with mean 0 and variance 1 (z scores).
 %%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
 
 flowchart LR
-A[(Clean<br/>Data)] --> B(Est<br/>Sample<br/>Mean<br/>Vector)
-B --> C((Are all<br/>vars the same<br/>same scale/unit?))
-C --- D((Yes))
-C --- E((No))
-D --> G(Est<br/>Sample<br/>Cov<br/>Matrix)
-E -.- F(Stdz<br/>Data)
-E --> H(Est<br/>Sample<br/>Corr<br/>Matrix)
-F -.- G
-G --> I(Eigenvals<br/>Eigenvecs)
+A[(Clean<br/>Data)] --> B((Are all<br/>vars the same<br/>scale/unit?))
+B --> C((Yes))
+B --> D((No))
+D -.- |Standardize<br/>Data| E(Estimate<br/>Sample<br/>Mean<br/>Vector)
+C --> E
+D --> F(Estimate<br/>Sample<br/>Mean<br/>Vector)
+E --> G(Estimate<br/>Sample<br/>Covariance<br/>Matrix)
+F --> H(Estimate<br/>Sample<br/>Correlation<br/>Matrix)
+G --> I(Eigenvalues<br/>Eigenvectors)
 H --> I
 
 ```
