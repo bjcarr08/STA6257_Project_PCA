@@ -113,12 +113,12 @@ div.csl-indent {
 <script src="index_files/libs/quarto-html/quarto.js"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
 <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
 <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
 <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -222,7 +222,7 @@ div.csl-indent {
 }
 </style>
 <section id="introduction" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<h2 data-number="1" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
 <ul>
 <li>Explains the background of research on a topic.</li>
 <li>Demonstrates why a topic is significant to a subject area.</li>
@@ -237,7 +237,7 @@ div.csl-indent {
 <p>Principal Component Analysis and Machine Learning Methods. In our research, we learn the applications of how important and groundbreaking Principal Component Analysis and Machine Learning Methods are. In these papers we see how promising the impact is of PCA with recognizing Microanerysm in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic Retinopathy <span class="citation" data-cites="Cao2018">(<a href="#ref-Cao2018" role="doc-biblioref">Cao et al. 2018</a>)</span>. Other research papers show a framework for coronary artery disease risk assessment in intravascular ultrasound. The paper reflects on a novel strategy for risk stratification based on plaque morphology embedded with principal component analysis (PCA) for plaque feature dimensionality reduction and dominant feature selection technique.<span class="citation" data-cites="Gorg2021">(<a href="#ref-Gorg2021" role="doc-biblioref">Gorgoglione et al. 2021</a>)</span> Facial recognition with PCA and machine learning methods, From this Paper the authors have identified that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM). Lastly we see the importance of PCA with it identifying that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM)<span class="citation" data-cites="Camargo">(<a href="#ref-Camargo" role="doc-biblioref">A 2022</a>)</span>.</p>
 <p>Taking a look into a real world example, say we have a dataset consisting of 1,000 students with exam scores from 7 different courses: Advanced Statistics, Probability Theory, Intro to Dance, World Religions, and Religion in America. We could group Advanced Statistics and Probability Theory into a new variable called Stats, group World Religions and Religion in America into a new variable Religion, and keep Intro to Dance by itself. We have Reduced the data set from 7 variables to 3 without much loss in variation. This is the main concept behind PCA except variables are not manually regrouped but instead the new variables (principal components) are derived from certain linear combinations of the original variables <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>.</p>
 <p>PCA can also be useful when studying mental disorders, data consisting of symptoms and the connections between them. When many symptoms are being observed, it can be difficult to visually represent the connections between them, both the strength of the connections and the proximity to each other. Plotting using the first 2 principal components allows for the placement on the x or y axis to become interpretable, that is, observations far left differ in some dimension (the first principal component) compared to ones far right. The same can be said in the y direction <span class="citation" data-cites="Jones">(<a href="#ref-Jones" role="doc-biblioref">Jones, Mair, and McNally 2018</a>)</span>.</p>
-<div id="fig-machineLearning" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-machineLearning" class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="index_files/figure-html/machineLearning_fig1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: Machine Learning</figcaption><p></p>
@@ -245,7 +245,7 @@ div.csl-indent {
 </div>
 </section>
 <section id="methods" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
+<h2 data-number="2" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
 <p>PCA forms the basis of multivariate data analysis based on projection methods. The variability in the original (correlated) variables will be explained through a smaller (uncorrelated) set of new variables i.e.&nbsp;the principal components (PC’s). PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores) <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>.</p>
 <div class="cell">
 <details>
@@ -290,7 +290,7 @@ H --&gt; I
 </div>
 </div>
 <section id="assumptions" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">2.1</span> Assumptions</h3>
+<h3 data-number="2.1" data-anchor-id="assumptions"><span class="header-section-number">2.1</span> Assumptions</h3>
 <ul>
 <li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
 <li>Variables should all be the same scale/units (<a href="#eq-stdzData">Equation&nbsp;1</a>)</li>
@@ -299,7 +299,7 @@ H --&gt; I
 </ul>
 </section>
 <section id="sample-data" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="sample-data"><span class="header-section-number">2.2</span> Sample Data</h3>
+<h3 data-number="2.2" data-anchor-id="sample-data"><span class="header-section-number">2.2</span> Sample Data</h3>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
@@ -488,7 +488,7 @@ H --&gt; I
 </table>
 </section>
 <section id="equations" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="equations"><span class="header-section-number">2.3</span> Equations</h3>
+<h3 data-number="2.3" data-anchor-id="equations"><span class="header-section-number">2.3</span> Equations</h3>
 <p><strong>Standardized Data:</strong> <span id="eq-stdzData"><span class="math display">\[{z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\} \tag{1}\]</span></span></p>
 <p><strong>Random Vector:</strong> <span id="eq-randomVector"><span class="math display">\[{x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\} \tag{2}\]</span></span></p>
 <p><strong>Sample Mean Vector:</strong> <span id="eq-meanVector"><span class="math display">\[\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i \tag{3}\]</span></span></p>
@@ -516,9 +516,9 @@ Note
 </section>
 </section>
 <section id="analysis-and-results" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="analysis-and-results"><span class="header-section-number">3</span> Analysis and Results</h2>
+<h2 data-number="3" data-anchor-id="analysis-and-results"><span class="header-section-number">3</span> Analysis and Results</h2>
 <section id="packages" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="packages"><span class="header-section-number">3.1</span> Packages</h3>
+<h3 data-number="3.1" data-anchor-id="packages"><span class="header-section-number">3.1</span> Packages</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -535,10 +535,10 @@ Note
 </div>
 </section>
 <section id="data" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="data"><span class="header-section-number">3.2</span> Data</h3>
+<h3 data-number="3.2" data-anchor-id="data"><span class="header-section-number">3.2</span> Data</h3>
 <p>Add description of variables &amp; brief background on how data was collected etc</p>
 <section id="sec-cleanData" class="level4" data-number="3.2.1">
-<h4 data-number="3.2.1" class="anchored" data-anchor-id="sec-cleanData"><span class="header-section-number">3.2.1</span> Read &amp; Clean Data</h4>
+<h4 data-number="3.2.1" data-anchor-id="sec-cleanData"><span class="header-section-number">3.2.1</span> Read &amp; Clean Data</h4>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -551,7 +551,7 @@ Note
 </div>
 </section>
 <section id="sec-linearity" class="level4" data-number="3.2.2">
-<h4 data-number="3.2.2" class="anchored" data-anchor-id="sec-linearity"><span class="header-section-number">3.2.2</span> Visualize Data</h4>
+<h4 data-number="3.2.2" data-anchor-id="sec-linearity"><span class="header-section-number">3.2.2</span> Visualize Data</h4>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -595,7 +595,7 @@ Note
 </section>
 </section>
 <section id="pca" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="pca"><span class="header-section-number">3.3</span> PCA</h3>
+<h3 data-number="3.3" data-anchor-id="pca"><span class="header-section-number">3.3</span> PCA</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -629,7 +629,7 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 </div>
 </div>
 <section id="scree-plot" class="level4" data-number="3.3.1">
-<h4 data-number="3.3.1" class="anchored" data-anchor-id="scree-plot"><span class="header-section-number">3.3.1</span> Scree-Plot</h4>
+<h4 data-number="3.3.1" data-anchor-id="scree-plot"><span class="header-section-number">3.3.1</span> Scree-Plot</h4>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -641,7 +641,7 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 </div>
 </section>
 <section id="biplot" class="level4" data-number="3.3.2">
-<h4 data-number="3.3.2" class="anchored" data-anchor-id="biplot"><span class="header-section-number">3.3.2</span> Biplot</h4>
+<h4 data-number="3.3.2" data-anchor-id="biplot"><span class="header-section-number">3.3.2</span> Biplot</h4>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -671,7 +671,7 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 </div>
 </section>
 <section id="loadings" class="level4" data-number="3.3.3">
-<h4 data-number="3.3.3" class="anchored" data-anchor-id="loadings"><span class="header-section-number">3.3.3</span> Loadings</h4>
+<h4 data-number="3.3.3" data-anchor-id="loadings"><span class="header-section-number">3.3.3</span> Loadings</h4>
 <p>The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors).</p>
 <div class="cell">
 <details>
@@ -701,7 +701,7 @@ Cumulative Var  0.125  0.250  0.375  0.500  0.625  0.750  0.875  1.000</code></p
 </section>
 </section>
 <section id="conclusion" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
+<h2 data-number="4" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
 </section>
 <section id="references" class="level2 unnumbered bibliography" style="background-color: #FAFAF5; color: #8B814C" data-number="5">
 
@@ -752,13 +752,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
@@ -834,4 +827,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="index_files/libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

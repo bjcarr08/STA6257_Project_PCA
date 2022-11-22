@@ -8,7 +8,8 @@ date: '`r Sys.Date()`'
 format:
   html:
     highlight: pygments
-    anchor-sections: true
+    anchor-sections: false
+    smooth-scroll: true
     toc: true
     mainfont: sans-serif
     fontcolor: "#8B814C"
@@ -23,6 +24,7 @@ format:
     margin-left: "0in"
     margin-right: "0in"
     fig-width: 12
+    fig-height: 8
 execute: 
   warning: false
   echo: true
