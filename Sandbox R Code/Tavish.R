@@ -1,6 +1,0 @@
-library(AER)
-library(MASS)
-data(bacteria)
-data(CASchools)
-View(bacteria)
-View(CASchools)

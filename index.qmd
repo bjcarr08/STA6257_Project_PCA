@@ -278,17 +278,13 @@ H --> I
 
 ### Equations
 
-**Standardized Data:**
-$$z_{ij}\ =\ \frac{x_{ij} - \overline{x_j}}{\sqrt{\hat{{\sigma}_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
+**Standardized Data:** $$z_{ij}\ =\ \frac{x_{ij} - \overline{x_j}}{\sqrt{\hat{{\sigma}_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
-**Random Vector:**
-$${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
+**Random Vector:** $${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
 
-**Sample Mean Vector:**
-$$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
+**Sample Mean Vector:** $$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
 
-**Sample Covariance Matrix:**
-$$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
+**Sample Covariance Matrix:** $$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
 
 ::: {.callout-note collapse="true"}
 [The **sample mean vector** represents the center of the random vector
@@ -300,8 +296,7 @@ $$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1
 
 **Eigenvectors:** $${\hat{a}_{k}}$$ {#eq-eigenvec}
 
-**Eigenvalues:**
-$${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
+**Eigenvalues:** $${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
 
 <br>
 
@@ -340,7 +335,7 @@ conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
 ```{r, plot0, fig.height=12, fig.width=12}
 # SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION
 par(col.axis="#8B814C",col.lab="#8B814C",col.main="#8B814C",col.sub="#8B814C",pch=20, col="#8B814C", bg="transparent")
-PlotPairs(sapply(conspiracy[,-9], function(x) jitter(x, 5)), 
+DescTools::PlotPairs(sapply(conspiracy[,-9], function(x) jitter(x, 5)), 
                      g=conspiracy$y,
                      col=alpha("#8B814C", 0.1), 
                      col.smooth="#8B814C")

@@ -1,0 +1,42 @@
+---
+title: "STA-6257-PCA"
+author: "Tavish Bryan"
+format: html
+editor: visual
+---
+
+## Introduction
+
+Principal Component Analysis (PCA) is the name for a process of reducing the dimension of a large data set (when the observations one wishes to compare is described by many variables) into a smaller simplified version of the original data set that retains the most salient features of the data. PCA is a broadly used statistical method whose use stretches across many scientific disciplines, and in turn many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline. PCA was developed first by Pearson (1901) and Hotelling (1933) (Camargo). This technique transforms some number of possibly correlated variables into a smaller number of variables, the variables in this smaller matrix are referred to as the Principal Components (PC). This is achieved using a vector space transform. By mathematical projection we can interpret the original data set with just a few variables, namely the principal components achieved through calculation. The purpose of reducing dimension size in large data sets is to make it easier to spot trends, patterns, and outliers in data where that information would have previously been hidden by the size of data set of interest (Richardson). The information being preserved in the process of reduction is the variability in the data (i.e. the statistical information present in the data). In order to preserve as much variability as possible we should "...find new variables that are linear functions of those in the original data set, that successively maximize variance and that are uncorrelated with each other" (Joliffe, Cadina). PCA assumes no distribution in data in a descriptive context which is one of it's key features that makes it so widely adaptive as an exploratory method across disciplines and data types (Joliffe, Cadina). To lists all of PCA's applications would be tedious and excessive, but some examples where PCA has been used is in facial recognition, image analysis, analysis of web data, and cyber security analysis. Essentially anywhere that large data sets are found PCA can be used to aid in discovering trends amongst the variables of that data. One key field PCA has seen use is in the analysis of cyber security network data. PCA could see many applications in web data analysis as the amount of data for this purpose is always increasing and becoming more relevant.
+
+## Method
+
+Firstly, when performing PCA a new set of orthogonal coordinate axes are identified from the original data set, which is accomplished by finding the direction of maximal variance through each dimension. This is equivalent to using the least squares method to find the line of best fit. This new axis is the first principal component of the data set. Next we use orthogonal projection to project the coordinates onto the new axis. Once this is done we obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, this axis is orthogonal to our first PC. These two PCs define a plane onto which we can project further coordinates onto (Richardson). 
+
+
+```{r}
+library(devtools)
+install_github("vqv/ggbiplot")
+library(ggbiplot)
+library(AER)
+library(tidyverse)
+library(stats)
+```
+
+```{r}
+data(Affairs)
+
+pc = princomp(Affairs[,c(1,3:4,6:9)])
+affairs.pca = prcomp(Affairs[,c(1,3:4,6:9)], center = TRUE, scale. = TRUE, rank. = 2)
+summary(affairs.pca)
+summary(pc)
+
+#str(affairs.pca)
+
+#ggbiplot(affairs.pca)
+ggbiplot(pc)
+#plot(pc)
+#plot(affairs.pca)
+
+```
+
