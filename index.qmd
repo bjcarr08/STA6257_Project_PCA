@@ -20,7 +20,7 @@ format:
     code-block-bg: "FFFFFF"
     code-fold: true
     code-background: true
-    cap-location: bottom
+    cap-location: top
     margin-left: "0in"
     margin-right: "0in"
     fig-width: 12
@@ -320,7 +320,30 @@ library(DescTools)
 
 ### Data
 
-Add description of variables & brief background on how data was collected etc
+About Dataset
+Context
+Data from the study: Oliver, J. E., & Wood, T. J. (2014). Conspiracy Theories and the Paranoid Style(s) of Mass Opinion. American Journal of Political Science, 58(4), 952–966. http://www.jstor.org/stable/24363536
+
+Content
+Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies
+
+Acknowledgements
+This is not my data. It was made publically available by the authors at this URL: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/22976
+
+
+Abstract
+Although conspiracy theories have long been a staple of American political culture, no research has systematically examined the nature of their support in the mass public. Using four nationally representative surveys, sampled between 2006 and 2011, we find that half of the American public consistently endorses at least one conspiracy theory and that many popular conspiracy theories are differentiated along ideological and anomic dimensions. In contrast with many theoretical speculations, we do not find conspiracism to be a product of greater authoritarianism, ignorance, or political conservatism. Rather, the likelihood of supporting conspiracy theories is strongly predicted by a willingness to believe in other unseen, intentional forces and an attraction to Manichean narratives. These findings both demonstrate the widespread allure of conspiracy theories as political explanations and offer new perspectives on the forces that shape mass opinion and American political culture.
+
+
+This research was supported by a research grant from the University of Chicago. We are grateful to Betsy Sinclair, Kirk Hawkins, and attendees at the 2011 CCES conference for their suggestions on this research. Replication data and code for this article may be found at the AJPS Dataverse website at https://thedata.harvard.edu/dvn/dv/ajps.
+
+
+VARIABLES
+
+- **truther911: **Certain U.S. government officials planned the attacks of September 11, 2001, because they wanted the United States to go to war in the Middle East
+- **iraqjews: **The U.S. invasion of Iraq was not part of a campaign to fight terrorism, but was driven by oil companies and Jews in the U.S. and Israel
+
+
 
 #### Read & Clean Data {#sec-cleanData}
 
@@ -351,16 +374,16 @@ conspiracy.Long<- conspiracy %>% pivot_longer(!y, names_to="conspiracy", values_
 ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
   geom_histogram(alpha=0.2, breaks=seq(0,5,1)) +
   lemon::facet_rep_wrap(.~conspiracy, nrow=2, labeller="label_both", repeat.tick.labels=T) +
-  labs(title="Raw Scores") +
+  labs(title="Distributions of Raw Score") +
   theme_bw() +
   theme(legend.position = "none",
         panel.border = element_rect(color = "#8B814C"),
         strip.background = element_rect(fill = "#EAEAD6", color = "#8B814C"),
-        strip.text = element_text(color = "#8B814C", size=2),
+        strip.text = element_text(color = "#8B814C", size=14),
         plot.background = element_rect(fill = "#FAFAF5"),
         axis.text = element_text(color = "#8B814C"),
-        axis.title = element_text(color = "#8B814C"),
-        plot.title = element_text(color = "#8B814C"),
+        axis.title = element_text(color = "#8B814C", size=14),
+        plot.title = element_text(color = "#8B814C", size=14),
         axis.ticks = element_line(color = "#8B814C"))
 ```
 
@@ -393,12 +416,12 @@ summary(pc1)
 
 ```{r, plot2, fig.height=6, fig.width=12}
 par(col.axis="#8B814C",col.lab="#8B814C",col.main="#8B814C",col.sub="#8B814C",pch=20, col="#8B814C", bg="transparent")
-plot(pc1, type="line", bg="transparent", col="#8B814C")
+screeplot(princomp(df), type="lines", bg="transparent", col="#8B814C", main="")
 ```
 
 #### Biplot
 
-```{r, plot3, fig.height=10, fig.width=12}
+```{r, plot3, fig.height=8, fig.width=12}
 autoplot(pc1,
   # AUTOPLOT OPTIONS
   data=conspiracy, 

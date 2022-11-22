@@ -239,8 +239,8 @@ div.csl-indent {
 <p>PCA can also be useful when studying mental disorders, data consisting of symptoms and the connections between them. When many symptoms are being observed, it can be difficult to visually represent the connections between them, both the strength of the connections and the proximity to each other. Plotting using the first 2 principal components allows for the placement on the x or y axis to become interpretable, that is, observations far left differ in some dimension (the first principal component) compared to ones far right. The same can be said in the y direction <span class="citation" data-cites="Jones">(<a href="#ref-Jones" role="doc-biblioref">Jones, Mair, and McNally 2018</a>)</span>.</p>
 <div id="fig-machineLearning" class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/machineLearning_fig1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: Machine Learning</figcaption><p></p>
+<p><img src="index_files/figure-html/machineLearning_fig1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </section>
@@ -536,7 +536,16 @@ Note
 </section>
 <section id="data" class="level3" data-number="3.2">
 <h3 data-number="3.2" data-anchor-id="data"><span class="header-section-number">3.2</span> Data</h3>
-<p>Add description of variables &amp; brief background on how data was collected etc</p>
+<p>About Dataset Context Data from the study: Oliver, J. E., &amp; Wood, T. J. (2014). Conspiracy Theories and the Paranoid Style(s) of Mass Opinion. American Journal of Political Science, 58(4), 952–966. http://www.jstor.org/stable/24363536</p>
+<p>Content Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies</p>
+<p>Acknowledgements This is not my data. It was made publically available by the authors at this URL: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/22976</p>
+<p>Abstract Although conspiracy theories have long been a staple of American political culture, no research has systematically examined the nature of their support in the mass public. Using four nationally representative surveys, sampled between 2006 and 2011, we find that half of the American public consistently endorses at least one conspiracy theory and that many popular conspiracy theories are differentiated along ideological and anomic dimensions. In contrast with many theoretical speculations, we do not find conspiracism to be a product of greater authoritarianism, ignorance, or political conservatism. Rather, the likelihood of supporting conspiracy theories is strongly predicted by a willingness to believe in other unseen, intentional forces and an attraction to Manichean narratives. These findings both demonstrate the widespread allure of conspiracy theories as political explanations and offer new perspectives on the forces that shape mass opinion and American political culture.</p>
+<p>This research was supported by a research grant from the University of Chicago. We are grateful to Betsy Sinclair, Kirk Hawkins, and attendees at the 2011 CCES conference for their suggestions on this research. Replication data and code for this article may be found at the AJPS Dataverse website at https://thedata.harvard.edu/dvn/dv/ajps.</p>
+<p>VARIABLES</p>
+<ul>
+<li><strong>truther911: </strong>Certain U.S. government officials planned the attacks of September 11, 2001, because they wanted the United States to go to war in the Middle East</li>
+<li><strong>iraqjews: </strong>The U.S. invasion of Iraq was not part of a campaign to fight terrorism, but was driven by oil companies and Jews in the U.S. and Israel</li>
+</ul>
 <section id="sec-cleanData" class="level4" data-number="3.2.1">
 <h4 data-number="3.2.1" data-anchor-id="sec-cleanData"><span class="header-section-number">3.2.1</span> Read &amp; Clean Data</h4>
 <div class="cell">
@@ -576,16 +585,16 @@ Note
 <span id="cb5-5"><a href="#cb5-5"></a><span class="fu">ggplot</span>(conspiracy.Long, <span class="fu">aes</span>(score, <span class="at">fill=</span>conspiracy, <span class="at">color=</span>conspiracy)) <span class="sc">+</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb5-7"><a href="#cb5-7"></a>  lemon<span class="sc">::</span><span class="fu">facet_rep_wrap</span>(.<span class="sc">~</span>conspiracy, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">labeller=</span><span class="st">"label_both"</span>, <span class="at">repeat.tick.labels=</span>T) <span class="sc">+</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Raw Scores"</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distributions of Raw Score"</span>) <span class="sc">+</span></span>
 <span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
 <span id="cb5-11"><a href="#cb5-11"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
 <span id="cb5-12"><a href="#cb5-12"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#EAEAD6"</span>, <span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb5-13"><a href="#cb5-13"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">2</span>),</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
 <span id="cb5-14"><a href="#cb5-14"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
 <span id="cb5-15"><a href="#cb5-15"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb5-16"><a href="#cb5-16"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb5-17"><a href="#cb5-17"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb5-16"><a href="#cb5-16"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
 <span id="cb5-18"><a href="#cb5-18"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -634,7 +643,7 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">plot</span>(pc1, <span class="at">type=</span><span class="st">"line"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">screeplot</span>(<span class="fu">princomp</span>(df), <span class="at">type=</span><span class="st">"lines"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">main=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/plot2-1.png" class="img-fluid" width="1152"></p>
