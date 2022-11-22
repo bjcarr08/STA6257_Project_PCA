@@ -11,6 +11,8 @@ format:
     anchor-sections: false
     smooth-scroll: true
     toc: true
+    toc-depth: 3
+    number-depth: 2
     mainfont: sans-serif
     fontcolor: "#8B814C"
     monobackgroundcolor: "#FAFAF5"
@@ -18,7 +20,7 @@ format:
     headercolor: "#191970"
     code-line-numbers: true
     code-block-bg: "FFFFFF"
-    code-fold: true
+    code-fold: show
     code-background: true
     cap-location: top
     margin-left: "0in"
@@ -76,13 +78,6 @@ editor:
 
 
 ## Introduction
-
--   Explains the background of research on a topic.
--   Demonstrates why a topic is significant to a subject area.
--   Discovers relationships between research studies/ideas.
--   Identifies major themes, concepts, and researchers on a topic.
--   Identifies critical gaps and points of disagreement.
--   Discusses further research questions that logically come out of the previous studies.
 
 Principal Component Analysis (PCA) is an unsupervised machine learning method (@fig-machineLearning)
 that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of
@@ -320,29 +315,77 @@ library(DescTools)
 
 ### Data
 
-About Dataset
-Context
-Data from the study: Oliver, J. E., & Wood, T. J. (2014). Conspiracy Theories and the Paranoid Style(s) of Mass Opinion. American Journal of Political Science, 58(4), 952–966. http://www.jstor.org/stable/24363536
-
-Content
-Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies
-
-Acknowledgements
-This is not my data. It was made publically available by the authors at this URL: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/22976
+Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies. Sampled from a nationally representative survey in 2011. (Replication data and code may be found at the AJPS Dataverse website - <a>https://thedata.harvard.edu/dvn/dv/ajps</a>) [@originalConspiracyData]
 
 
-Abstract
-Although conspiracy theories have long been a staple of American political culture, no research has systematically examined the nature of their support in the mass public. Using four nationally representative surveys, sampled between 2006 and 2011, we find that half of the American public consistently endorses at least one conspiracy theory and that many popular conspiracy theories are differentiated along ideological and anomic dimensions. In contrast with many theoretical speculations, we do not find conspiracism to be a product of greater authoritarianism, ignorance, or political conservatism. Rather, the likelihood of supporting conspiracy theories is strongly predicted by a willingness to believe in other unseen, intentional forces and an attraction to Manichean narratives. These findings both demonstrate the widespread allure of conspiracy theories as political explanations and offer new perspectives on the forces that shape mass opinion and American political culture.
+**SCALE LEVELS:**
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 258px">
+<colgroup>
+<col style="width: 163px">
+<col style="width: 95px">
+</colgroup>
+<thead>
+  <tr>
+    <th class="tg-amwm">Label</th>
+    <th class="tg-amwm">Level</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-baqh">Strongly Disagree</td>
+    <td class="tg-baqh">1</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Disagree</td>
+    <td class="tg-baqh">2</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Neither</td>
+    <td class="tg-baqh">3</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Agree</td>
+    <td class="tg-baqh">4</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Strongly Agree</td>
+    <td class="tg-baqh">5</td>
+  </tr>
+</tbody>
+</table>
 
 
-This research was supported by a research grant from the University of Chicago. We are grateful to Betsy Sinclair, Kirk Hawkins, and attendees at the 2011 CCES conference for their suggestions on this research. Replication data and code for this article may be found at the AJPS Dataverse website at https://thedata.harvard.edu/dvn/dv/ajps.
+**VARIABLES:**
+
+- **truther911:** Certain U.S. government officials planned the attacks of September 11, 2001, because they wanted the United States to go to war in the Middle East.
+- **obamabirth:** President Barack Obama was not really born in the United States and does not have an authentic Hawaiian birth certificate.
+- **fincrisis:** The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world's economy.
+- **flourolights:** The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control.
+- **endtimes:** We are currently living in End Times as foretold by Biblical prophecy.
+- **sorosplot:** Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control.
+- **iraqjews:** The U.S. invasion of Iraq was not part of a campaign to fight terrorism, but was driven by oil companies and Jews in the U.S. and Israel.
+- **vaportrail:** Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials.
 
 
-VARIABLES
+**GROUPING FACTOR (y = political ideology):**
 
-- **truther911: **Certain U.S. government officials planned the attacks of September 11, 2001, because they wanted the United States to go to war in the Middle East
-- **iraqjews: **The U.S. invasion of Iraq was not part of a campaign to fight terrorism, but was driven by oil companies and Jews in the U.S. and Israel
-
+- Very Liberal
+- Liberal
+- Somewhat Liberal
+- Middle of the Road
+- Somewhat Conservative
+- Conservative
+- Very Conservative
 
 
 #### Read & Clean Data {#sec-cleanData}
@@ -356,6 +399,10 @@ conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
 ```
 
 #### Visualize Data {#sec-linearity}
+
+Visually checking if linearity between variables assumption is met (not a strictly help assumption, especially when using ordinal data).
+
+The correlation matrix plots show enough of a relationship between variables to meet the assumption of linearity.
 
 ```{r, plot0, fig.height=12, fig.width=12}
 # SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION
@@ -387,13 +434,14 @@ ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
         axis.ticks = element_line(color = "#8B814C"))
 ```
 
+Looking at the distribution plots above, we can see that all variables are measured in the same scale/units & do not need to be standardized.
+
 ### PCA
 
 ```{r}
 options(width = 100)
 
-# STANDARDIZE DATA
-#conspiracy.Stdz<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
+# STANDARDIZE DATA [SKIP]
 #conspiracy<- conspiracy %>% mutate(across(.cols=truther911:vaportrail, scale))
 
 # RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)
@@ -412,7 +460,12 @@ pc1<- prcomp(df)
 summary(pc1)
 ```
 
+From the table directly above (Importance of components), we are mainly focused on the first 2 columns or principal components. Looking at the second row in the table, Proportion of Variance, the first PC accounts for about 43% of total variation & the second PC accounts for about 20%, with the rest of the PC's each accounting for about 9% or less. To use PCA, the threshold for Cumulative Proportion is usually at least 70%-80%, but this is just a guideline as there are no set rules. 
+
+
 #### Scree-Plot
+
+This plot visually represents the 'Proportion of Variance' from the previous table. Here it is easy to see the drop off after the second PC. This type of plot can be used to help decide how many PC's should be used/kept.
 
 ```{r, plot2, fig.height=6, fig.width=12}
 par(col.axis="#8B814C",col.lab="#8B814C",col.main="#8B814C",col.sub="#8B814C",pch=20, col="#8B814C", bg="transparent")
@@ -420,6 +473,9 @@ screeplot(princomp(df), type="lines", bg="transparent", col="#8B814C", main="")
 ```
 
 #### Biplot
+
+In this plot we see the eigenvectors (points) & eigenvalues (arrows). PCA can only be interpreted in either the x direction (horizontal distances) or in the y direction (vertical distances), but not both. Although the first PC is about 43% of variance, there is no distinction between political ideology groups in the horizontal plane. But, we do see a pattern in the vertical direction, specifically obamabirth & sorosplot consisting of more conservative ideology, and iraqjews and truther911 with more liberal ideology. 
+
 
 ```{r, plot3, fig.height=8, fig.width=12}
 autoplot(pc1,
@@ -452,7 +508,7 @@ The matrix of variable loadings (i.e., a matrix whose columns contain the eigenv
 ```
 
 ## Conclusion
-  PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out. PCA is also very flexible in it's application which is why it sees use in so many different fields. This flexibility has also led to many different adaptations of the method, each with it's own variations added to adapt to the task at hand. 
-  Large data sets are extremely common amongst many different fields of study. Principal component analysis requires no assumption of a distribution and can be applied to many types of numerical data. PCA can map the principal components to a 2-D plane and create a cluster we can visualize and use to analyze the data set. We can also just focus on the principal components themselves and draw conclusions from them when visualization is not a valid option.
+
+PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out. PCA is also very flexible in its application which is why it sees use in so many different fields. This flexibility has also led to many different adaptations of the method, each with its own variations added to adapt to the task at hand. Large data sets are extremely common amongst many different fields of study. Principal component analysis requires no assumption of a distribution and can be applied to many types of numerical data. PCA can map the principal components to a 2-D plane and create a cluster we can visualize and use to analyze the data set. We can also just focus on the principal components themselves and draw conclusions from them when visualization is not a valid option. PCA's strength is that it retains as much variance in the data as possible while increasing the interpretability of the data and while it is sensitive to scaling it remains a very useful method of analysis. PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications. With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to analyze large data sets across so many fields. As long as there are large data sets there will be a demand to reduce the dimension of that data and make valid interpretations about the trends present in that data, to this end we have PCA. [@Richardson]
 
 ## References {.bibliography style="background-color: #FAFAF5; color: #8B814C"}

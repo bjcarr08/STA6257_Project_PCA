@@ -9,7 +9,7 @@
 <meta name="author" content="Brandy Carr">
 <meta name="author" content="Lee">
 <meta name="author" content="Tavish">
-<meta name="dcterms.date" content="2022-11-21">
+<meta name="dcterms.date" content="2022-11-22">
 
 <title>PCA (principal component analysis)</title>
 <style>
@@ -138,15 +138,15 @@ div.csl-indent {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">1</span>  Introduction</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">2</span>  Methods</a>
   <ul class="collapse">
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="toc-section-number">2.1</span>  Assumptions</a></li>
-  <li><a href="#sample-data" id="toc-sample-data" class="nav-link" data-scroll-target="#sample-data"><span class="toc-section-number">2.2</span>  Sample Data</a></li>
-  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations"><span class="toc-section-number">2.3</span>  Equations</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#sample-data" id="toc-sample-data" class="nav-link" data-scroll-target="#sample-data">Sample Data</a></li>
+  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations">Equations</a></li>
   </ul></li>
   <li><a href="#analysis-and-results" id="toc-analysis-and-results" class="nav-link" data-scroll-target="#analysis-and-results"><span class="toc-section-number">3</span>  Analysis and Results</a>
   <ul class="collapse">
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="toc-section-number">3.1</span>  Packages</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="toc-section-number">3.2</span>  Data</a></li>
-  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca"><span class="toc-section-number">3.3</span>  PCA</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca">PCA</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="toc-section-number">4</span>  Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="toc-section-number">5</span>  References</a></li>
@@ -176,7 +176,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 21, 2022</p>
+      <p class="date">November 22, 2022</p>
     </div>
   </div>
     
@@ -223,14 +223,6 @@ div.csl-indent {
 </style>
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<ul>
-<li>Explains the background of research on a topic.</li>
-<li>Demonstrates why a topic is significant to a subject area.</li>
-<li>Discovers relationships between research studies/ideas.</li>
-<li>Identifies major themes, concepts, and researchers on a topic.</li>
-<li>Identifies critical gaps and points of disagreement.</li>
-<li>Discusses further research questions that logically come out of the previous studies.</li>
-</ul>
 <p>Principal Component Analysis (PCA) is an unsupervised machine learning method (<a href="#fig-machineLearning">Figure&nbsp;1</a>) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden patterns in the data, it’s also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>. Using a clustering algorithm, such as k-means, after the data has been transformed with PCA is a powerful method to use on high dimensional data containing linearly correlated features <span class="citation" data-cites="Alkha">(<a href="#ref-Alkha" role="doc-biblioref">Alkhayrat, Aljnidi, and Aljoumaa 2020</a>)</span>.</p>
 <p>The most important use of PCA is to represent a multivariate data table as smaller set of variables (summary indices) to observe hidden trends, jumps, clusters, patterns and outliers.</p>
 <p>PCA is a broadly used statistical method whose use stretches across many scientific disciplines, and in turn many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline. PCA was developed first by Pearson (1901) and Hotelling (1933) <span class="citation" data-cites="Camargo">(<a href="#ref-Camargo" role="doc-biblioref">A 2022</a>)</span>. This technique transforms some number of possibly correlated variables into a smaller number of variables, the variables in this smaller matrix are referred to as the Principal Components (PC). This is achieved using a vector space transform. By mathematical projection we can interpret the original data set with just a few variables, namely the principal components achieved through calculation. The purpose of reducing dimension size in large data sets is to make it easier to spot trends, patterns, and outliers in data where that information would have previously been hidden by the size of data set of interest (Richardson). The information being preserved in the process of reduction is the variability in the data (i.e.&nbsp;the statistical information present in the data). In order to preserve as much variability as possible we should “…find new variables that are linear functions of those in the original data set, that successively maximize variance and that are uncorrelated with each other” <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>. PCA assumes no distribution in data in a descriptive context which is one of it’s key features that makes it so widely adaptive as an exploratory method across disciplines and data types <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>. To lists all of PCA’s applications would be tedious and excessive, but some examples where PCA has been used is in facial recognition, image analysis, analysis of web data, and cyber security analysis. Essentially anywhere that large data sets are found PCA can be used to aid in discovering trends amongst the variables of that data. One key field PCA has seen use is in the analysis of cyber security network data. PCA could see many applications in web data analysis as the amount of data for this purpose is always increasing and becoming more relevant.</p>
@@ -248,7 +240,7 @@ div.csl-indent {
 <h2 data-number="2" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
 <p>PCA forms the basis of multivariate data analysis based on projection methods. The variability in the original (correlated) variables will be explained through a smaller (uncorrelated) set of new variables i.e.&nbsp;the principal components (PC’s). PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores) <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>.</p>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -289,8 +281,8 @@ H --&gt; I
 </div>
 </div>
 </div>
-<section id="assumptions" class="level3" data-number="2.1">
-<h3 data-number="2.1" data-anchor-id="assumptions"><span class="header-section-number">2.1</span> Assumptions</h3>
+<section id="assumptions" class="level3">
+<h3 data-anchor-id="assumptions">Assumptions</h3>
 <ul>
 <li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
 <li>Variables should all be the same scale/units (<a href="#eq-stdzData">Equation&nbsp;1</a>)</li>
@@ -298,8 +290,8 @@ H --&gt; I
 <li>Outliers &amp; missing or impossible values should be removed (see <a href="#sec-cleanData">Section&nbsp;3.2.1</a> for an example)</li>
 </ul>
 </section>
-<section id="sample-data" class="level3" data-number="2.2">
-<h3 data-number="2.2" data-anchor-id="sample-data"><span class="header-section-number">2.2</span> Sample Data</h3>
+<section id="sample-data" class="level3">
+<h3 data-anchor-id="sample-data">Sample Data</h3>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
@@ -487,8 +479,8 @@ H --&gt; I
 
 </table>
 </section>
-<section id="equations" class="level3" data-number="2.3">
-<h3 data-number="2.3" data-anchor-id="equations"><span class="header-section-number">2.3</span> Equations</h3>
+<section id="equations" class="level3">
+<h3 data-anchor-id="equations">Equations</h3>
 <p><strong>Standardized Data:</strong> <span id="eq-stdzData"><span class="math display">\[{z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\} \tag{1}\]</span></span></p>
 <p><strong>Random Vector:</strong> <span id="eq-randomVector"><span class="math display">\[{x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\} \tag{2}\]</span></span></p>
 <p><strong>Sample Mean Vector:</strong> <span id="eq-meanVector"><span class="math display">\[\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i \tag{3}\]</span></span></p>
@@ -517,10 +509,10 @@ Note
 </section>
 <section id="analysis-and-results" class="level2" data-number="3">
 <h2 data-number="3" data-anchor-id="analysis-and-results"><span class="header-section-number">3</span> Analysis and Results</h2>
-<section id="packages" class="level3" data-number="3.1">
-<h3 data-number="3.1" data-anchor-id="packages"><span class="header-section-number">3.1</span> Packages</h3>
+<section id="packages" class="level3">
+<h3 data-anchor-id="packages">Packages</h3>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(ggplot2)</span>
@@ -534,22 +526,104 @@ Note
 </details>
 </div>
 </section>
-<section id="data" class="level3" data-number="3.2">
-<h3 data-number="3.2" data-anchor-id="data"><span class="header-section-number">3.2</span> Data</h3>
-<p>About Dataset Context Data from the study: Oliver, J. E., &amp; Wood, T. J. (2014). Conspiracy Theories and the Paranoid Style(s) of Mass Opinion. American Journal of Political Science, 58(4), 952–966. http://www.jstor.org/stable/24363536</p>
-<p>Content Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies</p>
-<p>Acknowledgements This is not my data. It was made publically available by the authors at this URL: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/22976</p>
-<p>Abstract Although conspiracy theories have long been a staple of American political culture, no research has systematically examined the nature of their support in the mass public. Using four nationally representative surveys, sampled between 2006 and 2011, we find that half of the American public consistently endorses at least one conspiracy theory and that many popular conspiracy theories are differentiated along ideological and anomic dimensions. In contrast with many theoretical speculations, we do not find conspiracism to be a product of greater authoritarianism, ignorance, or political conservatism. Rather, the likelihood of supporting conspiracy theories is strongly predicted by a willingness to believe in other unseen, intentional forces and an attraction to Manichean narratives. These findings both demonstrate the widespread allure of conspiracy theories as political explanations and offer new perspectives on the forces that shape mass opinion and American political culture.</p>
-<p>This research was supported by a research grant from the University of Chicago. We are grateful to Betsy Sinclair, Kirk Hawkins, and attendees at the 2011 CCES conference for their suggestions on this research. Replication data and code for this article may be found at the AJPS Dataverse website at https://thedata.harvard.edu/dvn/dv/ajps.</p>
-<p>VARIABLES</p>
+<section id="data" class="level3">
+<h3 data-anchor-id="data">Data</h3>
+<p>Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies. Sampled from a nationally representative survey in 2011. (Replication data and code may be found at the AJPS Dataverse website - <a href="">https://thedata.harvard.edu/dvn/dv/ajps</a>) <span class="citation" data-cites="originalConspiracyData">(<a href="#ref-originalConspiracyData" role="doc-biblioref">Oliver and Wood 2013</a>)</span></p>
+<p><strong>SCALE LEVELS:</strong></p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+</style>
+
+<table class="tg" style="undefined;table-layout: fixed; width: 258px">
+<colgroup>
+<col style="width: 163px">
+<col style="width: 95px">
+</colgroup>
+<thead>
+<tr>
+<th class="tg-amwm">
+Label
+</th>
+<th class="tg-amwm">
+Level
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tg-baqh">
+Strongly Disagree
+</td>
+<td class="tg-baqh">
+1
+</td>
+</tr>
+<tr>
+<td class="tg-baqh">
+Disagree
+</td>
+<td class="tg-baqh">
+2
+</td>
+</tr>
+<tr>
+<td class="tg-baqh">
+Neither
+</td>
+<td class="tg-baqh">
+3
+</td>
+</tr>
+<tr>
+<td class="tg-baqh">
+Agree
+</td>
+<td class="tg-baqh">
+4
+</td>
+</tr>
+<tr>
+<td class="tg-baqh">
+Strongly Agree
+</td>
+<td class="tg-baqh">
+5
+</td>
+</tr>
+</tbody>
+
+</table>
+<p><strong>VARIABLES:</strong></p>
 <ul>
-<li><strong>truther911: </strong>Certain U.S. government officials planned the attacks of September 11, 2001, because they wanted the United States to go to war in the Middle East</li>
-<li><strong>iraqjews: </strong>The U.S. invasion of Iraq was not part of a campaign to fight terrorism, but was driven by oil companies and Jews in the U.S. and Israel</li>
+<li><strong>truther911:</strong> Certain U.S. government officials planned the attacks of September 11, 2001, because they wanted the United States to go to war in the Middle East.</li>
+<li><strong>obamabirth:</strong> President Barack Obama was not really born in the United States and does not have an authentic Hawaiian birth certificate.</li>
+<li><strong>fincrisis:</strong> The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world’s economy.</li>
+<li><strong>flourolights:</strong> The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control.</li>
+<li><strong>endtimes:</strong> We are currently living in End Times as foretold by Biblical prophecy.</li>
+<li><strong>sorosplot:</strong> Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control.</li>
+<li><strong>iraqjews:</strong> The U.S. invasion of Iraq was not part of a campaign to fight terrorism, but was driven by oil companies and Jews in the U.S. and Israel.</li>
+<li><strong>vaportrail:</strong> Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials.</li>
 </ul>
-<section id="sec-cleanData" class="level4" data-number="3.2.1">
-<h4 data-number="3.2.1" data-anchor-id="sec-cleanData"><span class="header-section-number">3.2.1</span> Read &amp; Clean Data</h4>
+<p><strong>GROUPING FACTOR (y = political ideology):</strong></p>
+<ul>
+<li>Very Liberal</li>
+<li>Liberal</li>
+<li>Somewhat Liberal</li>
+<li>Middle of the Road</li>
+<li>Somewhat Conservative</li>
+<li>Conservative</li>
+<li>Very Conservative</li>
+</ul>
+<section id="sec-cleanData" class="level4">
+<h4 data-anchor-id="sec-cleanData">Read &amp; Clean Data</h4>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># READ DATA FROM A GITHUB CSV FILE</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>conspiracy<span class="ot">&lt;-</span> (<span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv"</span>, <span class="at">stringsAsFactors =</span> T))[,<span class="sc">-</span><span class="dv">1</span>]</span>
@@ -559,10 +633,12 @@ Note
 </details>
 </div>
 </section>
-<section id="sec-linearity" class="level4" data-number="3.2.2">
-<h4 data-number="3.2.2" data-anchor-id="sec-linearity"><span class="header-section-number">3.2.2</span> Visualize Data</h4>
+<section id="sec-linearity" class="level4">
+<h4 data-anchor-id="sec-linearity">Visualize Data</h4>
+<p>Visually checking if linearity between variables assumption is met (not a strictly help assumption, especially when using ordinal data).</p>
+<p>The correlation matrix plots show enough of a relationship between variables to meet the assumption of linearity.</p>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
@@ -576,7 +652,7 @@ Note
 </div>
 </div>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># TRANSFORM TO LONG DATA FOR PLOTS</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>conspiracy.Long<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"score"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">score=</span>as.numeric))</span>
@@ -601,33 +677,33 @@ Note
 <p><img src="index_files/figure-html/plot1-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
+<p>Looking at the distribution plots above, we can see that all variables are measured in the same scale/units &amp; do not need to be standardized.</p>
 </section>
 </section>
-<section id="pca" class="level3" data-number="3.3">
-<h3 data-number="3.3" data-anchor-id="pca"><span class="header-section-number">3.3</span> PCA</h3>
+<section id="pca" class="level3">
+<h3 data-anchor-id="pca">PCA</h3>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">100</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># STANDARDIZE DATA</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#conspiracy.Stdz&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#conspiracy&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>conspiracy<span class="sc">$</span>y<span class="ot">&lt;-</span> <span class="fu">factor</span>(conspiracy<span class="sc">$</span>y, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Very Liberal"</span>, <span class="st">"Liberal"</span>, <span class="st">"Somewhat Liberal"</span>, <span class="st">"Middle of the Road"</span>, <span class="st">"Somewhat Conservative"</span>, <span class="st">"Conservative"</span>, <span class="st">"Very Conservative"</span>))</span>
-<span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># RE-NAMED VARIABLE 'y'</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="fu">names</span>(conspiracy)[<span class="dv">9</span>]<span class="ot">&lt;-</span> <span class="st">"PoliticalIdeology"</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co"># DATA FOR PCA FUNCTION (only keep numeric variables)</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a>df<span class="ot">&lt;-</span> conspiracy[,<span class="sc">-</span><span class="dv">9</span>]</span>
-<span id="cb6-15"><a href="#cb6-15"></a></span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="co"># PCA</span></span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#pc1&lt;- prcomp(df, scale.=T)</span></span>
-<span id="cb6-18"><a href="#cb6-18"></a>pc1<span class="ot">&lt;-</span> <span class="fu">prcomp</span>(df)</span>
-<span id="cb6-19"><a href="#cb6-19"></a></span>
-<span id="cb6-20"><a href="#cb6-20"></a><span class="fu">summary</span>(pc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># STANDARDIZE DATA [SKIP]</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#conspiracy&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>conspiracy<span class="sc">$</span>y<span class="ot">&lt;-</span> <span class="fu">factor</span>(conspiracy<span class="sc">$</span>y, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Very Liberal"</span>, <span class="st">"Liberal"</span>, <span class="st">"Somewhat Liberal"</span>, <span class="st">"Middle of the Road"</span>, <span class="st">"Somewhat Conservative"</span>, <span class="st">"Conservative"</span>, <span class="st">"Very Conservative"</span>))</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co"># RE-NAMED VARIABLE 'y'</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="fu">names</span>(conspiracy)[<span class="dv">9</span>]<span class="ot">&lt;-</span> <span class="st">"PoliticalIdeology"</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># DATA FOR PCA FUNCTION (only keep numeric variables)</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>df<span class="ot">&lt;-</span> conspiracy[,<span class="sc">-</span><span class="dv">9</span>]</span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co"># PCA</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#pc1&lt;- prcomp(df, scale.=T)</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a>pc1<span class="ot">&lt;-</span> <span class="fu">prcomp</span>(df)</span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="fu">summary</span>(pc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Importance of components:
@@ -637,10 +713,12 @@ Proportion of Variance 0.4256 0.2027 0.09081 0.0669 0.06306 0.05966 0.05214 0.03
 Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00000</code></pre>
 </div>
 </div>
-<section id="scree-plot" class="level4" data-number="3.3.1">
-<h4 data-number="3.3.1" data-anchor-id="scree-plot"><span class="header-section-number">3.3.1</span> Scree-Plot</h4>
+<p>From the table directly above (Importance of components), we are mainly focused on the first 2 columns or principal components. Looking at the second row in the table, Proportion of Variance, the first PC accounts for about 43% of total variation &amp; the second PC accounts for about 20%, with the rest of the PC’s each accounting for about 9% or less. To use PCA, the threshold for Cumulative Proportion is usually at least 70%-80%, but this is just a guideline as there are no set rules.</p>
+<section id="scree-plot" class="level4">
+<h4 data-anchor-id="scree-plot">Scree-Plot</h4>
+<p>This plot visually represents the ‘Proportion of Variance’ from the previous table. Here it is easy to see the drop off after the second PC. This type of plot can be used to help decide how many PC’s should be used/kept.</p>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">screeplot</span>(<span class="fu">princomp</span>(df), <span class="at">type=</span><span class="st">"lines"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">main=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -650,10 +728,11 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 </div>
 </div>
 </section>
-<section id="biplot" class="level4" data-number="3.3.2">
-<h4 data-number="3.3.2" data-anchor-id="biplot"><span class="header-section-number">3.3.2</span> Biplot</h4>
+<section id="biplot" class="level4">
+<h4 data-anchor-id="biplot">Biplot</h4>
+<p>In this plot we see the eigenvectors (points) &amp; eigenvalues (arrows). PCA can only be interpreted in either the x direction (horizontal distances) or in the y direction (vertical distances), but not both. Although the first PC is about 43% of variance, there is no distinction between political ideology groups in the horizontal plane. But, we do see a pattern in the vertical direction, specifically obamabirth &amp; sorosplot consisting of more conservative ideology, and iraqjews and truther911 with more liberal ideology.</p>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">autoplot</span>(pc1,</span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="co"># AUTOPLOT OPTIONS</span></span>
@@ -680,11 +759,11 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 </div>
 </div>
 </section>
-<section id="loadings" class="level4" data-number="3.3.3">
-<h4 data-number="3.3.3" data-anchor-id="loadings"><span class="header-section-number">3.3.3</span> Loadings</h4>
+<section id="loadings" class="level4">
+<h4 data-anchor-id="loadings">Loadings</h4>
 <p>The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors).</p>
 <div class="cell">
-<details>
+<details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>(<span class="fu">princomp</span>(df))<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -712,6 +791,7 @@ Cumulative Var  0.125  0.250  0.375  0.500  0.625  0.750  0.875  1.000</code></p
 </section>
 <section id="conclusion" class="level2" data-number="4">
 <h2 data-number="4" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
+<p>PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out. PCA is also very flexible in its application which is why it sees use in so many different fields. This flexibility has also led to many different adaptations of the method, each with its own variations added to adapt to the task at hand. Large data sets are extremely common amongst many different fields of study. Principal component analysis requires no assumption of a distribution and can be applied to many types of numerical data. PCA can map the principal components to a 2-D plane and create a cluster we can visualize and use to analyze the data set. We can also just focus on the principal components themselves and draw conclusions from them when visualization is not a valid option. PCA’s strength is that it retains as much variance in the data as possible while increasing the interpretability of the data and while it is sensitive to scaling it remains a very useful method of analysis. PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications. With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to analyze large data sets across so many fields. As long as there are large data sets there will be a demand to reduce the dimension of that data and make valid interpretations about the trends present in that data, to this end we have PCA. <span class="citation" data-cites="Richardson">(<a href="#ref-Richardson" role="doc-biblioref">Richardson 2009</a>)</span></p>
 </section>
 <section id="references" class="level2 unnumbered bibliography" style="background-color: #FAFAF5; color: #8B814C" data-number="5">
 
@@ -739,6 +819,12 @@ Jones, Payton, Patrick Mair, and Richard McNally. 2018. <span>“Visualizing Psy
 </div>
 <div id="ref-lang2021applied" class="csl-entry" role="doc-biblioentry">
 Lang, WU, and Jin Qiu. 2021. <em>Applied Multivariate Statistical Analysis and Related Topics with r</em>. edp sciences.
+</div>
+<div id="ref-originalConspiracyData" class="csl-entry" role="doc-biblioentry">
+Oliver, J. Eric, and Thomas J. Wood. 2013. <span>“<span class="nocase">Replication data for: Conspiracy Theories and the Paranoid Style(s) of Mass Opinion</span>.”</span> Harvard Dataverse. <a href="https://doi.org/10.7910/DVN/22976">https://doi.org/10.7910/DVN/22976</a>.
+</div>
+<div id="ref-Richardson" class="csl-entry" role="doc-biblioentry">
+Richardson, M. 2009. <span>“Principal Component Analysis.”</span>
 </div>
 </div></section></div></main>
 <!-- /main column -->
