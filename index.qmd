@@ -278,7 +278,7 @@ H --> I
 
 ### Equations
 
-**Standardized Data:** $$z_{ij}\ =\ \frac{x_{ij} - \overline{x_j}}{\sqrt{\hat{{\sigma}_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
+**Standardized Data:** $${z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
 **Random Vector:** $${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
 
