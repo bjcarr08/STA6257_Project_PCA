@@ -9,7 +9,6 @@ format:
   html:
     highlight: pygments
     anchor-sections: false
-    smooth-scroll: true
     toc: true
     mainfont: sans-serif
     fontcolor: "#8B814C"
@@ -36,7 +35,6 @@ editor:
     wrap: 100
 ---
 
-```{=html}
 <style>
 details > summary {
   padding: 1px;
@@ -77,7 +75,6 @@ details > summary {
     color: #191970;
 }
 </style>
-```
 
 ## Introduction
 
