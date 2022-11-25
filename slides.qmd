@@ -1,30 +1,50 @@
 ---
-title: "slides"
+title: "Prinicpal Component Analysis"
 format: 
   revealjs:
     theme: dark
 editor: visual
 ---
 
-## Quarto
+## What is it?
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+- Principal component analysis (PCA) is an unsupervised machine learning method
+that can be used as the first step in data analysis
+-   Main goal: reduce the number of
+dimensions/features while retaining most of the original variability
+-   This is achieved using a vector space transform
 
-## Intro
+## Why use PCA?
 
-Principal Component Analysis and Machine Learning Methods. In our research, we learn the applications of how important and groundbreaking Principal Component Analysis and Machine Learning Methods are. In these papers we see how promising the impact is of PCA with recognizing Microanerysm in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic Retinopathy. Other research papers show a framework for coronary artery disease risk assessment in intravascular ultrasound. The paper reflects on a novel strategy for risk stratification based on plaque morphology embedded with principal component analysis (PCA) for plaque feature dimensionality reduction and dominant feature selection technique.\[\@Gorg2021\] Facial recognition with PCA and machine learning methods, From this Paper the authors have identified that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM). Lastly we see the importance of PCA with it identifying that the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM)\[\@Camargo\].
+- Makes it easier to graphically visualize hidden patterns in the data
+- High number of predictor variables or highly correlated variables when running a
+regression model
+- To observe hidden trends, jumps, clusters, patterns and outliers
+- PCA assumes no distribution in data in a descriptive context
+- Widely adaptive as an exploratory method across disciplines and data types
 
-## Bullets
+## Where has PCA been applied?
 
-When you click the **Render** button a document will be generated that includes:
+- PCA is a broadly used statistical method whose use stretches across many 
+scientific disciplines
+- Image analysis, analysis of web data, cyber security analysis, 
+mental disorders, recognizing microanerysm, facial recognition, etc. 
+- Many different adaptations of PCA have been developed based on the variation in goals and
+data types associated with each respective discipline
 
--   Content authored with markdown
--   Output from executable code
+## How does it work?
+- By mathematical projection we can interpret the original data set with just a 
+few variables, namely the principal components
+- The process of reduction preserves the maximum variability in the data (i.e. the statistical information present in the data)
+- "...find new variables that are linear functions of those in the original data set, that
+successively maximize variance and that are uncorrelated with each other" [@Jolliffe]
 
 ## Code
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
 ```{r}
-1 + 1
+
+
+
 ```
+
+## End
