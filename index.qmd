@@ -143,7 +143,13 @@ the original (correlated) variables will be explained through a smaller (uncorre
 variables i.e. the principal components (PC's). PCA results depend on the scale or units of the
 variables so, for unscaled data, calculations should either be preformed on the correlation matrix
 (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z
-scores) [@lang2021applied].
+scores) [@lang2021applied]. Firstly, when performing PCA, a new set of orthogonal coordinate axes are 
+identified from the original data set, which is accomplished by finding the direction of maximal variance 
+through each dimension. This is equivalent to using the least squares method to find the line of best fit. 
+This new axis is the first principal component of the data set. Next we use orthogonal projection to 
+project the coordinates onto the new axis. Once this is done we obtain a second principal component 
+(and principal coordinate axis) by finding the direction of the second largest variance in the data, this 
+axis is orthogonal to our first PC. These two PCs define a plane onto which we can project further coordinates onto (Richardson).
 
 ```{mermaid, code-fold: hide}
 
