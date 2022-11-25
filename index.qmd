@@ -84,8 +84,8 @@ that can be used as the first step in data analysis. The main goal of PCA is to 
 dimensions/features while retaining most of the original variability. Reducing the number of
 features makes it easier to graphically visualize hidden patterns in the data, it's also useful when
 encountering a high number of predictor variables or highly correlated variables when running a
-regression model [@lang2021applied]. Using a clustering algorithm, such as k-means, after the data
-has been transformed with PCA is a powerful method to use on high dimensional data containing
+regression model [@lang2021applied]. After the data has been transformed with PCA, using a clustering 
+algorithm such as k-means can provide additional power to the analysis of high dimensional data containing 
 linearly correlated features [@Alkha].
 
 The most important use of PCA is to represent a multivariate data table as smaller set of variables
@@ -98,36 +98,32 @@ Hotelling (1933) [@Camargo]. This technique transforms some number of possibly c
 into a smaller number of variables, the variables in this smaller matrix are referred to as the
 Principal Components (PC). This is achieved using a vector space transform. By mathematical
 projection we can interpret the original data set with just a few variables, namely the principal
-components achieved through calculation. The purpose of reducing dimension size in large data sets
-is to make it easier to spot trends, patterns, and outliers in data where that information would
-have previously been hidden by the size of data set of interest (Richardson). The information being
-preserved in the process of reduction is the variability in the data (i.e. the statistical
-information present in the data). In order to preserve as much variability as possible we should
+components achieved through calculation. Reducing dimension size in large data sets makes it easier to 
+spot trends, patterns, and outliers in data where that information would have previously been hidden by 
+the size of data (Richardson). The information being preserved in the process of reduction is the 
+variability in the data (i.e. the statistical information present in the data). In order to preserve as 
+much variability as possible we should
 "...find new variables that are linear functions of those in the original data set, that
 successively maximize variance and that are uncorrelated with each other" [@Jolliffe]. PCA assumes
-no distribution in data in a descriptive context which is one of it's key features that makes it so
-widely adaptive as an exploratory method across disciplines and data types [@Jolliffe]. To lists all
-of PCA's applications would be tedious and excessive, but some examples where PCA has been used is
-in facial recognition, image analysis, analysis of web data, and cyber security analysis.
-Essentially anywhere that large data sets are found PCA can be used to aid in discovering trends
-amongst the variables of that data. One key field PCA has seen use is in the analysis of cyber
-security network data. PCA could see many applications in web data analysis as the amount of data
-for this purpose is always increasing and becoming more relevant.
+no distribution in data in a descriptive context, one of it's key features that makes it so
+widely adaptive as an exploratory method across disciplines and data types [@Jolliffe]. 
 
-Principal Component Analysis and Machine Learning Methods. In our research, we learn the
-applications of how important and groundbreaking Principal Component Analysis and Machine Learning
-Methods are. In these papers we see how promising the impact is of PCA with recognizing Microanerysm
-in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic
-Retinopathy [@Cao2018]. Other research papers show a framework for coronary artery disease risk
+To lists all of PCA's applications would be tedious and excessive, but some examples where PCA has been 
+used is in image analysis, analysis of web data, and cyber security analysis.
+Essentially anywhere that large data sets are found PCA can be used to aid in discovering trends
+amongst the variables of that data. PCA can also be useful when studying mental disorders, data consisting 
+of symptoms and the connections between them. When many symptoms are being observed, it can be difficult to visually
+represent the connections between them, both the strength of the connections and the proximity to
+each other. Plotting using the first 2 principal components allows for the placement on the x or y
+axis to become interpretable, that is, observations far left differ in some dimension (the first
+principal component) compared to ones far right. The same can be said in the y direction [@Jones]. PCA also 
+aids in recognizing microanerysm in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic
+retinopathy [@Cao2018]. Research papers show a framework for coronary artery disease risk
 assessment in intravascular ultrasound. The paper reflects on a novel strategy for risk
 stratification based on plaque morphology embedded with principal component analysis (PCA) for
-plaque feature dimensionality reduction and dominant feature selection technique.[@Gorg2021] Facial
-recognition with PCA and machine learning methods, From this Paper the authors have identified that
-the best way to compare and evaluate the Facial Recognition results with speed and accuracy was with
-PCA (Principal Component Analysis) and as well as Support Vector Machine (SVM). Lastly we see the
-importance of PCA with it identifying that the best way to compare and evaluate the Facial
-Recognition results with speed and accuracy was with PCA (Principal Component Analysis) and as well
-as Support Vector Machine (SVM)[@Camargo].
+plaque feature dimensionality reduction and dominant feature selection technique[@Gorg2021]. Camargo identified that
+the best way to compare and evaluate facial recognition results with speed and accuracy is with
+PCA (Principal Component Analysis), alongside Support Vector Machine (SVM) methods [@Camargo].
 
 Taking a look into a real world example, say we have a dataset consisting of 1,000 students with
 exam scores from 7 different courses: Advanced Statistics, Probability Theory, Intro to Dance, World
@@ -137,13 +133,6 @@ Religion, and keep Intro to Dance by itself. We have Reduced the data set from 7
 without much loss in variation. This is the main concept behind PCA except variables are not
 manually regrouped but instead the new variables (principal components) are derived from certain
 linear combinations of the original variables [@lang2021applied].
-
-PCA can also be useful when studying mental disorders, data consisting of symptoms and the
-connections between them. When many symptoms are being observed, it can be difficult to visually
-represent the connections between them, both the strength of the connections and the proximity to
-each other. Plotting using the first 2 principal components allows for the placement on the x or y
-axis to become interpretable, that is, observations far left differ in some dimension (the first
-principal component) compared to ones far right. The same can be said in the y direction [@Jones].
 
 ![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
 
