@@ -22,7 +22,6 @@ course: STA 6257 - Advance Statistical Modeling
 
 ![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
 
-
 ## Why use PCA?
 
 -   Makes it easier to graphically visualize hidden patterns in the data
@@ -45,60 +44,41 @@ course: STA 6257 - Advance Statistical Modeling
 
 ## Methods
 
-- PCA forms the basis of multivariate data analysis based on projection methods
-- Variability in the original (correlated) variables is explained through a 
-smaller (uncorrelated) set of new
-variables i.e. the principal components (PC's)
-- For unscaled data calculations should either be preformed on the correlation matrix
-(instead of the covariance matrix)
-- the data should be standardized with mean 0 and variance 1 (z scores)
+-   PCA forms the basis of multivariate data analysis based on projection methods
+-   Variability in the original (correlated) variables is explained through a smaller (uncorrelated) set of new variables i.e. the principal components (PC's)
+-   For unscaled data calculations should either be preformed on the correlation matrix (instead of the covariance matrix)
+-   the data should be standardized with mean 0 and variance 1 (z scores)
 
 ## Methods continued ...
 
-- A new set of orthogonal coordinate axes are  identified from the original data set
-- Accomplished by finding the direction of maximal variance through each dimension
-- Equivalent to using the least squares method
-- This new axis is the first principal component of the data set
+-   A new set of orthogonal coordinate axes are identified from the original data set
+-   Accomplished by finding the direction of maximal variance through each dimension
+-   Equivalent to using the least squares method
+-   This new axis is the first principal component of the data set
 
 ## Methods continued ...
 
-- Next, orthogonal projection is used to project the coordinates onto the new axis
-- Obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, orthogonal to our first PC
-- These two PCs define a plane onto which we can project further coordinates onto
+-   Next, orthogonal projection is used to project the coordinates onto the new axis
+-   Obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, orthogonal to our first PC
+-   These two PCs define a plane onto which we can project further coordinates onto
 
 ## Methods figure
 
-```{mermaid, code-fold: hide}
-
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
-
-flowchart LR
-A[(Clean<br/>Data)] --> B((Are all<br/>vars the same<br/>scale/unit?))
-B --> C((Yes))
-B --> D((No))
-D -.- |Standardize<br/>Data| E(Estimate<br/>Sample<br/>Mean<br/>Vector)
-C --> E
-D --> F(Estimate<br/>Sample<br/>Mean<br/>Vector)
-E --> G(Estimate<br/>Sample<br/>Covariance<br/>Matrix)
-F --> H(Estimate<br/>Sample<br/>Correlation<br/>Matrix)
-G --> I(Eigenvalues<br/>Eigenvectors)
-H --> I
-
-```
+![](index_files/figure-html/PCA_flowchart.PNG){#fig-flowchart}
 
 ## Assumptions
 
-- Variables should be continuous, interval or ratio level of measurement 
-- Ordinal variables, such as likert-scale, are also often used
-- Variables should all be the same scale/units
-- Variables are linearly related
-- Outliers & missing or impossible values should be removed
+-   Variables should be continuous, interval or ratio level of measurement
+-   Ordinal variables, such as likert-scale, are also often used
+-   Variables should all be the same scale/units
+-   Variables are linearly related
+-   Outliers & missing or impossible values should be removed
 
-
-## Sample data 
+## Sample data
 
 ### Sample Data
 
+```{=html}
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
@@ -108,85 +88,22 @@ H --> I
 .tg .tg-vi6l{background-color:#ffffff;border-color:#8b814c;color:#8b814c;text-align:center;vertical-align:top}
 .tg .tg-pi0b{background-color:#eaead6;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
 </style>
-<table class="tg" style="undefined;table-layout: fixed; width: 791px">
-<colgroup>
-<col style="width: 126px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-<col style="width: 111px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-pi0b"></th>
-    <th class="tg-pi0b">$X_1$</th>
-    <th class="tg-pi0b">$X_2$</th>
-    <th class="tg-pi0b">...</th>
-    <th class="tg-pi0b">$X_j$</th>
-    <th class="tg-pi0b">...</th>
-    <th class="tg-pi0b">$X_p$</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-pi0b">$x_1$</td>
-    <td class="tg-vi6l">$x_{11}$</td>
-    <td class="tg-vi6l">$x_{12}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{1j}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{1p}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_2$</td>
-    <td class="tg-vi6l">$x_{21}$</td>
-    <td class="tg-vi6l">$x_{22}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{2j}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{2p}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_i$</td>
-    <td class="tg-vi6l">$x_{i1}$</td>
-    <td class="tg-vi6l">$x_{i2}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{ij}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{ip}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_n$</td>
-    <td class="tg-vi6l">$x_{n1}$</td>
-    <td class="tg-vi6l">$x_{n2}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{nj}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{np}$</td>
-  </tr>
-</tbody>
-</table>
-
+```
++-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+|                                                                                         | \$X_1\$                                                                      | \$X_2\$                                                                      | \...                                                                         | \$X_j\$                                                                      | \...                                                                         | \$X_p\$                                                                      |
++=========================================================================================+==============================================================================+==============================================================================+==============================================================================+==============================================================================+==============================================================================+==============================================================================+
+| \$x_1\$                                                                                 | \$x\_{11}\$                                                                  | \$x\_{12}\$                                                                  | \...                                                                         | \$x\_{1j}\$                                                                  | \...                                                                         | \$x\_{1p}\$                                                                  |
++-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| \$x_2\$                                                                                 | \$x\_{21}\$                                                                  | \$x\_{22}\$                                                                  | \...                                                                         | \$x\_{2j}\$                                                                  | \...                                                                         | \$x\_{2p}\$                                                                  |
++-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| \...                                                                                    | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         |
++-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| \$x_i\$                                                                                 | \$x\_{i1}\$                                                                  | \$x\_{i2}\$                                                                  | \...                                                                         | \$x\_{ij}\$                                                                  | \...                                                                         | \$x\_{ip}\$                                                                  |
++-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| \...                                                                                    | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         |
++-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| \$x_n\$                                                                                 | \$x\_{n1}\$                                                                  | \$x\_{n2}\$                                                                  | \...                                                                         | \$x\_{nj}\$                                                                  | \...                                                                         | \$x\_{np}\$                                                                  |
++-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 
 ## Equations
 
@@ -196,19 +113,15 @@ H --> I
 
 **Sample Mean Vector:** $$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
 
-
 ## Equations continued ...
 
 **Sample Covariance Matrix:** $$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
 
 ::: {.callout-note collapse="true"}
-[The **sample mean vector** represents the center of the random vector
-($x_i$)]{style="color: #1A79E1; font-size:12px;"}
+[The **sample mean vector** represents the center of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
 
-[The **sample covariance matrix** represents the variations (diagonal elements) & correlations
-(off-diagonal elements) of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
+[The **sample covariance matrix** represents the variations (diagonal elements) & correlations (off-diagonal elements) of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
 :::
-
 
 ## Equations continued ...
 
@@ -216,46 +129,30 @@ H --> I
 
 **Eigenvalues:** $${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
 
-<br>
 
+## Analysis
 
-
-
-
+![](index_files/figure-html/plot1-1.png){#fig-rawDistributions}
 
 
 ## Conclusion
 
+-   PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out.
 
--    PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would          otherwise be very difficult to make out. 
+-   In our conclusion of Data, we saw that Scree-plot Proportion of Variance 0.4256 0.2027 0.09081 0.0669 0.06306 0.05966 0.05214 0.03907 and as well that plot dropped 10% from variances after Comp 3.
 
--   In our conclusion of Data, we saw that Scree-plot Proportion of Variance 0.4256 0.2027 0.09081 0.0669 0.06306 0.05966 0.05214 0.03907     and as well that plot dropped 10% from variances after Comp 3. 
-    
--     We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same     scale and units.
+-   
+
+        We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same     scale and units.
 
 ## Conclusion Cont'd
 
+-   We also make sure in our dataset that the variables are linearly related, and we use the scatterplot to check the variables. Lastly, we ensure Outliers are removed and those Null values that are missing are noted and removed
 
--   We also make sure in our dataset that the variables are linearly related, and we use the scatterplot to check the variables. Lastly,     we ensure Outliers are removed and those Null values that are missing are noted and removed
-
--  PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications.         With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to            analyze large data sets across so many fields.
+-   PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications. With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to analyze large data sets across so many fields.
 
 ## Conclusion Cont'd lastly
--   As long as there are large data sets there will be a demand to reduce the dimension   of  that data and make valid  interpretations     about the trends present in that data, to this end we have PCA.
 
-
+-   As long as there are large data sets there will be a demand to reduce the dimension of that data and make valid interpretations about the trends present in that data, to this end we have PCA.
 
 ## End
-
-
-
-
-
-
-
-
-
-
-
-
-
