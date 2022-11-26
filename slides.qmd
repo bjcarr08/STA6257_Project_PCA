@@ -9,6 +9,7 @@ format:
     theme: dark
 editor: visual
 bibliography: references.bib # file contains bibtex for references
+course: STA 6257 - Advance Statistical Modeling
 ---
 
 ## What is it?
@@ -217,6 +218,30 @@ H --> I
 
 <br>
 
+
+
+
+
+
+
+## Conclusion
+
+
+-    PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would          otherwise be very difficult to make out. 
+
+-   In our conclusion of Data, we saw that Scree-plot Proportion of Variance 0.4256 0.2027 0.09081 0.0669 0.06306 0.05966 0.05214 0.03907     and as well that plot dropped 10% from variances after Comp 3. 
+    
+-     We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same     scale and units.
+
+## Conclusion Cont'd
+
+
+-   We also make sure in our dataset that the variables are linearly related, and we use the scatterplot to check the variables. Lastly,     we ensure Outliers are removed and those Null values that are missing are noted and removed
+
+-  PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications.         With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to            analyze large data sets across so many fields.
+
+## Conclusion Cont'd lastly
+-   As long as there are large data sets there will be a demand to reduce the dimension   of  that data and make valid  interpretations     about the trends present in that data, to this end we have PCA.
 
 
 
