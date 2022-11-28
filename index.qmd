@@ -27,6 +27,14 @@ format:
 execute: 
   warning: false
   echo: true
+website:
+  navbar:
+    background: "#191970"
+    search: false
+    left:
+      - text: "Report"
+        file: index.qmd
+      - slides.qmd
 course: STA 6257 - Advance Statistical Modeling
 bibliography: references.bib # file contains bibtex for references
 always_allow_html: true # this allows to get PDF with HTML features
