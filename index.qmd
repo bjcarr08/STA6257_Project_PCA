@@ -36,9 +36,9 @@ editor:
     wrap: 100
 ---
 
-[Website](index.qmd)
+[Website](index.html)
 
-[Slides](slides.qmd)
+[Slides](slides.html)
 
 <style>
  .title {
