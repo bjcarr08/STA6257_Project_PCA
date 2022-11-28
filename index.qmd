@@ -27,6 +27,15 @@ format:
 execute: 
   warning: false
   echo: true
+website:
+  navbar:
+    background: "#191970"
+    search: false
+    collapse: false
+    pinned: true
+    left:
+      - index.qmd
+      - slides.qmd
 course: STA 6257 - Advance Statistical Modeling
 bibliography: references.bib # file contains bibtex for references
 always_allow_html: true # this allows to get PDF with HTML features
@@ -396,7 +405,7 @@ conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/ma
 conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
 ```
 
-```{r, first10rows}
+```{r, first10rows, echo=FALSE, codefold="hide"}
 #| label: fig-first10rows
 #| fig-cap: "First 10 Rows of Conspiracy Data"
 

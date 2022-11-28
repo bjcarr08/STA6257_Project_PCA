@@ -630,14 +630,7 @@ Strongly Agree
 <span id="cb3-5"><a href="#cb3-5"></a>conspiracy<span class="ot">&lt;-</span> conspiracy[<span class="fu">complete.cases</span>(conspiracy),] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(y<span class="sc">!=</span><span class="st">"Not Sure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">png</span>(<span class="st">"~/Git/STA6257_Project_PCA/index_files/figure-html/first10rows.png"</span>, <span class="at">height=</span><span class="dv">550</span>, <span class="at">width=</span><span class="dv">1000</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>p<span class="ot">&lt;-</span><span class="fu">tableGrob</span>(conspiracy[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),])</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">grid.arrange</span>(p)</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="cell" data-codefold="hide">
 <div class="cell-output cell-output-stdout">
 <pre><code>png 
   2 </code></pre>
@@ -651,12 +644,12 @@ Strongly Agree
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a>DescTools<span class="sc">::</span><span class="fu">PlotPairs</span>(<span class="fu">sapply</span>(conspiracy[,<span class="sc">-</span><span class="dv">9</span>], <span class="cf">function</span>(x) <span class="fu">jitter</span>(x, <span class="dv">5</span>)), </span>
-<span id="cb6-4"><a href="#cb6-4"></a>                     <span class="at">g=</span>conspiracy<span class="sc">$</span>y,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>                     <span class="at">col=</span><span class="fu">alpha</span>(<span class="st">"#8B814C"</span>, <span class="fl">0.1</span>), </span>
-<span id="cb6-6"><a href="#cb6-6"></a>                     <span class="at">col.smooth=</span><span class="st">"#8B814C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>DescTools<span class="sc">::</span><span class="fu">PlotPairs</span>(<span class="fu">sapply</span>(conspiracy[,<span class="sc">-</span><span class="dv">9</span>], <span class="cf">function</span>(x) <span class="fu">jitter</span>(x, <span class="dv">5</span>)), </span>
+<span id="cb5-4"><a href="#cb5-4"></a>                     <span class="at">g=</span>conspiracy<span class="sc">$</span>y,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>                     <span class="at">col=</span><span class="fu">alpha</span>(<span class="st">"#8B814C"</span>, <span class="fl">0.1</span>), </span>
+<span id="cb5-6"><a href="#cb5-6"></a>                     <span class="at">col.smooth=</span><span class="st">"#8B814C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/plot0-1.png" class="img-fluid" width="1152"></p>
@@ -665,24 +658,24 @@ Strongly Agree
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># TRANSFORM TO LONG DATA FOR PLOTS</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>conspiracy.Long<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"score"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">score=</span>as.numeric))</span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># HISTOGRAMS</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">ggplot</span>(conspiracy.Long, <span class="fu">aes</span>(score, <span class="at">fill=</span>conspiracy, <span class="at">color=</span>conspiracy)) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  lemon<span class="sc">::</span><span class="fu">facet_rep_wrap</span>(.<span class="sc">~</span>conspiracy, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">labeller=</span><span class="st">"label_both"</span>, <span class="at">repeat.tick.labels=</span>T) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distributions of Raw Score"</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb7-12"><a href="#cb7-12"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#EAEAD6"</span>, <span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb7-13"><a href="#cb7-13"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
-<span id="cb7-14"><a href="#cb7-14"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb7-15"><a href="#cb7-15"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb7-16"><a href="#cb7-16"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
-<span id="cb7-17"><a href="#cb7-17"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
-<span id="cb7-18"><a href="#cb7-18"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># TRANSFORM TO LONG DATA FOR PLOTS</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>conspiracy.Long<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"score"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">score=</span>as.numeric))</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># HISTOGRAMS</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">ggplot</span>(conspiracy.Long, <span class="fu">aes</span>(score, <span class="at">fill=</span>conspiracy, <span class="at">color=</span>conspiracy)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  lemon<span class="sc">::</span><span class="fu">facet_rep_wrap</span>(.<span class="sc">~</span>conspiracy, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">labeller=</span><span class="st">"label_both"</span>, <span class="at">repeat.tick.labels=</span>T) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distributions of Raw Score"</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb6-12"><a href="#cb6-12"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#EAEAD6"</span>, <span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb6-13"><a href="#cb6-13"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb6-14"><a href="#cb6-14"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb6-15"><a href="#cb6-15"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb6-16"><a href="#cb6-16"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb6-17"><a href="#cb6-17"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb6-18"><a href="#cb6-18"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/plot1-1.png" class="img-fluid" width="1152"></p>
@@ -696,25 +689,25 @@ Strongly Agree
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">100</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co"># STANDARDIZE DATA [SKIP]</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#conspiracy&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co"># RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>conspiracy<span class="sc">$</span>y<span class="ot">&lt;-</span> <span class="fu">factor</span>(conspiracy<span class="sc">$</span>y, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Very Liberal"</span>, <span class="st">"Liberal"</span>, <span class="st">"Somewhat Liberal"</span>, <span class="st">"Middle of the Road"</span>, <span class="st">"Somewhat Conservative"</span>, <span class="st">"Conservative"</span>, <span class="st">"Very Conservative"</span>))</span>
-<span id="cb8-8"><a href="#cb8-8"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># RE-NAMED VARIABLE 'y'</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="fu">names</span>(conspiracy)[<span class="dv">9</span>]<span class="ot">&lt;-</span> <span class="st">"PoliticalIdeology"</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co"># DATA FOR PCA FUNCTION (only keep numeric variables)</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a>df<span class="ot">&lt;-</span> conspiracy[,<span class="sc">-</span><span class="dv">9</span>]</span>
-<span id="cb8-14"><a href="#cb8-14"></a></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="co"># PCA</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#pc1&lt;- prcomp(df, scale.=T)</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a>pc1<span class="ot">&lt;-</span> <span class="fu">prcomp</span>(df)</span>
-<span id="cb8-18"><a href="#cb8-18"></a></span>
-<span id="cb8-19"><a href="#cb8-19"></a><span class="fu">summary</span>(pc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">100</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># STANDARDIZE DATA [SKIP]</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#conspiracy&lt;- conspiracy %&gt;% mutate(across(.cols=truther911:vaportrail, scale))</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># RE-LEVEL POLITICAL IDEOLOGY (Very Liberal - Very Conservative)</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>conspiracy<span class="sc">$</span>y<span class="ot">&lt;-</span> <span class="fu">factor</span>(conspiracy<span class="sc">$</span>y, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Very Liberal"</span>, <span class="st">"Liberal"</span>, <span class="st">"Somewhat Liberal"</span>, <span class="st">"Middle of the Road"</span>, <span class="st">"Somewhat Conservative"</span>, <span class="st">"Conservative"</span>, <span class="st">"Very Conservative"</span>))</span>
+<span id="cb7-8"><a href="#cb7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># RE-NAMED VARIABLE 'y'</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="fu">names</span>(conspiracy)[<span class="dv">9</span>]<span class="ot">&lt;-</span> <span class="st">"PoliticalIdeology"</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co"># DATA FOR PCA FUNCTION (only keep numeric variables)</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>df<span class="ot">&lt;-</span> conspiracy[,<span class="sc">-</span><span class="dv">9</span>]</span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co"># PCA</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co">#pc1&lt;- prcomp(df, scale.=T)</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>pc1<span class="ot">&lt;-</span> <span class="fu">prcomp</span>(df)</span>
+<span id="cb7-18"><a href="#cb7-18"></a></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="fu">summary</span>(pc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Importance of components:
@@ -731,8 +724,8 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">screeplot</span>(<span class="fu">princomp</span>(df), <span class="at">type=</span><span class="st">"lines"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">main=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">screeplot</span>(<span class="fu">princomp</span>(df), <span class="at">type=</span><span class="st">"lines"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">main=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/plot2-1.png" class="img-fluid" width="1152"></p>
@@ -745,25 +738,25 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">autoplot</span>(pc1,</span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="co"># AUTOPLOT OPTIONS</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">data=</span>conspiracy, </span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">colour=</span><span class="st">"PoliticalIdeology"</span>, </span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="at">loadings=</span>T, <span class="at">loadings.colour=</span><span class="fu">alpha</span>(<span class="st">"#191970"</span>, <span class="fl">0.5</span>), </span>
-<span id="cb11-6"><a href="#cb11-6"></a>  <span class="at">loadings.label=</span>T, <span class="at">loadings.label.colour=</span><span class="st">"#191970"</span>, <span class="at">loadings.label.size=</span><span class="dv">5</span>, <span class="at">loadings.label.hjust=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
-<span id="cb11-7"><a href="#cb11-7"></a>  <span class="co"># CUSTOM COLORS FOR POLITICAL IDEOLOGY GROUPS</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">alpha</span>(<span class="fu">paletteer_d</span>(<span class="st">"rcartocolor::Temps"</span>), <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>  <span class="co"># GGPLOT THEME OPTIONS</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a>  <span class="fu">theme</span>(<span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb11-12"><a href="#cb11-12"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb11-13"><a href="#cb11-13"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb11-14"><a href="#cb11-14"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
-<span id="cb11-15"><a href="#cb11-15"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
-<span id="cb11-16"><a href="#cb11-16"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
-<span id="cb11-17"><a href="#cb11-17"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb11-18"><a href="#cb11-18"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
-<span id="cb11-19"><a href="#cb11-19"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">autoplot</span>(pc1,</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="co"># AUTOPLOT OPTIONS</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">data=</span>conspiracy, </span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="at">colour=</span><span class="st">"PoliticalIdeology"</span>, </span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="at">loadings=</span>T, <span class="at">loadings.colour=</span><span class="fu">alpha</span>(<span class="st">"#191970"</span>, <span class="fl">0.5</span>), </span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="at">loadings.label=</span>T, <span class="at">loadings.label.colour=</span><span class="st">"#191970"</span>, <span class="at">loadings.label.size=</span><span class="dv">5</span>, <span class="at">loadings.label.hjust=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="co"># CUSTOM COLORS FOR POLITICAL IDEOLOGY GROUPS</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">alpha</span>(<span class="fu">paletteer_d</span>(<span class="st">"rcartocolor::Temps"</span>), <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="co"># GGPLOT THEME OPTIONS</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>  <span class="fu">theme</span>(<span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb10-12"><a href="#cb10-12"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb10-13"><a href="#cb10-13"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb10-14"><a href="#cb10-14"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb10-15"><a href="#cb10-15"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>),</span>
+<span id="cb10-16"><a href="#cb10-16"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FAFAF5"</span>),</span>
+<span id="cb10-17"><a href="#cb10-17"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb10-18"><a href="#cb10-18"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb10-19"><a href="#cb10-19"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#8B814C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/plot3-1.png" class="img-fluid" width="1152"></p>
@@ -776,7 +769,7 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>(<span class="fu">princomp</span>(df))<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>(<span class="fu">princomp</span>(df))<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
