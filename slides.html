@@ -6,13 +6,13 @@
 <script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.1.189">
 
   <meta name="author" content="Brandy Carr">
   <meta name="author" content="Lee">
   <meta name="author" content="Tavish">
-  <title>Prinicpal Component Analysis</title>
+  <title>PCA Slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -263,6 +263,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -340,18 +341,18 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">Prinicpal Component Analysis</h1>
+  <h1 class="title">PCA Slides</h1>
   <p class="author">Brandy Carr</p>
   <p class="author">Lee</p>
   <p class="author">Tavish</p>
 </section>
 
-<section id="what-is-it" class="slide level2">
+<section id="what-is-it" class="slide level2" data-background-color="#FAFAF5">
 <h2>What is it?</h2>
 <ul>
 <li>Principal component analysis (PCA) is an unsupervised machine learning method that can be used as the first step in data analysis</li>
@@ -359,11 +360,23 @@
 <li>This is achieved using a vector space transform</li>
 </ul>
 </section>
-<section id="figure" class="slide level2">
-<h2>Figure</h2>
-
-<img data-src="index_files/figure-html/machineLearning_fig1.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Machine Learning</p></section>
-<section id="why-use-pca" class="slide level2">
+<section id="machine-learning-techniques" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" data-background-color="#FAFAF5" color="#8B814C">
+<h2 data-id="quarto-animate-title">Machine Learning Techniques</h2>
+<div id="fig-machineLearning" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-html/machineLearning_fig0.png" data-id="fig1" width="584" height="520"></p>
+</figure>
+</div>
+</section>
+<section id="machine-learning-techniques-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" data-background-color="#FAFAF5" color="#8B814C">
+<h2 data-id="quarto-animate-title">Machine Learning Techniques</h2>
+<div id="fig-machineLearning" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-html/machineLearning_fig1.png" data-id="fig1" width="584" height="520"></p>
+</figure>
+</div>
+</section>
+<section id="why-use-pca" class="slide level2" data-background-color="#FAFAF5">
 <h2>Why use PCA?</h2>
 <ul>
 <li>Makes it easier to graphically visualize hidden patterns in the data</li>
@@ -373,7 +386,7 @@
 <li>Widely adaptive as an exploratory method across disciplines and data types</li>
 </ul>
 </section>
-<section id="where-has-pca-been-applied" class="slide level2">
+<section id="where-has-pca-been-applied" class="slide level2" data-background-color="#FAFAF5">
 <h2>Where has PCA been applied?</h2>
 <ul>
 <li>PCA is a broadly used statistical method whose use stretches across many scientific disciplines</li>
@@ -381,7 +394,7 @@
 <li>Many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline</li>
 </ul>
 </section>
-<section id="how-does-it-work" class="slide level2">
+<section id="how-does-it-work" class="slide level2" data-background-color="#FAFAF5">
 <h2>How does it work?</h2>
 <ul>
 <li>By mathematical projection we can interpret the original data set with just a few variables, namely the principal components</li>
@@ -389,37 +402,27 @@
 <li>“…find new variables that are linear functions of those in the original data set, that successively maximize variance and that are uncorrelated with each other” <span class="citation" data-cites="Jolliffe">(<a href="#/end" role="doc-biblioref" onclick="">Jolliffe IT 2016</a>)</span></li>
 </ul>
 </section>
-<section id="methods" class="slide level2">
+<section id="methods" class="slide level2" data-background-color="#FAFAF5">
 <h2>Methods</h2>
 <ul>
 <li>PCA forms the basis of multivariate data analysis based on projection methods</li>
 <li>Variability in the original (correlated) variables is explained through a smaller (uncorrelated) set of new variables i.e.&nbsp;the principal components (PC’s)</li>
-<li>For unscaled data calculations should either be preformed on the correlation matrix (instead of the covariance matrix)</li>
-<li>the data should be standardized with mean 0 and variance 1 (z scores)</li>
-</ul>
-</section>
-<section id="methods-continued" class="slide level2">
-<h2>Methods continued …</h2>
-<ul>
+<li>For un-scaled data calculations should either be preformed on the correlation matrix (instead of the covariance matrix)</li>
+<li>Data should be standardized with mean 0 and variance 1 (z scores)</li>
 <li>A new set of orthogonal coordinate axes are identified from the original data set</li>
 <li>Accomplished by finding the direction of maximal variance through each dimension</li>
 <li>Equivalent to using the least squares method</li>
 <li>This new axis is the first principal component of the data set</li>
-</ul>
-</section>
-<section id="methods-continued-1" class="slide level2">
-<h2>Methods continued …</h2>
-<ul>
 <li>Next, orthogonal projection is used to project the coordinates onto the new axis</li>
 <li>Obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, orthogonal to our first PC</li>
 <li>These two PCs define a plane onto which we can project further coordinates onto</li>
 </ul>
 </section>
-<section id="methods-figure" class="slide level2">
-<h2>Methods figure</h2>
-
-<img data-src="index_files/figure-html/PCA_flowchart.PNG" id="fig-flowchart" class="r-stretch"></section>
-<section id="assumptions" class="slide level2">
+<section id="methods-flowchart" class="slide level2" data-background-color="#FAFAF5">
+<h2>Methods Flowchart</h2>
+<p><img data-src="index_files/figure-html/PCA_flowchart.PNG" id="fig-flowchart"></p>
+</section>
+<section id="assumptions" class="slide level2" data-background-color="#FAFAF5">
 <h2>Assumptions</h2>
 <ul>
 <li>Variables should be continuous, interval or ratio level of measurement</li>
@@ -429,9 +432,8 @@
 <li>Outliers &amp; missing or impossible values should be removed</li>
 </ul>
 </section>
-<section id="sample-data" class="slide level2">
+<section id="sample-data" class="slide level2" data-background-color="#FAFAF5">
 <h2>Sample data</h2>
-<h3 id="sample-data-1">Sample Data</h3>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
@@ -441,15 +443,15 @@
 .tg .tg-vi6l{background-color:#ffffff;border-color:#8b814c;color:#8b814c;text-align:center;vertical-align:top}
 .tg .tg-pi0b{background-color:#eaead6;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
 </style>
-<table style="width:99%;">
+<table>
 <colgroup>
-<col style="width: 15%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 17%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -520,61 +522,103 @@
 </tbody>
 </table>
 </section>
-<section id="equations" class="slide level2">
+<section id="equations" class="slide level2 smaller" data-background-color="#FAFAF5">
 <h2>Equations</h2>
 <p><strong>Standardized Data:</strong> <span id="eq-stdzData"><span class="math display">\[{z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\} \qquad(1)\]</span></span></p>
 <p><strong>Random Vector:</strong> <span id="eq-randomVector"><span class="math display">\[{x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\} \qquad(2)\]</span></span></p>
 <p><strong>Sample Mean Vector:</strong> <span id="eq-meanVector"><span class="math display">\[\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i \qquad(3)\]</span></span></p>
-</section>
-<section id="equations-continued" class="slide level2">
-<h2>Equations continued …</h2>
 <p><strong>Sample Covariance Matrix:</strong> <span id="eq-covMatrix"><span class="math display">\[\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T \qquad(4)\]</span></span></p>
-<div class="callout callout-note callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p><span style="color: #1A79E1; font-size:12px;">The <strong>sample mean vector</strong> represents the center of the random vector (<span class="math inline">\(x_i\)</span>)</span></p>
-<p><span style="color: #1A79E1; font-size:12px;">The <strong>sample covariance matrix</strong> represents the variations (diagonal elements) &amp; correlations (off-diagonal elements) of the random vector (<span class="math inline">\(x_i\)</span>)</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="equations-continued-1" class="slide level2">
-<h2>Equations continued …</h2>
 <p><strong>Eigenvectors:</strong> <span id="eq-eigenvec"><span class="math display">\[{\hat{a}_{k}} \qquad(5)\]</span></span></p>
 <p><strong>Eigenvalues:</strong> <span id="eq-eigenval"><span class="math display">\[{\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\} \qquad(6)\]</span></span></p>
 </section>
-<section id="analysis" class="slide level2">
-<h2>Analysis</h2>
+<section id="data" class="slide level2" data-background-color="#FAFAF5">
+<h2>Data</h2>
+<p><a href="https://thedata.harvard.edu/dvn/dv/ajps">Replication Data &amp; Code</a> <span class="citation" data-cites="originalConspiracyData">(<a href="#/end" role="doc-biblioref" onclick="">Oliver and Wood 2013</a>)</span></p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Description</a></li><li><a href="#tabset-1-2">Groups</a></li><li><a href="#tabset-1-3">Variables</a></li><li><a href="#tabset-1-4">Scale</a></li><li><a href="#tabset-1-5">First 10 Rows</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ul>
+<li>2,000 respondents answering a 5-point Likert scale on their belief in various conspiracies</li>
+<li>Grouped by political ideology</li>
+<li>Sampled from a nationally representative survey in 2011</li>
+</ul>
 
-<img data-src="index_files/figure-html/plot1-1.png" id="fig-rawDistributions" class="r-stretch"></section>
-<section id="conclusion" class="slide level2">
+</div>
+<div id="tabset-1-2">
+<ul>
+<li>Very Liberal</li>
+<li>Liberal</li>
+<li>Somewhat Liberal</li>
+<li>Middle of the Road</li>
+<li>Somewhat Conservative</li>
+<li>Conservative</li>
+<li>Very Conservative</li>
+</ul>
+</div>
+<div id="tabset-1-3" class="smaller">
+<ul>
+<li><strong>truther911:</strong> Certain U.S. government officials planned the attacks of September 11, 2001, to incite war</li>
+<li><strong>obamabirth:</strong> President Barack Obama was not really born in the US and does not have an authentic Hawaiian birth certificate</li>
+<li><strong>fincrisis:</strong> The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world’s economy</li>
+<li><strong>flourolights:</strong> The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control</li>
+<li><strong>endtimes:</strong> We are currently living in End Times as foretold by Biblical prophecy</li>
+<li><strong>sorosplot:</strong> Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control</li>
+<li><strong>iraqjews:</strong> The U.S. invasion of Iraq was driven by oil companies and Jews in the U.S. and Israel</li>
+<li><strong>vaportrail:</strong> Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials</li>
+</ul>
+</div>
+<div id="tabset-1-4">
+<div class="cell">
+
+</div>
+</div>
+<div id="tabset-1-5">
+<p><img data-src="index_files/figure-html/first10rows.png"></p>
+</div>
+</div>
+</div>
+<aside><div>
+
+</div></aside></section>
+<section id="analysis" class="slide level2" data-background-color="#FAFAF5">
+<h2>Analysis</h2>
+<p><img data-src="index_files/figure-html/plot1-1.png" id="fig-rawDistributions"></p>
+</section>
+<section id="scree-plot" class="slide level2" data-background-color="#FAFAF5">
+<h2>Scree plot</h2>
+<p><img data-src="index_files/figure-html/plot2-1.png" id="fig-Screeplot"></p>
+</section>
+<section id="cluster" class="slide level2" data-background-color="#FAFAF5">
+<h2>Cluster</h2>
+<p><img data-src="index_files/figure-html/plot3-1.png" id="fig-cluster"></p>
+</section>
+<section id="conclusion" class="slide level2" data-background-color="#FAFAF5">
 <h2>Conclusion</h2>
 <ul>
 <li><p>PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out.</p></li>
 <li><p>In our conclusion of Data, we saw that Scree-plot Proportion of Variance 0.4256 0.2027 0.09081 0.0669 0.06306 0.05966 0.05214 0.03907 and as well that plot dropped 10% from variances after Comp 3.</p></li>
-<li><pre><code>We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same     scale and units.</code></pre></li>
+<li><p>We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same scale and units.</p></li>
 </ul>
 </section>
-<section id="conclusion-contd" class="slide level2">
+<section id="conclusion-contd" class="slide level2" data-background-color="#FAFAF5">
 <h2>Conclusion Cont’d</h2>
 <ul>
-<li><p>We also make sure in our dataset that the variables are linearly related, and we use the scatterplot to check the variables. Lastly, we ensure Outliers are removed and those Null values that are missing are noted and removed</p></li>
-<li><p>PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications. With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to analyze large data sets across so many fields.</p></li>
+<li>We also make sure in our dataset that the variables are linearly related, and we use the scatterplot to check the variables. Lastly, we ensure Outliers are removed and those Null values that are missing are noted and removed</li>
 </ul>
+<div class="fragment">
+<ul>
+<li>PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications. With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to analyze large data sets across so many fields.</li>
+</ul>
+</div>
 </section>
-<section id="conclusion-contd-lastly" class="slide level2">
+<section id="conclusion-contd-lastly" class="slide level2" data-background-color="#FAFAF5">
 <h2>Conclusion Cont’d lastly</h2>
 <ul>
 <li>As long as there are large data sets there will be a demand to reduce the dimension of that data and make valid interpretations about the trends present in that data, to this end we have PCA.</li>
 </ul>
 </section>
-<section id="end" class="slide level2 smaller scrollable">
+<section id="end" class="slide level2 smaller scrollable" data-background-color="#FAFAF5">
 <h2>End</h2>
 <div class="footer footer-default">
 
@@ -582,6 +626,9 @@
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-Jolliffe" class="csl-entry" role="doc-biblioentry">
 Jolliffe IT, Cadima J. 2016. <span>“Principal Component Analysis: A Review and Recent Developments.”</span> <em>Philosophical Transactions A</em>.
+</div>
+<div id="ref-originalConspiracyData" class="csl-entry" role="doc-biblioentry">
+Oliver, J. Eric, and Thomas J. Wood. 2013. <span>“<span class="nocase">Replication data for: Conspiracy Theories and the Paranoid Style(s) of Mass Opinion</span>.”</span> Harvard Dataverse. <a href="https://doi.org/10.7910/DVN/22976">https://doi.org/10.7910/DVN/22976</a>.
 </div>
 </div>
 </section>
@@ -611,13 +658,13 @@ Jolliffe IT, Cadima J. 2016. <span>“Principal Component Analysis: A Review and
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
+'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -762,12 +809,14 @@ Jolliffe IT, Cadima J. 2016. <span>“Principal Component Analysis: A Review and
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1200,
 
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 1.0e-2,
+
+        maxScale: 1.5,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
@@ -796,6 +845,48 @@ Jolliffe IT, Cadima J. 2016. <span>“Principal Component Analysis: A Review and
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

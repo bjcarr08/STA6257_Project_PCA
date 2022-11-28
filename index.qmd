@@ -1,9 +1,6 @@
 ---
 title: "PCA (principal component analysis)"
-author: 
-- Brandy Carr
-- Lee
-- Tavish
+authors: Brandy Carr, Lee, Tavish
 date: '`r Sys.Date()`'
 format:
   html:
@@ -38,6 +35,10 @@ editor:
   markdown:
     wrap: 100
 ---
+
+[Website](index.qmd)
+
+[Slides](slides.qmd)
 
 <style>
  .title {
@@ -306,6 +307,8 @@ library(tidyr)
 library(paletteer)
 library(knitr)
 library(DescTools)
+library(gt)
+library(gridExtra)
 ```
 
 ### Data
@@ -391,6 +394,16 @@ conspiracy<- (read.csv("https://raw.githubusercontent.com/bjcarr08/sampleData/ma
 
 # REMOVE ROWS WITH NAs & IMPOSSIBLE VALUES (removed rows where participant marked 'not sure' as political ideology)
 conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
+```
+
+```{r, first10rows}
+#| label: fig-first10rows
+#| fig-cap: "First 10 Rows of Conspiracy Data"
+
+png("~/Git/STA6257_Project_PCA/index_files/figure-html/first10rows.png", height=550, width=1000)
+p<-tableGrob(conspiracy[c(1:10),])
+grid.arrange(p)
+dev.off()
 ```
 
 #### Visualize Data {#sec-linearity}

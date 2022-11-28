@@ -1,28 +1,37 @@
 ---
-title: "Prinicpal Component Analysis"
+title: "PCA Slides"
 author: 
 - Brandy Carr
 - Lee
 - Tavish
 format: 
   revealjs:
-    theme: dark
+    scrollable: true
+    smaller: true
+    margin: 0.01
+    auto-stretch: false
+    width: 1200
+    max-scale: 1.5
 editor: visual
 bibliography: references.bib # file contains bibtex for references
 course: STA 6257 - Advance Statistical Modeling
 ---
 
-## What is it?
+## What is it? {background-color="#FAFAF5"}
 
 -   Principal component analysis (PCA) is an unsupervised machine learning method that can be used as the first step in data analysis
 -   Main goal: reduce the number of dimensions/features while retaining most of the original variability
 -   This is achieved using a vector space transform
 
-## Figure
+## Machine Learning Techniques {auto-animate=true auto-animate-easing="ease-in-out" background-color="#FAFAF5" color="#8B814C"}
 
-![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
+![](index_files/figure-html/machineLearning_fig0.png){#fig-machineLearning data-id="fig1" height="520px" width="584px" fig-align="center"}
 
-## Why use PCA?
+## Machine Learning Techniques {auto-animate=true auto-animate-easing="ease-in-out" background-color="#FAFAF5" color="#8B814C"}
+
+![](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning data-id="fig1" height="520px" width="584px" fig-align="center"}
+
+## Why use PCA? {background-color="#FAFAF5"}
 
 -   Makes it easier to graphically visualize hidden patterns in the data
 -   High number of predictor variables or highly correlated variables when running a regression model
@@ -30,43 +39,37 @@ course: STA 6257 - Advance Statistical Modeling
 -   PCA assumes no distribution in data in a descriptive context
 -   Widely adaptive as an exploratory method across disciplines and data types
 
-## Where has PCA been applied?
+## Where has PCA been applied? {background-color="#FAFAF5"}
 
 -   PCA is a broadly used statistical method whose use stretches across many scientific disciplines
 -   Image analysis, analysis of web data, cyber security analysis, mental disorders, recognizing microanerysm, facial recognition, etc.
 -   Many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline
 
-## How does it work?
+## How does it work? {background-color="#FAFAF5"}
 
 -   By mathematical projection we can interpret the original data set with just a few variables, namely the principal components
 -   The process of reduction preserves the maximum variability in the data (i.e. the statistical information present in the data)
 -   "...find new variables that are linear functions of those in the original data set, that successively maximize variance and that are uncorrelated with each other" [@Jolliffe]
 
-## Methods
+## Methods {background-color="#FAFAF5"}
 
 -   PCA forms the basis of multivariate data analysis based on projection methods
 -   Variability in the original (correlated) variables is explained through a smaller (uncorrelated) set of new variables i.e. the principal components (PC's)
--   For unscaled data calculations should either be preformed on the correlation matrix (instead of the covariance matrix)
--   the data should be standardized with mean 0 and variance 1 (z scores)
-
-## Methods continued ...
-
+-   For un-scaled data calculations should either be preformed on the correlation matrix (instead of the covariance matrix)
+-   Data should be standardized with mean 0 and variance 1 (z scores)
 -   A new set of orthogonal coordinate axes are identified from the original data set
 -   Accomplished by finding the direction of maximal variance through each dimension
 -   Equivalent to using the least squares method
 -   This new axis is the first principal component of the data set
-
-## Methods continued ...
-
 -   Next, orthogonal projection is used to project the coordinates onto the new axis
 -   Obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, orthogonal to our first PC
 -   These two PCs define a plane onto which we can project further coordinates onto
 
-## Methods figure
+## Methods Flowchart {background-color="#FAFAF5"}
 
 ![](index_files/figure-html/PCA_flowchart.PNG){#fig-flowchart}
 
-## Assumptions
+## Assumptions {background-color="#FAFAF5"}
 
 -   Variables should be continuous, interval or ratio level of measurement
 -   Ordinal variables, such as likert-scale, are also often used
@@ -74,9 +77,7 @@ course: STA 6257 - Advance Statistical Modeling
 -   Variables are linearly related
 -   Outliers & missing or impossible values should be removed
 
-## Sample data
-
-### Sample Data
+## Sample data {background-color="#FAFAF5"}
 
 ```{=html}
 <style type="text/css">
@@ -89,23 +90,16 @@ course: STA 6257 - Advance Statistical Modeling
 .tg .tg-pi0b{background-color:#eaead6;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
 </style>
 ```
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-|                                                                                         | \$X_1\$                                                                      | \$X_2\$                                                                      | \...                                                                         | \$X_j\$                                                                      | \...                                                                         | \$X_p\$                                                                      |
-+=========================================================================================+==============================================================================+==============================================================================+==============================================================================+==============================================================================+==============================================================================+==============================================================================+
-| \$x_1\$                                                                                 | \$x\_{11}\$                                                                  | \$x\_{12}\$                                                                  | \...                                                                         | \$x\_{1j}\$                                                                  | \...                                                                         | \$x\_{1p}\$                                                                  |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| \$x_2\$                                                                                 | \$x\_{21}\$                                                                  | \$x\_{22}\$                                                                  | \...                                                                         | \$x\_{2j}\$                                                                  | \...                                                                         | \$x\_{2p}\$                                                                  |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| \...                                                                                    | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| \$x_i\$                                                                                 | \$x\_{i1}\$                                                                  | \$x\_{i2}\$                                                                  | \...                                                                         | \$x\_{ij}\$                                                                  | \...                                                                         | \$x\_{ip}\$                                                                  |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| \...                                                                                    | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         | \...                                                                         |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| \$x_n\$                                                                                 | \$x\_{n1}\$                                                                  | \$x\_{n2}\$                                                                  | \...                                                                         | \$x\_{nj}\$                                                                  | \...                                                                         | \$x\_{np}\$                                                                  |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+|         | \$X_1\$     | \$X_2\$     | \... | \$X_j\$     | \... | \$X_p\$     |
+|---------|-------------|-------------|------|-------------|------|-------------|
+| \$x_1\$ | \$x\_{11}\$ | \$x\_{12}\$ | \... | \$x\_{1j}\$ | \... | \$x\_{1p}\$ |
+| \$x_2\$ | \$x\_{21}\$ | \$x\_{22}\$ | \... | \$x\_{2j}\$ | \... | \$x\_{2p}\$ |
+| \...    | \...        | \...        | \... | \...        | \... | \...        |
+| \$x_i\$ | \$x\_{i1}\$ | \$x\_{i2}\$ | \... | \$x\_{ij}\$ | \... | \$x\_{ip}\$ |
+| \...    | \...        | \...        | \... | \...        | \... | \...        |
+| \$x_n\$ | \$x\_{n1}\$ | \$x\_{n2}\$ | \... | \$x\_{nj}\$ | \... | \$x\_{np}\$ |
 
-## Equations
+## Equations {.smaller background-color="#FAFAF5"}
 
 **Standardized Data:** $${z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
@@ -113,46 +107,96 @@ course: STA 6257 - Advance Statistical Modeling
 
 **Sample Mean Vector:** $$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
 
-## Equations continued ...
-
 **Sample Covariance Matrix:** $$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
-
-::: {.callout-note collapse="true"}
-[The **sample mean vector** represents the center of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
-
-[The **sample covariance matrix** represents the variations (diagonal elements) & correlations (off-diagonal elements) of the random vector ($x_i$)]{style="color: #1A79E1; font-size:12px;"}
-:::
-
-## Equations continued ...
 
 **Eigenvectors:** $${\hat{a}_{k}}$$ {#eq-eigenvec}
 
 **Eigenvalues:** $${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
 
+## Data {background-color="#FAFAF5"}
 
-## Analysis
+[Replication Data & Code](https://thedata.harvard.edu/dvn/dv/ajps) [@originalConspiracyData]
+
+::: {.panel-tabset}
+
+### Description
+
+- 2,000 respondents answering a 5-point Likert scale on their belief in various conspiracies
+- Grouped by political ideology
+- Sampled from a nationally representative survey in 2011
+
+::: aside
+
+:::
+
+### Groups
+
+-   Very Liberal
+-   Liberal
+-   Somewhat Liberal
+-   Middle of the Road
+-   Somewhat Conservative
+-   Conservative
+-   Very Conservative
+
+### Variables {.smaller}
+
+-   **truther911:** Certain U.S. government officials planned the attacks of September 11, 2001, to incite war
+-   **obamabirth:** President Barack Obama was not really born in the US and does not have an authentic Hawaiian birth certificate
+-   **fincrisis:** The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world's economy
+-   **flourolights:** The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control
+-   **endtimes:** We are currently living in End Times as foretold by Biblical prophecy
+-   **sorosplot:** Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control
+-   **iraqjews:** The U.S. invasion of Iraq was driven by oil companies and Jews in the U.S. and Israel
+-   **vaportrail:** Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials
+
+### Scale
+
+```{r}
+## |     Label         | Scale |
+## | Strongly disagree |   1   |
+## | Disagree          |   2   |
+## | Neutral           |   3   |
+## | Agree             |   4   |
+## | Strongly agree    |   5   |
+```
+
+### First 10 Rows
+
+![](index_files/figure-html/first10rows.png)
+
+:::
+
+## Analysis {background-color="#FAFAF5"}
 
 ![](index_files/figure-html/plot1-1.png){#fig-rawDistributions}
 
+## Scree plot {background-color="#FAFAF5"}
 
-## Conclusion
+![](index_files/figure-html/plot2-1.png){#fig-Screeplot}
+
+## Cluster {background-color="#FAFAF5"}
+
+![](index_files/figure-html/plot3-1.png){#fig-cluster}
+
+## Conclusion {background-color="#FAFAF5"}
 
 -   PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out.
 
 -   In our conclusion of Data, we saw that Scree-plot Proportion of Variance 0.4256 0.2027 0.09081 0.0669 0.06306 0.05966 0.05214 0.03907 and as well that plot dropped 10% from variances after Comp 3.
 
--   
+-   We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same scale and units.
 
-        We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same     scale and units.
-
-## Conclusion Cont'd
+## Conclusion Cont'd {background-color="#FAFAF5"}
 
 -   We also make sure in our dataset that the variables are linearly related, and we use the scatterplot to check the variables. Lastly, we ensure Outliers are removed and those Null values that are missing are noted and removed
 
+. . .
+
 -   PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications. With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to analyze large data sets across so many fields.
 
-## Conclusion Cont'd lastly
+## Conclusion Cont'd lastly {background-color="#FAFAF5"}
 
 -   As long as there are large data sets there will be a demand to reduce the dimension of that data and make valid interpretations about the trends present in that data, to this end we have PCA.
 
-## End
+## End {background-color="#FAFAF5"}
