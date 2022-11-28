@@ -1,5 +1,7 @@
 ---
 title: "PCA Slides"
+aliases: 
+  - slides.html#PCA-Slides
 author: 
 - Brandy Carr
 - Lee

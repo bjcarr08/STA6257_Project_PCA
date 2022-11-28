@@ -36,7 +36,7 @@ editor:
     wrap: 100
 ---
 
-[Website](index.html)
+[Website](https://bjcarr08.github.io/STA6257_Project_PCA/)
 
 [Slides](slides.html)
 
