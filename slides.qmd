@@ -185,9 +185,7 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 
 ![](index_files/figure-html/plot3-1.png){#fig-cluster}
 
-## Conclusion Part 1: Examples {background-color="#FAFAF5"}
-
-<br>
+## Conclusion Part 1: Good Examples {background-color="#FAFAF5"}
 
 ::: {layout="[32,68]" layout-valign="center"}
 
@@ -197,7 +195,15 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 
 :::
 
-## Conclusion Part 2: Overview {background-color="#FAFAF5"}
+## Conclusion Part 2: Bad Examples {background-color="#FAFAF5"}
+
+::: {layout="[1, 1]" layout-valign="center"}
+
+![Bad Example 1 [@badEx1]](slides_files/libs/revealjs/badExample1.png){#fig-badEx1}
+
+:::
+
+## Conclusion Part 3: Overview {background-color="#FAFAF5"}
 
 -   PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out.
 
