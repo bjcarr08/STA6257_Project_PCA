@@ -100,16 +100,18 @@ H --> I
 
 ## Sample data {background-color="#FAFAF5"}
 
+![Sample Data](slides_files/libs/revealjs/tbl-sampleData.html)
+
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
-  overflow:hidden;padding:10px 8px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
-  font-weight:normal;overflow:hidden;padding:10px 8px;word-break:normal;}
+.tg  {border-collapse:collapse;border-spacing:0px;}
+.tg td{border-color:black;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:16px;
+  overflow:hidden;padding:10px 10px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:16px;
+  font-weight:normal;overflow:hidden;padding:10px 10px;word-break:normal;}
 .tg .tg-vi6l{background-color:#ffffff;border-color:#8b814c;color:#8b814c;text-align:center;vertical-align:top}
 .tg .tg-pi0b{background-color:#eaead6;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
 </style>
-<table class="tg" style="undefined;table-layout: fixed; width: 980px">
+<table class="tg" style="undefined;table-layout: fixed; width: 980px; height: 500px;>
 <colgroup>
 <col style="width: 140px">
 <col style="width: 140px">
@@ -188,11 +190,10 @@ H --> I
 </tbody>
 </table>
 
+
 ## Equations {.smaller background-color="#FAFAF5"}
 
-
-
-$${\sf Standardize\ Data:}\ \ \ \ \ \ \ \ {z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$${#eq-stdzData}
+$${\sf Standardize\ Data:}\ \ \ \ \ \ \ \ {z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
 $${\sf Random\ Vector:}\ \ \ \ \ \ \ \ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
 
