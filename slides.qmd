@@ -180,11 +180,11 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 
 ![](index_files/figure-html/plot2-1.png){#fig-Screeplot}
 
-## Cluster {background-color="#FAFAF5"}
+## PCA Biplot with Political Ideology Clusters {background-color="#FAFAF5"}
 
-![](index_files/figure-html/plot3-1.png){#fig-cluster}
+![](index_files/figure-html/plot3-1.png){#fig-biplot height="550px"}
 
-## Conclusion Part 1: Good Examples {background-color="#FAFAF5"}
+## Good Examples {background-color="#FAFAF5"}
 
 ::: {layout="[32,68]" layout-valign="center"}
 ![Good Example 1 [@goodEx1]](slides_files/libs/revealjs/pca_goodExample1.jpg){#fig-goodEx1}
@@ -192,7 +192,7 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 ![Good Example 2 [@goodEx2]](slides_files/libs/revealjs/pca_goodExample2.jpeg){#fig-goodEx2}
 :::
 
-## Conclusion Part 2: Bad Examples {background-color="#FAFAF5"}
+## Bad Examples {background-color="#FAFAF5"}
 
 ::: {layout="[1, 1]" layout-valign="center"}
 ![Bad Example 1 [@badEx1]](slides_files/libs/revealjs/badExample1.png){#fig-badEx1}
@@ -200,7 +200,7 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 ![Bad Example 2 [@badEx2]](slides_files/libs/revealjs/000024.png){#fig-badEx2}
 :::
 
-## Conclusion Part 3: Overview {background-color="#FAFAF5"}
+## Conclusion {background-color="#FAFAF5"}
 
 -   PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out.
 
