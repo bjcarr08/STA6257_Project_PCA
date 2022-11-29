@@ -24,15 +24,21 @@ course: STA 6257 - Advance Statistical Modeling
 
 ## What is it? {background-color="#FAFAF5"}
 
+<br>
+
 -   Principal component analysis (PCA) is an unsupervised machine learning method that can be used as the first step in data analysis
 -   Main goal: reduce the number of dimensions/features while retaining most of the original variability
 -   This is achieved using a vector space transform
 
 ## Machine Learning Techniques {auto-animate="true" auto-animate-easing="ease-in-out" background-color="#FAFAF5" color="#8B814C"}
 
+<br>
+
 ![](index_files/figure-html/machineLearning_fig0.png){#fig-machineLearning data-id="fig1" height="520px" width="584px" fig-align="center"}
 
 ## Machine Learning Techniques {auto-animate="true" auto-animate-easing="ease-in-out" background-color="#FAFAF5" color="#8B814C"}
+
+<br>
 
 ![](index_files/figure-html/machineLearning_fig1.png){data-id="fig1" height="520px" width="584px" fig-align="center"}
 
@@ -64,27 +70,28 @@ course: STA 6257 - Advance Statistical Modeling
 
 ## Methods {background-color="#FAFAF5"}
 
-PCA is an unsupervised machine learning tool used to find hidden patterns in multivariate datasets.
+<br>
 
-It is often used as the 1st step when preforming other multivariate methods such as: 
-
-- multiple regression
-- cluster analysis
-- discriminant analysis
-
-The main goal is to take the original correlated variables and project them into a new set of smaller uncorrelated variables, the principal components. (dimension reduction)
-
-PCA is the most beneficial when the first 2 PC's (combined) explain over 80% of the variance. 
-
-Most often only the first 2 PC's are of importance because it is easiest te represent visually, with the 1st PC as the xaxis, the 2nd as the yaxis, and the eigenvectors (loadings) represented as arrows originating from the center of the plot.  
+- PCA is an unsupervised machine learning tool used to find hidden patterns in multivariate datasets.
+- It is often used as the 1st step when preforming other multivariate methods such as: 
+  - multiple regression
+  - cluster analysis
+  - discriminant analysis
+- The main goal is to take the original correlated variables and project them into a new set of smaller uncorrelated variables, the principal components. (dimension reduction)
+- PCA is the most beneficial when the first 2 PC's (combined) explain over 80% of the variance. 
+- Most often only the first 2 PC's are of importance because it is easiest te represent visually, with the 1st PC as the xaxis, the 2nd as the yaxis, and the eigenvectors (loadings) represented as arrows originating from the center of the plot.  
 
 
 ## Assumptions & Process {#sec-assumptions background-color="#FAFAF5"}
+
+<br>
 
 1. Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
 2. Variables should all be the same scale/units & if not, they should be standardized
 3. Variables are linearly related
 4. Outliers & missing or impossible values should be removed
+
+<br>
 
 ```{mermaid, code-fold: hide}
 
@@ -112,6 +119,8 @@ H --> I
 ![Sample Data](slides_files/libs/revealjs/tbl_sampleData.PNG){#fig-sampleData data-id="fig3" height="470px" width="900px" fig-align="left"}
 
 ## Equations {.smaller background-color="#FAFAF5"}
+
+<b>
 
 $${\sf Standardize\ Data:}\ \ \ \ \ \ \ \ {z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
@@ -169,11 +178,11 @@ All variables were measured using a 5-point likert scale: $$Strongly\ Disagree\ 
 
 ### Scales/Units
 
-![ ](index_files/figure-html/plot1-1.png){#fig-rawDistributions height="500px"}
+![Distributions](index_files/figure-html/plot1-1.png){#fig-rawDistributions height="500px"}
 
 ### Linearity
 
-![Correlation Matricies](index_files/figure-html/plot0-1.png){#fig-linearity height="500px"}
+![Correlation Matricies](index_files/figure-html/plot0-1.png){#fig-linearity height="650px"}
 
 :::
 
@@ -188,9 +197,9 @@ All variables were measured using a 5-point likert scale: $$Strongly\ Disagree\ 
 
 ::: {layout="[35,65]" layout-valign="center"}
 
-![](slides_files/libs/revealjs/tbl_biplot.PNG){#fig-tblBiblot}
+![Loadings](slides_files/libs/revealjs/tbl_biplot.PNG){#fig-tblBiblot}
 
-![](index_files/figure-html/plot3-1.png){#fig-biplot}
+![Biplot](index_files/figure-html/plot3-1.png){#fig-biplot}
 
 :::
 
