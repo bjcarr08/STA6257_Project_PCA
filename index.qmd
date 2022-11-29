@@ -161,9 +161,9 @@ project the coordinates onto the new axis. Once this is done we obtain a second 
 (and principal coordinate axis) by finding the direction of the second largest variance in the data, this 
 axis is orthogonal to our first PC. These two PCs define a plane onto which we can project further coordinates onto (Richardson).
 
-```{mermaid, flowchart, code-fold: hide}
+```{mermaid, code-fold: hide}
 
-%%{init: {'format': 'svg', 'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
 
 flowchart LR
 A[(Clean<br/>Data)] --> B((Are all<br/>vars the same<br/>scale/unit?))

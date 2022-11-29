@@ -8,6 +8,7 @@ author:
 - Tavish
 format: 
   revealjs:
+    theme: [default, slides_files/libs/revealjs/custom.scss]
     scrollable: true
     smaller: true
     margin: 0.01
@@ -73,7 +74,7 @@ course: STA 6257 - Advance Statistical Modeling
 
 ```{mermaid, code-fold: hide}
 
-%%{init: {'format': 'svg', 'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'mainBkg': '#FAFAF5', 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
 
 flowchart LR
 A[(Clean<br/>Data)] --> B((Are all<br/>vars the same<br/>scale/unit?))
@@ -102,9 +103,9 @@ H --> I
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
-  overflow:hidden;padding:5px 4px;word-break:normal;}
+  overflow:hidden;padding:10px 8px;word-break:normal;}
 .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;
-  font-weight:normal;overflow:hidden;padding:5px 4px;word-break:normal;}
+  font-weight:normal;overflow:hidden;padding:10px 8px;word-break:normal;}
 .tg .tg-vi6l{background-color:#ffffff;border-color:#8b814c;color:#8b814c;text-align:center;vertical-align:top}
 .tg .tg-pi0b{background-color:#eaead6;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
 </style>
@@ -189,21 +190,25 @@ H --> I
 
 ## Equations {.smaller background-color="#FAFAF5"}
 
-**Standardized Data:** $${z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
 
-**Random Vector:** $${x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
 
-**Sample Mean Vector:** $$\hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
+$${\sf Standardize\ Data:}\ \ \ \ \ \ \ \ {z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$${#eq-stdzData}
 
-**Sample Covariance Matrix:** $$\hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
+$${\sf Random\ Vector:}\ \ \ \ \ \ \ \ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
 
-**Eigenvectors:** $${\hat{a}_{k}}$$ {#eq-eigenvec}
+$${\sf Sample\ Mean\ Vector:}\ \ \ \ \ \ \ \ \hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
 
-**Eigenvalues:** $${\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
+$${\sf Sample\ Covariance\ Vector:}\ \ \ \ \ \ \ \ \hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
+
+$${\sf Eigenvectors:}\ \ \ \ \ \ \ \ {\hat{a}_{k}}$$ {#eq-eigenvec}
+
+$${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
 
 ## Data {background-color="#FAFAF5"}
 
-[Replication Data & Code](https://thedata.harvard.edu/dvn/dv/ajps) [@originalConspiracyData]
+[Replication Data & Code](https://thedata.harvard.edu/dvn/dv/ajps)
+
+[@originalConspiracyData]
 
 ::: panel-tabset
 ### Description
