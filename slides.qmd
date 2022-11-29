@@ -38,6 +38,8 @@ course: STA 6257 - Advance Statistical Modeling
 
 ## Why use PCA? {background-color="#FAFAF5"}
 
+<br>
+
 -   Makes it easier to graphically visualize hidden patterns in the data
 -   High number of predictor variables or highly correlated variables when running a regression model
 -   To observe hidden trends, jumps, clusters, patterns and outliers
@@ -46,11 +48,15 @@ course: STA 6257 - Advance Statistical Modeling
 
 ## Where has PCA been applied? {background-color="#FAFAF5"}
 
+<br>
+
 -   PCA is a broadly used statistical method whose use stretches across many scientific disciplines
 -   Image analysis, analysis of web data, cyber security analysis, mental disorders, recognizing microanerysm, facial recognition, etc.
 -   Many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline
 
 ## How does it work? {background-color="#FAFAF5"}
+
+<br>
 
 -   By mathematical projection we can interpret the original data set with just a few variables, namely the principal components
 -   The process of reduction preserves the maximum variability in the data (i.e. the statistical information present in the data)
@@ -58,19 +64,27 @@ course: STA 6257 - Advance Statistical Modeling
 
 ## Methods {background-color="#FAFAF5"}
 
--   PCA forms the basis of multivariate data analysis based on projection methods
--   Variability in the original (correlated) variables is explained through a smaller (uncorrelated) set of new variables i.e. the principal components (PC's)
--   For un-scaled data calculations should either be preformed on the correlation matrix (instead of the covariance matrix)
--   Data should be standardized with mean 0 and variance 1 (z scores)
--   A new set of orthogonal coordinate axes are identified from the original data set
--   Accomplished by finding the direction of maximal variance through each dimension
--   Equivalent to using the least squares method
--   This new axis is the first principal component of the data set
--   Next, orthogonal projection is used to project the coordinates onto the new axis
--   Obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, orthogonal to our first PC
--   These two PCs define a plane onto which we can project further coordinates onto
+PCA is an unsupervised machine learning tool used to find hidden patterns in multivariate datasets.
 
-## Methods Flowchart {background-color="#FAFAF5"}
+It is often used as the 1st step when preforming other multivariate methods such as: 
+
+- multiple regression
+- cluster analysis
+- discriminant analysis
+
+The main goal is to take the original correlated variables and project them into a new set of smaller uncorrelated variables, the principal components. (dimension reduction)
+
+PCA is the most beneficial when the first 2 PC's (combined) explain over 80% of the variance. 
+
+Most often only the first 2 PC's are of importance because it is easiest te represent visually, with the 1st PC as the xaxis, the 2nd as the yaxis, and the eigenvectors (loadings) represented as arrows originating from the center of the plot.  
+
+
+## Assumptions & Process {#sec-assumptions background-color="#FAFAF5"}
+
+1. Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
+2. Variables should all be the same scale/units & if not, they should be standardized
+3. Variables are linearly related
+4. Outliers & missing or impossible values should be removed
 
 ```{mermaid, code-fold: hide}
 
@@ -89,14 +103,6 @@ G --> I(Eigenvalues<br/>Eigenvectors)
 H --> I
 
 ```
-
-## Assumptions {background-color="#FAFAF5"}
-
--   Variables should be continuous, interval or ratio level of measurement
--   Ordinal variables, such as likert-scale, are also often used
--   Variables should all be the same scale/units
--   Variables are linearly related
--   Outliers & missing or impossible values should be removed
 
 ## Sample data {background-color="#FAFAF5"}
 
@@ -132,10 +138,7 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 -   Grouped by political ideology
 -   Sampled from a nationally representative survey in 2011
 
-::: aside
-:::
-
-### Groups
+### Groups (clusters)
 
 -   Very Liberal
 -   Liberal
@@ -147,34 +150,31 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 
 ### Variables {.smaller}
 
--   **truther911:** Certain U.S. government officials planned the attacks of September 11, 2001, to incite war
--   **obamabirth:** President Barack Obama was not really born in the US and does not have an authentic Hawaiian birth certificate
--   **fincrisis:** The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world's economy
--   **flourolights:** The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control
--   **endtimes:** We are currently living in End Times as foretold by Biblical prophecy
--   **sorosplot:** Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control
--   **iraqjews:** The U.S. invasion of Iraq was driven by oil companies and Jews in the U.S. and Israel
--   **vaportrail:** Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials
+All variables were measured using a 5-point likert scale: $$Strongly\ Disagree\ (1)\ <\ Disagree\ (2)\ <\ Neutral\ (3)\ <\ Agree\ (4)\ <\ Strongly\ Agree\ (5)$$
 
-### Scale
+1.   **truther911:**  Certain U.S. government officials planned the attacks of September 11, 2001, to incite war
+2.   **obamabirth:**  President Barack Obama was not really born in the US and does not have an authentic Hawaiian birth certificate
+3.   **fincrisis:**  The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world's economy
+4.   **flourolights:**  The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control
+5.   **endtimes:**  We are currently living in End Times as foretold by Biblical prophecy
+6.   **sorosplot:**  Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control
+7.   **iraqjews:**  The U.S. invasion of Iraq was driven by oil companies and Jews in the U.S. and Israel
+8.   **vaportrail:**  Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials
 
-```{r}
-## |     Label         | Scale |
-## | Strongly disagree |   1   |
-## | Disagree          |   2   |
-## | Neutral           |   3   |
-## | Agree             |   4   |
-## | Strongly agree    |   5   |
-```
-
-### First 10 Rows
-
-![](index_files/figure-html/first10rows.png)
 :::
 
-## Analysis {background-color="#FAFAF5"}
+## Check Assumptions {background-color="#FAFAF5"}
+
+::: panel-tabset
+
+### Scales/Units
 
 ![](index_files/figure-html/plot1-1.png){#fig-rawDistributions}
+### Linearity
+
+![](index_files/figure-html/plot0-1.png){#fig-linearity}
+
+:::
 
 ## Screeplot {background-color="#FAFAF5"}
 

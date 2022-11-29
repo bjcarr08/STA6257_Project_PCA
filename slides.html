@@ -381,6 +381,7 @@
 </section>
 <section id="why-use-pca" class="slide level2" data-background-color="#FAFAF5">
 <h2>Why use PCA?</h2>
+<p><br></p>
 <ul>
 <li>Makes it easier to graphically visualize hidden patterns in the data</li>
 <li>High number of predictor variables or highly correlated variables when running a regression model</li>
@@ -391,6 +392,7 @@
 </section>
 <section id="where-has-pca-been-applied" class="slide level2" data-background-color="#FAFAF5">
 <h2>Where has PCA been applied?</h2>
+<p><br></p>
 <ul>
 <li>PCA is a broadly used statistical method whose use stretches across many scientific disciplines</li>
 <li>Image analysis, analysis of web data, cyber security analysis, mental disorders, recognizing microanerysm, facial recognition, etc.</li>
@@ -399,6 +401,7 @@
 </section>
 <section id="how-does-it-work" class="slide level2" data-background-color="#FAFAF5">
 <h2>How does it work?</h2>
+<p><br></p>
 <ul>
 <li>By mathematical projection we can interpret the original data set with just a few variables, namely the principal components</li>
 <li>The process of reduction preserves the maximum variability in the data (i.e.&nbsp;the statistical information present in the data)</li>
@@ -407,22 +410,25 @@
 </section>
 <section id="methods" class="slide level2" data-background-color="#FAFAF5">
 <h2>Methods</h2>
+<p>PCA is an unsupervised machine learning tool used to find hidden patterns in multivariate datasets.</p>
+<p>It is often used as the 1st step when preforming other multivariate methods such as:</p>
 <ul>
-<li>PCA forms the basis of multivariate data analysis based on projection methods</li>
-<li>Variability in the original (correlated) variables is explained through a smaller (uncorrelated) set of new variables i.e.&nbsp;the principal components (PC’s)</li>
-<li>For un-scaled data calculations should either be preformed on the correlation matrix (instead of the covariance matrix)</li>
-<li>Data should be standardized with mean 0 and variance 1 (z scores)</li>
-<li>A new set of orthogonal coordinate axes are identified from the original data set</li>
-<li>Accomplished by finding the direction of maximal variance through each dimension</li>
-<li>Equivalent to using the least squares method</li>
-<li>This new axis is the first principal component of the data set</li>
-<li>Next, orthogonal projection is used to project the coordinates onto the new axis</li>
-<li>Obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, orthogonal to our first PC</li>
-<li>These two PCs define a plane onto which we can project further coordinates onto</li>
+<li>multiple regression</li>
+<li>cluster analysis</li>
+<li>discriminant analysis</li>
 </ul>
+<p>The main goal is to take the original correlated variables and project them into a new set of smaller uncorrelated variables, the principal components. (dimension reduction)</p>
+<p>PCA is the most beneficial when the first 2 PC’s (combined) explain over 80% of the variance.</p>
+<p>Most often only the first 2 PC’s are of importance because it is easiest te represent visually, with the 1st PC as the xaxis, the 2nd as the yaxis, and the eigenvectors (loadings) represented as arrows originating from the center of the plot.</p>
 </section>
-<section id="methods-flowchart" class="slide level2" data-background-color="#FAFAF5">
-<h2>Methods Flowchart</h2>
+<section id="sec-assumptions" class="slide level2" data-background-color="#FAFAF5">
+<h2>Assumptions &amp; Process</h2>
+<ol type="1">
+<li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
+<li>Variables should all be the same scale/units &amp; if not, they should be standardized</li>
+<li>Variables are linearly related</li>
+<li>Outliers &amp; missing or impossible values should be removed</li>
+</ol>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
@@ -449,16 +455,6 @@ H --&gt; I
 </div>
 </div>
 </div>
-</section>
-<section id="assumptions" class="slide level2" data-background-color="#FAFAF5">
-<h2>Assumptions</h2>
-<ul>
-<li>Variables should be continuous, interval or ratio level of measurement</li>
-<li>Ordinal variables, such as likert-scale, are also often used</li>
-<li>Variables should all be the same scale/units</li>
-<li>Variables are linearly related</li>
-<li>Outliers &amp; missing or impossible values should be removed</li>
-</ul>
 </section>
 <section id="sample-data" class="slide level2" data-background-color="#FAFAF5">
 <h2>Sample data</h2>
@@ -487,7 +483,7 @@ H --&gt; I
 <p><a href="https://thedata.harvard.edu/dvn/dv/ajps">Replication Data &amp; Code</a></p>
 <p><span class="citation" data-cites="originalConspiracyData">(<a href="#/end" role="doc-biblioref" onclick="">Oliver and Wood 2013</a>)</span></p>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Description</a></li><li><a href="#tabset-1-2">Groups</a></li><li><a href="#tabset-1-3">Variables</a></li><li><a href="#tabset-1-4">Scale</a></li><li><a href="#tabset-1-5">First 10 Rows</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Description</a></li><li><a href="#tabset-1-2">Groups (clusters)</a></li><li><a href="#tabset-1-3">Variables</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <ul>
@@ -495,7 +491,6 @@ H --&gt; I
 <li>Grouped by political ideology</li>
 <li>Sampled from a nationally representative survey in 2011</li>
 </ul>
-
 </div>
 <div id="tabset-1-2">
 <ul>
@@ -509,7 +504,8 @@ H --&gt; I
 </ul>
 </div>
 <div id="tabset-1-3" class="smaller">
-<ul>
+<p>All variables were measured using a 5-point likert scale: <span class="math display">\[Strongly\ Disagree\ (1)\ &lt;\ Disagree\ (2)\ &lt;\ Neutral\ (3)\ &lt;\ Agree\ (4)\ &lt;\ Strongly\ Agree\ (5)\]</span></p>
+<ol type="1">
 <li><strong>truther911:</strong> Certain U.S. government officials planned the attacks of September 11, 2001, to incite war</li>
 <li><strong>obamabirth:</strong> President Barack Obama was not really born in the US and does not have an authentic Hawaiian birth certificate</li>
 <li><strong>fincrisis:</strong> The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world’s economy</li>
@@ -518,24 +514,27 @@ H --&gt; I
 <li><strong>sorosplot:</strong> Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control</li>
 <li><strong>iraqjews:</strong> The U.S. invasion of Iraq was driven by oil companies and Jews in the U.S. and Israel</li>
 <li><strong>vaportrail:</strong> Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials</li>
-</ul>
-</div>
-<div id="tabset-1-4">
-<div class="cell">
-
-</div>
-</div>
-<div id="tabset-1-5">
-<p><img data-src="index_files/figure-html/first10rows.png"></p>
+</ol>
 </div>
 </div>
 </div>
-<aside><div>
-
-</div></aside></section>
-<section id="analysis" class="slide level2" data-background-color="#FAFAF5">
-<h2>Analysis</h2>
-<p><img data-src="index_files/figure-html/plot1-1.png" id="fig-rawDistributions"></p>
+</section>
+<section id="check-assumptions" class="slide level2" data-background-color="#FAFAF5">
+<h2>Check Assumptions</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Scales/Units</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p><img data-src="index_files/figure-html/plot1-1.png" id="fig-rawDistributions"> ### Linearity</p>
+<div id="fig-linearity" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-html/plot0-1.png"></p>
+<p></p><figcaption>Figure&nbsp;2: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="screeplot" class="slide level2" data-background-color="#FAFAF5">
 <h2>Screeplot</h2>
@@ -550,7 +549,7 @@ H --&gt; I
 <div id="fig-tblBiblot" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="slides_files/libs/revealjs/tbl_biplot.PNG"></p>
-<p></p><figcaption>Figure&nbsp;2: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;3: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -558,7 +557,7 @@ H --&gt; I
 <div id="fig-biplot" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-html/plot3-1.png"></p>
-<p></p><figcaption>Figure&nbsp;3: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;4: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -573,7 +572,7 @@ H --&gt; I
 <div id="fig-goodEx1" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="slides_files/libs/revealjs/pca_goodExample1.jpg"></p>
-<p></p><figcaption>Figure&nbsp;4: Good Example 1 <span class="citation" data-cites="goodEx1">(<a href="#/end" role="doc-biblioref" onclick="">Martíni et al. 2021</a>)</span></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;5: Good Example 1 <span class="citation" data-cites="goodEx1">(<a href="#/end" role="doc-biblioref" onclick="">Martíni et al. 2021</a>)</span></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -581,7 +580,7 @@ H --&gt; I
 <div id="fig-goodEx2" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="slides_files/libs/revealjs/pca_goodExample2.jpeg"></p>
-<p></p><figcaption>Figure&nbsp;5: Good Example 2 <span class="citation" data-cites="goodEx2">(<a href="#/end" role="doc-biblioref" onclick="">Grabska, Beć, and Huck 2021</a>)</span></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;6: Good Example 2 <span class="citation" data-cites="goodEx2">(<a href="#/end" role="doc-biblioref" onclick="">Grabska, Beć, and Huck 2021</a>)</span></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -596,7 +595,7 @@ H --&gt; I
 <div id="fig-badEx1" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="slides_files/libs/revealjs/badExample1.png"></p>
-<p></p><figcaption>Figure&nbsp;6: Bad Example 1 <span class="citation" data-cites="badEx1">(<a href="#/end" role="doc-biblioref" onclick="">Juan Pablo 2021</a>)</span></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;7: Bad Example 1 <span class="citation" data-cites="badEx1">(<a href="#/end" role="doc-biblioref" onclick="">Juan Pablo 2021</a>)</span></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -604,7 +603,7 @@ H --&gt; I
 <div id="fig-badEx2" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="slides_files/libs/revealjs/000024.png"></p>
-<p></p><figcaption>Figure&nbsp;7: Bad Example 2 <span class="citation" data-cites="badEx2">(<a href="#/end" role="doc-biblioref" onclick=""><strong>badEx2?</strong></a>)</span></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;8: Bad Example 2 <span class="citation" data-cites="badEx2">(<a href="#/end" role="doc-biblioref" onclick=""><strong>badEx2?</strong></a>)</span></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -878,48 +877,6 @@ Oliver, J. Eric, and Thomas J. Wood. 2013. <span>“<span class="nocase">Replica
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
