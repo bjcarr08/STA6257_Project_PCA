@@ -72,24 +72,28 @@ course: STA 6257 - Advance Statistical Modeling
 
 <br>
 
-- PCA is an unsupervised machine learning tool used to find hidden patterns in multivariate datasets.
-- It is often used as the 1st step when preforming other multivariate methods such as: 
-  - multiple regression
-  - cluster analysis
-  - discriminant analysis
-- The main goal is to take the original correlated variables and project them into a new set of smaller uncorrelated variables, the principal components. (dimension reduction)
-- PCA is the most beneficial when the first 2 PC's (combined) explain over 80% of the variance. 
-- Most often only the first 2 PC's are of importance because it is easiest te represent visually, with the 1st PC as the xaxis, the 2nd as the yaxis, and the eigenvectors (loadings) represented as arrows originating from the center of the plot.  
+-   PCA is an unsupervised machine learning tool used to find hidden patterns in multivariate datasets.
 
+. . . 
+
+-   It is often used as the 1st step when preforming other multivariate methods such as:
+    -   multiple regression
+    -   cluster analysis
+    -   discriminant analysis
+
+. . . 
+
+-   The main goal is to take the original correlated variables and project them into a new set of smaller uncorrelated variables, the principal components. (dimension reduction)
+
+. . . 
+
+-   PCA is the most beneficial when the first 2 PC's (combined) explain over 80% of the variance.
+
+. . . 
+
+-   Most often only the first 2 PC's are of importance because it is easiest te represent visually, with the 1st PC as the xaxis, the 2nd as the yaxis, and the eigenvectors (loadings) represented as arrows originating from the center of the plot.
 
 ## Assumptions & Process {#sec-assumptions background-color="#FAFAF5"}
-
-<br>
-
-1. Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
-2. Variables should all be the same scale/units & if not, they should be standardized
-3. Variables are linearly related
-4. Outliers & missing or impossible values should be removed
 
 <br>
 
@@ -110,6 +114,25 @@ G --> I(Eigenvalues<br/>Eigenvectors)
 H --> I
 
 ```
+
+<br>
+
+. . . 
+
+1.  Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
+
+. . . 
+
+2.  Variables should all be the same scale/units & if not, they should be standardized
+
+. . . 
+
+3.  Variables are linearly related
+
+. . . 
+
+4.  Outliers & missing or impossible values should be removed
+
 
 ## Sample data {background-color="#FAFAF5"}
 
@@ -159,21 +182,19 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 
 All variables were measured using a 5-point likert scale: $$Strongly\ Disagree\ (1)\ <\ Disagree\ (2)\ <\ Neutral\ (3)\ <\ Agree\ (4)\ <\ Strongly\ Agree\ (5)$$
 
-1.   **truther911:**  Certain U.S. government officials planned the attacks of September 11, 2001, to incite war
-2.   **obamabirth:**  President Barack Obama was not really born in the US and does not have an authentic Hawaiian birth certificate
-3.   **fincrisis:**  The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world's economy
-4.   **flourolights:**  The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control
-5.   **endtimes:**  We are currently living in End Times as foretold by Biblical prophecy
-6.   **sorosplot:**  Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control
-7.   **iraqjews:**  The U.S. invasion of Iraq was driven by oil companies and Jews in the U.S. and Israel
-8.   **vaportrail:**  Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials
-
+1.  **truther911:** Certain U.S. government officials planned the attacks of September 11, 2001, to incite war
+2.  **obamabirth:** President Barack Obama was not really born in the US and does not have an authentic Hawaiian birth certificate
+3.  **fincrisis:** The current financial crisis was secretly orchestrated by a small group of Wall Street bankers to extend the power of the Federal Reserve and further their control of the world's economy
+4.  **flourolights:** The U.S. government is mandating the switch to compact fluorescent light bulbs because such lights make people more obedient and easier to control
+5.  **endtimes:** We are currently living in End Times as foretold by Biblical prophecy
+6.  **sorosplot:** Billionaire George Soros is behind a hidden plot to destabilize the American government, take control of the media, and put the world under his control
+7.  **iraqjews:** The U.S. invasion of Iraq was driven by oil companies and Jews in the U.S. and Israel
+8.  **vaportrail:** Vapor trails left by aircraft are actually chemical agents deliberately sprayed in a clandestine program directed by government officials
 :::
 
 ## Check Assumptions {background-color="#FAFAF5"}
 
 ::: panel-tabset
-
 ### Scales/Units
 
 ![Distributions](index_files/figure-html/plot1-1.png){#fig-rawDistributions height="500px"}
@@ -181,7 +202,6 @@ All variables were measured using a 5-point likert scale: $$Strongly\ Disagree\ 
 ### Linearity
 
 ![Correlation Matricies](index_files/figure-html/plot0-1.png){#fig-linearity height="650px"}
-
 :::
 
 ## Screeplot {background-color="#FAFAF5"}
@@ -190,15 +210,12 @@ All variables were measured using a 5-point likert scale: $$Strongly\ Disagree\ 
 
 ![](slides_files/libs/revealjs/tbl_screeplot.PNG){#fig-tblScreeplot}
 
-
 ## PCA Biplot with Political Ideology Clusters {background-color="#FAFAF5"}
 
 ::: {layout="[35,65]" layout-valign="center"}
-
 ![Loadings](slides_files/libs/revealjs/tbl_biplot.PNG){#fig-tblBiblot}
 
 ![Biplot](index_files/figure-html/plot3-1.png){#fig-biplot}
-
 :::
 
 ## Good Examples {background-color="#FAFAF5"}

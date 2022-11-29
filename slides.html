@@ -416,26 +416,35 @@
 <p><br></p>
 <ul>
 <li>PCA is an unsupervised machine learning tool used to find hidden patterns in multivariate datasets.</li>
+</ul>
+<div class="fragment">
+<ul>
 <li>It is often used as the 1st step when preforming other multivariate methods such as:
 <ul>
 <li>multiple regression</li>
 <li>cluster analysis</li>
 <li>discriminant analysis</li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li>The main goal is to take the original correlated variables and project them into a new set of smaller uncorrelated variables, the principal components. (dimension reduction)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li>PCA is the most beneficial when the first 2 PC’s (combined) explain over 80% of the variance.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li>Most often only the first 2 PC’s are of importance because it is easiest te represent visually, with the 1st PC as the xaxis, the 2nd as the yaxis, and the eigenvectors (loadings) represented as arrows originating from the center of the plot.</li>
 </ul>
+</div>
 </section>
 <section id="sec-assumptions" class="slide level2" data-background-color="#FAFAF5">
 <h2>Assumptions &amp; Process</h2>
-<p><br></p>
-<ol type="1">
-<li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
-<li>Variables should all be the same scale/units &amp; if not, they should be standardized</li>
-<li>Variables are linearly related</li>
-<li>Outliers &amp; missing or impossible values should be removed</li>
-</ol>
 <p><br></p>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
@@ -462,6 +471,27 @@ H --&gt; I
 <p></p>
 </div>
 </div>
+</div>
+<p><br></p>
+<div class="fragment">
+<ol type="1">
+<li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Variables should all be the same scale/units &amp; if not, they should be standardized</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Variables are linearly related</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li>Outliers &amp; missing or impossible values should be removed</li>
+</ol>
 </div>
 </section>
 <section id="sample-data" class="slide level2" data-background-color="#FAFAF5">
