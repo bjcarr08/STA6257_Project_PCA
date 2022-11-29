@@ -170,6 +170,7 @@ All variables were measured using a 5-point likert scale: $$Strongly\ Disagree\ 
 ### Scales/Units
 
 ![](index_files/figure-html/plot1-1.png){#fig-rawDistributions}
+
 ### Linearity
 
 ![](index_files/figure-html/plot0-1.png){#fig-linearity}
