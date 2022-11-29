@@ -176,13 +176,22 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 
 ![](index_files/figure-html/plot1-1.png){#fig-rawDistributions}
 
-## Scree plot {background-color="#FAFAF5"}
+## Screeplot {background-color="#FAFAF5"}
 
-![](index_files/figure-html/plot2-1.png){#fig-Screeplot}
+![](index_files/figure-html/plot2-1.png){#fig-Screeplot height="400px"}
+
+![](slides_files/libs/revealjs/tbl_screeplot.PNG){#fig-tblScreeplot}
+
 
 ## PCA Biplot with Political Ideology Clusters {background-color="#FAFAF5"}
 
-![](index_files/figure-html/plot3-1.png){#fig-biplot height="550px"}
+::: {layout="[35,65]" layout-valign="center"}
+
+![](slides_files/libs/revealjs/tbl_biplot.PNG){#fig-tblBiblot}
+
+![](index_files/figure-html/plot3-1.png){#fig-biplot}
+
+:::
 
 ## Good Examples {background-color="#FAFAF5"}
 
