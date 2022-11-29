@@ -100,11 +100,10 @@ H --> I
 
 ## Sample data {background-color="#FAFAF5"}
 
-- COLUMNS: Variables
-- ROWS: Observations
+-   COLUMNS: Variables
+-   ROWS: Observations
 
 ![Sample Data](slides_files/libs/revealjs/tbl_sampleData.PNG){#fig-sampleData data-id="fig3" height="470px" width="900px" fig-align="left"}
-
 
 ## Equations {.smaller background-color="#FAFAF5"}
 
@@ -188,34 +187,32 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 ## Conclusion Part 1: Good Examples {background-color="#FAFAF5"}
 
 ::: {layout="[32,68]" layout-valign="center"}
-
 ![Good Example 1 [@goodEx1]](slides_files/libs/revealjs/pca_goodExample1.jpg){#fig-goodEx1}
 
 ![Good Example 2 [@goodEx2]](slides_files/libs/revealjs/pca_goodExample2.jpeg){#fig-goodEx2}
-
 :::
 
 ## Conclusion Part 2: Bad Examples {background-color="#FAFAF5"}
 
 ::: {layout="[1, 1]" layout-valign="center"}
-
 ![Bad Example 1 [@badEx1]](slides_files/libs/revealjs/badExample1.png){#fig-badEx1}
 
+![Bad Example 2 [@badEx2]](slides_files/libs/revealjs/000024.png){#fig-badEx2}
 :::
 
 ## Conclusion Part 3: Overview {background-color="#FAFAF5"}
 
 -   PCA is a very powerful tool for data analysis. It allows us to see patterns and trends hidden in large sets of data that would otherwise be very difficult to make out.
 
-. . . 
+. . .
 
 -   In our conclusion of Data, we saw that Scree-plot Proportion of Variance 0.4256 0.2027 0.09081 0.0669 0.06306 0.05966 0.05214 0.03907 and as well that plot dropped 10% from variances after Comp 3.
 
-. . . 
+. . .
 
 -   We focus on the Assumptions we ensure the variables are continuous, intervals or ratio levels of measurements are also of the same scale and units.
 
-. . . 
+. . .
 
 -   We also make sure in our dataset that the variables are linearly related, and we use the scatterplot to check the variables. Lastly, we ensure Outliers are removed and those Null values that are missing are noted and removed
 
@@ -223,7 +220,7 @@ $${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \
 
 -   PCA has been found to be useful when performing k-means clustering which by itself is a clustering method with countless applications. With all of the flexibility and usefulness of PCA taken into consideration it is easy to see why it is such a popular way to analyze large data sets across so many fields.
 
-. . . 
+. . .
 
 -   As long as there are large data sets there will be a demand to reduce the dimension of that data and make valid interpretations about the trends present in that data, to this end we have PCA.
 
