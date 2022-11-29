@@ -100,95 +100,10 @@ H --> I
 
 ## Sample data {background-color="#FAFAF5"}
 
-![Sample Data](slides_files/libs/revealjs/tbl-sampleData.html)
+- COLUMNS: Variables
+- ROWS: Observations
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0px;}
-.tg td{border-color:black;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:16px;
-  overflow:hidden;padding:10px 10px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:16px;
-  font-weight:normal;overflow:hidden;padding:10px 10px;word-break:normal;}
-.tg .tg-vi6l{background-color:#ffffff;border-color:#8b814c;color:#8b814c;text-align:center;vertical-align:top}
-.tg .tg-pi0b{background-color:#eaead6;border-color:#8b814c;color:#8b814c;font-weight:bold;text-align:center;vertical-align:top}
-</style>
-<table class="tg" style="undefined;table-layout: fixed; width: 980px; height: 500px;>
-<colgroup>
-<col style="width: 140px">
-<col style="width: 140px">
-<col style="width: 140px">
-<col style="width: 140px">
-<col style="width: 140px">
-<col style="width: 140px">
-<col style="width: 140px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-pi0b"></th>
-    <th class="tg-pi0b">$X_1$</th>
-    <th class="tg-pi0b">$X_2$</th>
-    <th class="tg-pi0b">...</th>
-    <th class="tg-pi0b">$X_j$</th>
-    <th class="tg-pi0b">...</th>
-    <th class="tg-pi0b">$X_p$</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-pi0b">$x_1$</td>
-    <td class="tg-vi6l">$x_{11}$</td>
-    <td class="tg-vi6l">$x_{12}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{1j}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{1p}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_2$</td>
-    <td class="tg-vi6l">$x_{21}$</td>
-    <td class="tg-vi6l">$x_{22}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{2j}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{2p}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_i$</td>
-    <td class="tg-vi6l">$x_{i1}$</td>
-    <td class="tg-vi6l">$x_{i2}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{ij}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{ip}$</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">...</td>
-  </tr>
-  <tr>
-    <td class="tg-pi0b">$x_n$</td>
-    <td class="tg-vi6l">$x_{n1}$</td>
-    <td class="tg-vi6l">$x_{n2}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{nj}$</td>
-    <td class="tg-vi6l">...</td>
-    <td class="tg-vi6l">$x_{np}$</td>
-  </tr>
-</tbody>
-</table>
+![Sample Data](slides_files/libs/revealjs/tbl_sampleData.PNG){#fig-sampleData data-id="fig3" height="470px" width="900px" fig-align="left"}
 
 
 ## Equations {.smaller background-color="#FAFAF5"}
