@@ -24,15 +24,11 @@ course: STA 6257 - Advance Statistical Modeling
 
 ## What is it? {background-color="#FAFAF5"}
 
-<br>
-
--   Principal component analysis (PCA) is an unsupervised machine learning method that can be used as the first step in data analysis
+-   Principal component analysis (PCA) is an unsupervised machine learning method used as the first step in data analysis
 -   Main goal: reduce the number of dimensions/features while retaining most of the original variability
 -   This is achieved using a vector space transform
 
-<br>
-
-![](index_files/figure-html/machineLearning_fig1.png){data-id="fig1" height="520px" width="584px" fig-align="center"}
+![](index_files/figure-html/machineLearning_fig1.png){data-id="fig1" height="440px" fig-align="center"}
 
 
 ## Why use PCA? {background-color="#FAFAF5"}
