@@ -363,18 +363,6 @@
 <li>Main goal: reduce the number of dimensions/features while retaining most of the original variability</li>
 <li>This is achieved using a vector space transform</li>
 </ul>
-</section>
-<section id="machine-learning-techniques" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" data-background-color="#FAFAF5" color="#8B814C">
-<h2 data-id="quarto-animate-title">Machine Learning Techniques</h2>
-<p><br></p>
-<div id="fig-machineLearning" class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="index_files/figure-html/machineLearning_fig0.png" data-id="fig1" width="584" height="520"></p>
-</figure>
-</div>
-</section>
-<section id="machine-learning-techniques-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" data-background-color="#FAFAF5" color="#8B814C">
-<h2 data-id="quarto-animate-title">Machine Learning Techniques</h2>
 <p><br></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -446,6 +434,27 @@
 <section id="sec-assumptions" class="slide level2" data-background-color="#FAFAF5">
 <h2>Assumptions &amp; Process</h2>
 <p><br></p>
+<div class="fragment">
+<ol type="1">
+<li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Variables should all be the same scale/units &amp; if not, they should be standardized</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Variables are linearly related</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li>Outliers &amp; missing or impossible values should be removed</li>
+</ol>
+</div>
+<div class="fragment">
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
@@ -472,26 +481,6 @@ H --&gt; I
 </div>
 </div>
 </div>
-<p><br></p>
-<div class="fragment">
-<ol type="1">
-<li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li>Variables should all be the same scale/units &amp; if not, they should be standardized</li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="3" type="1">
-<li>Variables are linearly related</li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="4" type="1">
-<li>Outliers &amp; missing or impossible values should be removed</li>
-</ol>
 </div>
 </section>
 <section id="sample-data" class="slide level2" data-background-color="#FAFAF5">
@@ -506,15 +495,6 @@ H --&gt; I
 <p></p><figcaption>Figure&nbsp;1: Sample Data</figcaption><p></p>
 </figure>
 </div>
-</section>
-<section id="equations" class="slide level2 smaller" data-background-color="#FAFAF5">
-<h2>Equations</h2>
-<p><span id="eq-stdzData"><span class="math display">\[{\sf Standardize\ Data:}\ \ \ \ \ \ \ \ {z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\} \qquad(1)\]</span></span></p>
-<p><span id="eq-randomVector"><span class="math display">\[{\sf Random\ Vector:}\ \ \ \ \ \ \ \ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\} \qquad(2)\]</span></span></p>
-<p><span id="eq-meanVector"><span class="math display">\[{\sf Sample\ Mean\ Vector:}\ \ \ \ \ \ \ \ \hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i \qquad(3)\]</span></span></p>
-<p><span id="eq-covMatrix"><span class="math display">\[{\sf Sample\ Covariance\ Vector:}\ \ \ \ \ \ \ \ \hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T \qquad(4)\]</span></span></p>
-<p><span id="eq-eigenvec"><span class="math display">\[{\sf Eigenvectors:}\ \ \ \ \ \ \ \ {\hat{a}_{k}} \qquad(5)\]</span></span></p>
-<p><span id="eq-eigenval"><span class="math display">\[{\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\} \qquad(6)\]</span></span></p>
 </section>
 <section id="data" class="slide level2" data-background-color="#FAFAF5">
 <h2>Data</h2>

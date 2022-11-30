@@ -30,17 +30,10 @@ course: STA 6257 - Advance Statistical Modeling
 -   Main goal: reduce the number of dimensions/features while retaining most of the original variability
 -   This is achieved using a vector space transform
 
-## Machine Learning Techniques {auto-animate="true" auto-animate-easing="ease-in-out" background-color="#FAFAF5" color="#8B814C"}
-
-<br>
-
-![](index_files/figure-html/machineLearning_fig0.png){#fig-machineLearning data-id="fig1" height="520px" width="584px" fig-align="center"}
-
-## Machine Learning Techniques {auto-animate="true" auto-animate-easing="ease-in-out" background-color="#FAFAF5" color="#8B814C"}
-
 <br>
 
 ![](index_files/figure-html/machineLearning_fig1.png){data-id="fig1" height="520px" width="584px" fig-align="center"}
+
 
 ## Why use PCA? {background-color="#FAFAF5"}
 
@@ -97,6 +90,26 @@ course: STA 6257 - Advance Statistical Modeling
 
 <br>
 
+. . . 
+
+1.  Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
+
+. . . 
+
+2.  Variables should all be the same scale/units & if not, they should be standardized
+
+. . . 
+
+3.  Variables are linearly related
+
+. . . 
+
+4.  Outliers & missing or impossible values should be removed
+
+. . . 
+
+
+
 ```{mermaid, code-fold: hide}
 
 %%{init: {'theme': 'base', 'themeVariables': {'mainBkg': '#FAFAF5', 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
@@ -115,25 +128,6 @@ H --> I
 
 ```
 
-<br>
-
-. . . 
-
-1.  Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)
-
-. . . 
-
-2.  Variables should all be the same scale/units & if not, they should be standardized
-
-. . . 
-
-3.  Variables are linearly related
-
-. . . 
-
-4.  Outliers & missing or impossible values should be removed
-
-
 ## Sample data {background-color="#FAFAF5"}
 
 -   COLUMNS: Variables
@@ -141,19 +135,6 @@ H --> I
 
 ![Sample Data](slides_files/libs/revealjs/tbl_sampleData.PNG){#fig-sampleData data-id="fig3" height="470px" width="900px" fig-align="left"}
 
-## Equations {.smaller background-color="#FAFAF5"}
-
-$${\sf Standardize\ Data:}\ \ \ \ \ \ \ \ {z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
-
-$${\sf Random\ Vector:}\ \ \ \ \ \ \ \ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
-
-$${\sf Sample\ Mean\ Vector:}\ \ \ \ \ \ \ \ \hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
-
-$${\sf Sample\ Covariance\ Vector:}\ \ \ \ \ \ \ \ \hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
-
-$${\sf Eigenvectors:}\ \ \ \ \ \ \ \ {\hat{a}_{k}}$$ {#eq-eigenvec}
-
-$${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
 
 ## Data {background-color="#FAFAF5"}
 
