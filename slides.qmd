@@ -131,6 +131,23 @@ H --> I
 
 ![Sample Data](slides_files/libs/revealjs/tbl_sampleData.PNG){#fig-sampleData data-id="fig3" height="470px" width="900px" fig-align="left"}
 
+## Equations {.smaller background-color="#FAFAF5"}
+
+<br>
+<br>
+
+$${\sf Standardize\ Data:}\ \ \ \ \ \ \ \ {z_{ij}}\ =\ \frac{{x_{ij}} - {\overline{x_j}}} {\sqrt{\hat{\sigma_{jj}}}}, \ \ \ \ \ where\ \ \ \ i\ =\ \{1,2,...,n\}, \ \ \ \ j\ =\ \{1,2,...,p\}$$ {#eq-stdzData}
+
+$${\sf Random\ Vector:}\ \ \ \ \ \ \ \ {x_i} = {({x_{i1}}, ... , {x_{ip}})}^T,\ \ \ \ \ \ \ \ \ where\ \ i\ =\ \{1,2,...,n\}$$ {#eq-randomVector}
+
+$${\sf Sample\ Mean\ Vector:}\ \ \ \ \ \ \ \ \hat{\mu}\ \ =\ \ \overline{x}\ \ =\ \ \frac{1}{n} \sum_{i=1}^{n} x_i$$ {#eq-meanVector}
+
+$${\sf Sample\ Covariance\ Vector:}\ \ \ \ \ \ \ \ \hat{\sum}\ \ =\ \ S\ \ =\ \ {(\hat{\sigma}_{ij})}_{p{\sf x}p}\ \ =\ \ \frac{1}{n-1} \sum_{i=1}^{n} {(x_i - \overline{x})(x_i - \overline{x})}^T$$ {#eq-covMatrix}
+
+$${\sf Eigenvectors:}\ \ \ \ \ \ \ \ {\hat{a}_{k}}$$ {#eq-eigenvec}
+
+$${\sf Eigenvalues:}\ \ \ \ \ \ \ \ {\hat{y}_{ik}}\ =\ {\hat{a}^T_{k}}(x_i\ -\ \overline{x}),\ \ \ \ \ \ \ i\ =\ \{1,2,...,n\},\ \ \ \ \ \ \ k\ =\ \{1,2,...,p\}$$ {#eq-eigenval}
+
 
 ## Data {background-color="#FAFAF5"}
 
