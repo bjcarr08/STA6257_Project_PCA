@@ -313,6 +313,7 @@ library(ggplot2)
 library(data.table)
 library(ggfortify)
 library(MASS)
+library(AER)
 library(tidyr)
 library(paletteer)
 library(knitr)
@@ -410,10 +411,10 @@ conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
 #| label: fig-first10rows
 #| fig-cap: "First 10 Rows of Conspiracy Data"
 
-png("~/Git/STA6257_Project_PCA/index_files/figure-html/first10rows.png", height=550, width=1000)
-p<-tableGrob(conspiracy[c(1:10),])
-grid.arrange(p)
-dev.off()
+#png("~/Git/STA6257_Project_PCA/index_files/figure-html/first10rows.png", height=550, width=1000)
+#p<-tableGrob(conspiracy[c(1:10),])
+#grid.arrange(p)
+#dev.off()
 ```
 
 #### Visualize Data {#sec-linearity}
@@ -524,6 +525,56 @@ The matrix of variable loadings (i.e., a matrix whose columns contain the eigenv
 ```{r}
 (princomp(df))$loadings
 ```
+
+#### Other Data
+
+Let's take a brief look at some data regarding affairs. This is a data set on infidelity from a survey conducted by Psychology Today in 1969 (taken from the AER package in R - Table F.22.2 - <a>https://pages.stern.nyu.edu/~wgreene/Text/tables/tablelist5.htm</a>).
+
+**VARIABLES:**
+
+- **affairs:** numeric. How often engaged in extramarital sexual intercourse during the past year? 0 = none, 1 = once, 2 = twice, 3 = 3 times, 7 = 4–10 times, 12 = monthly, 12 = weekly, 12 = daily.
+
+- **gender:** factor indicating gender.
+
+- **age:** numeric variable coding age in years: 17.5 = under 20, 22 = 20–24, 27 = 25–29, 32 = 30–34, 37 = 35–39, 42 = 40–44, 47 = 45–49, 52 = 50–54, 57 = 55 or over.
+
+- **yearsmarried:** numeric variable coding number of years married: 0.125 = 3 months or less, 0.417 = 4–6 months, 0.75 = 6 months–1 year, 1.5 = 1–2 years, 4 = 3–5 years, 7 = 6–8 years, 10 = 9–11 years, 15 = 12 or more years.
+
+- **children:** factor. Are there children in the marriage?
+
+- **religiousness:** numeric variable coding religiousness: 1 = anti, 2 = not at all, 3 = slightly, 4 = somewhat, 5 = very.
+
+- **education:** numeric variable coding level of education: 9 = grade school, 12 = high school graduate, 14 = some college, 16 = college graduate, 17 = some graduate work, 18 = master's degree, 20 = Ph.D., M.D., or other advanced degree.
+
+- **occupation:** numeric variable coding occupation according to Hollingshead classification (reverse numbering).
+
+- **rating:** numeric variable coding self rating of marriage: 1 = very unhappy, 2 = somewhat unhappy, 3 = average, 4 = happier than average, 5 = very happy.
+
+From these variables we exclude gender and children while calculating the PC's because they do not fit the assumptions of PCA. However the following biplot was color coded according to gender. 
+
+```{r}
+# Load data
+data(Affairs)
+
+# PCA
+affairs.pca = prcomp(Affairs[,c(1,3:4,6:9)], center = TRUE, scale. = TRUE, rank. = 7)
+summary(affairs.pca)
+
+# Histogram of PC's
+plot(affairs.pca, col='pink', lwd = 4, main = "Histogram of Principal Components", col.main = 'black', xlab= "PC's 1 - 7")
+
+# Rename
+Affairs$affairs2<- ifelse(Affairs$affairs==0, "No Affair", "Affair")
+
+# biplot
+df<- Affairs[,-c(2,5,10)]
+autoplot(prcomp(df, scale.=T), data=Affairs, colour="gender", 
+         loadings=T, loadings.label=T, loadings.colour="darkgray", loadings.label.colour="black")
+
+```
+
+From the biplot and histogram above we can see that the first PC only accounts for 29.37% of the variance in the data, alongside the clustering producing results that don't have any clear meaning or groups associated with any of the variables. One may be tempted to say that occupation and education make up a trend in the data but the second PC only accounts for 22.12% of the variance in the data which is much less than is required to make such claims.
+
 
 ## Conclusion
 
