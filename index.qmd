@@ -99,6 +99,8 @@ regression model [@lang2021applied]. After the data has been transformed with PC
 algorithm such as k-means can provide additional power to the analysis of high dimensional data containing 
 linearly correlated features [@Alkha]. Because PCA projects high dimensional data into lower dimensions (often 2 or 3), is one of the most common (and useful) methods used for exploratory analysis. Plotting the data using 2 dimensions, we are now able to visualize trends, jumps, clusters, patterns and outliers which would have previously been hidden among the original (high dimensional) data.
 
+![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
+
 PCA is a broadly used statistical method whose use stretches across many scientific disciplines and
 in turn many different adaptations of PCA have been developed based on the variation in goals and
 data types associated with each respective discipline. PCA was developed first by Pearson (1901) and
@@ -148,8 +150,6 @@ Although PCA is commonly used as a first step in exploratory analysis, it does h
 
 ![Comparing Visualization Methods: What to Use When [@Jones]](index_files/figure-html/pca_vizualizationMethods.jpg){#fig-vizMethods fig-align="left"}
 
-
-![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
 
 ## Methods
 
