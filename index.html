@@ -135,7 +135,7 @@ div.csl-indent {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">1</span>  Introduction</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">2</span>  Methods</a>
   <ul class="collapse">
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#sec-assumptions" id="toc-sec-assumptions" class="nav-link" data-scroll-target="#sec-assumptions">Assumptions</a></li>
   <li><a href="#sample-data" id="toc-sample-data" class="nav-link" data-scroll-target="#sample-data">Sample Data</a></li>
   <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations">Equations</a></li>
   </ul></li>
@@ -181,7 +181,7 @@ div.csl-indent {
 </header>
 
 <p><a href="https://bjcarr08.github.io/STA6257_Project_PCA/">Website</a></p>
-<p><a href="slides.html">Slides</a></p>
+<p><a href="https://bjcarr08.github.io/STA6257_Project_PCA/slides">Slides</a></p>
 <style>
  .title {
     color: #191970;    
@@ -220,14 +220,26 @@ div.csl-indent {
 </style>
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>Principal Component Analysis (PCA) is an unsupervised machine learning method (<a href="#fig-machineLearning">Figure&nbsp;1</a>) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden patterns in the data, it’s also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>. After the data has been transformed with PCA, using a clustering algorithm such as k-means can provide additional power to the analysis of high dimensional data containing linearly correlated features <span class="citation" data-cites="Alkha">(<a href="#ref-Alkha" role="doc-biblioref">Alkhayrat, Aljnidi, and Aljoumaa 2020</a>)</span>.</p>
-<p>The most important use of PCA is to represent a multivariate data table as smaller set of variables (summary indices) to observe hidden trends, jumps, clusters, patterns and outliers.</p>
-<p>PCA is a broadly used statistical method whose use stretches across many scientific disciplines, and in turn many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline. PCA was developed first by Pearson (1901) and Hotelling (1933) <span class="citation" data-cites="Camargo">(<a href="#ref-Camargo" role="doc-biblioref">A 2022</a>)</span>. This technique transforms some number of possibly correlated variables into a smaller number of variables, the variables in this smaller matrix are referred to as the Principal Components (PC). This is achieved using a vector space transform. By mathematical projection we can interpret the original data set with just a few variables, namely the principal components achieved through calculation. Reducing dimension size in large data sets makes it easier to spot trends, patterns, and outliers in data where that information would have previously been hidden by the size of data (Richardson). The information being preserved in the process of reduction is the variability in the data (i.e.&nbsp;the statistical information present in the data). In order to preserve as much variability as possible we should “…find new variables that are linear functions of those in the original data set, that successively maximize variance and that are uncorrelated with each other” <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>. PCA assumes no distribution in data in a descriptive context, one of it’s key features that makes it so widely adaptive as an exploratory method across disciplines and data types <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>.</p>
+<p>Principal Component Analysis (PCA) is an unsupervised machine learning method (<a href="#fig-machineLearning">Figure&nbsp;3</a>) that can be used as the first step in data analysis. The main goal of PCA is to reduce the number of dimensions/features while retaining most of the original variability. Reducing the number of features makes it easier to graphically visualize hidden patterns in the data, it’s also useful when encountering a high number of predictor variables or highly correlated variables when running a regression model <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>. After the data has been transformed with PCA, using a clustering algorithm such as k-means can provide additional power to the analysis of high dimensional data containing linearly correlated features <span class="citation" data-cites="Alkha">(<a href="#ref-Alkha" role="doc-biblioref">Alkhayrat, Aljnidi, and Aljoumaa 2020</a>)</span>. Because PCA projects high dimensional data into lower dimensions (often 2 or 3), is one of the most common (and useful) methods used for exploratory analysis. Plotting the data using 2 dimensions, we are now able to visualize trends, jumps, clusters, patterns and outliers which would have previously been hidden among the original (high dimensional) data.</p>
+<p>PCA is a broadly used statistical method whose use stretches across many scientific disciplines and in turn many different adaptations of PCA have been developed based on the variation in goals and data types associated with each respective discipline. PCA was developed first by Pearson (1901) and Hotelling (1933) <span class="citation" data-cites="Camargo">(<a href="#ref-Camargo" role="doc-biblioref">A 2022</a>)</span>. This technique transforms some number of possibly correlated variables into a smaller number of variables, the variables in this smaller matrix are referred to as the Principal Components (PC). This is achieved using a vector space transform (see <a href="#fig-process">Figure&nbsp;1</a>). By mathematical projection we can interpret the original data set with just a few variables, namely the principal components achieved through calculation. Reducing dimension size in large data sets makes it easier to spot trends, patterns, and outliers in data where that information would have previously been hidden by the size of data (Richardson). The information being preserved in the process of reduction is the variability in the data (i.e.&nbsp;the statistical information present in the data). In order to preserve as much variability as possible we should “…find new variables that are linear functions of those in the original data set, that successively maximize variance and that are uncorrelated with each other” <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>. PCA assumes no distribution in data in a descriptive context, one of it’s key features that makes it so widely adaptive as an exploratory method across disciplines and data types <span class="citation" data-cites="Jolliffe">(<a href="#ref-Jolliffe" role="doc-biblioref">Jolliffe IT 2016</a>)</span>.</p>
+<div id="fig-process" class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Simplified PCA Process <span class="citation" data-cites="process">(<a href="#ref-process" role="doc-biblioref">Makesh Manral 2022</a>)</span></figcaption><p></p>
+<p><img src="index_files/figure-html/pca_process.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 <p>To lists all of PCA’s applications would be tedious and excessive, but some examples where PCA has been used is in image analysis, analysis of web data, and cyber security analysis. Essentially anywhere that large data sets are found PCA can be used to aid in discovering trends amongst the variables of that data. PCA can also be useful when studying mental disorders, data consisting of symptoms and the connections between them. When many symptoms are being observed, it can be difficult to visually represent the connections between them, both the strength of the connections and the proximity to each other. Plotting using the first 2 principal components allows for the placement on the x or y axis to become interpretable, that is, observations far left differ in some dimension (the first principal component) compared to ones far right. The same can be said in the y direction <span class="citation" data-cites="Jones">(<a href="#ref-Jones" role="doc-biblioref">Jones, Mair, and McNally 2018</a>)</span>. PCA also aids in recognizing microanerysm in medicine and how groundbreaking has been critical for diagnosis and treatment of Diabetic retinopathy <span class="citation" data-cites="Cao2018">(<a href="#ref-Cao2018" role="doc-biblioref">Cao et al. 2018</a>)</span>. Research papers show a framework for coronary artery disease risk assessment in intravascular ultrasound. The paper reflects on a novel strategy for risk stratification based on plaque morphology embedded with principal component analysis (PCA) for plaque feature dimensionality reduction and dominant feature selection technique<span class="citation" data-cites="Gorg2021">(<a href="#ref-Gorg2021" role="doc-biblioref">Gorgoglione et al. 2021</a>)</span>. Camargo identified that the best way to compare and evaluate facial recognition results with speed and accuracy is with PCA (Principal Component Analysis), alongside Support Vector Machine (SVM) methods <span class="citation" data-cites="Camargo">(<a href="#ref-Camargo" role="doc-biblioref">A 2022</a>)</span>.</p>
 <p>Taking a look into a real world example, say we have a dataset consisting of 1,000 students with exam scores from 7 different courses: Advanced Statistics, Probability Theory, Intro to Dance, World Religions, and Religion in America. We could group Advanced Statistics and Probability Theory into a new variable called Stats, group World Religions and Religion in America into a new variable Religion, and keep Intro to Dance by itself. We have Reduced the data set from 7 variables to 3 without much loss in variation. This is the main concept behind PCA except variables are not manually regrouped but instead the new variables (principal components) are derived from certain linear combinations of the original variables <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>.</p>
+<p>Although PCA is commonly used as a first step in exploratory analysis, it does have a few limitations. From <a href="#fig-vizMethods">Figure&nbsp;2</a> we can see that visualization of the first 2 principal components is interpretable in either the x or y direction separately. The distance between x and y is uninterpretable; they cannot be interpreted simultaneously (<a href="#sec-biplot">Section&nbsp;3.3.2</a>). Another drawback of PCA is that because the new variables (principal components) are linear combinations or the original variables, you might now be able to visualize hidden patterns, but reading and understanding which of the original variables contribute to each principal component can be difficult. One of the assumptions (<a href="#sec-assumptions">Section&nbsp;2.1</a>) when using PCA is that the original variables must have some linear relationship, since calculations rely on either the covariance or correlation matrices. PCA does not preform as well as other dimension reduction tools when the variables are independent (not linearly related) since it will simply just order the variables by their variances as the principal components.</p>
+<div id="fig-vizMethods" class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Comparing Visualization Methods: What to Use When <span class="citation" data-cites="Jones">(<a href="#ref-Jones" role="doc-biblioref">Jones, Mair, and McNally 2018</a>)</span></figcaption><p></p>
+<p><img src="index_files/figure-html/pca_vizualizationMethods.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 <div id="fig-machineLearning" class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Machine Learning</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Machine Learning</figcaption><p></p>
 <p><img src="index_files/figure-html/machineLearning_fig1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
@@ -236,7 +248,7 @@ div.csl-indent {
 <h2 data-number="2" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
 <p>PCA forms the basis of multivariate data analysis based on projection methods. The variability in the original (correlated) variables will be explained through a smaller (uncorrelated) set of new variables i.e.&nbsp;the principal components (PC’s). PCA results depend on the scale or units of the variables so, for unscaled data, calculations should either be preformed on the correlation matrix (instead of the covariance matrix) or the data should be standardized with mean 0 and variance 1 (z scores) <span class="citation" data-cites="lang2021applied">(<a href="#ref-lang2021applied" role="doc-biblioref">Lang and Qiu 2021</a>)</span>. Firstly, when performing PCA, a new set of orthogonal coordinate axes are identified from the original data set, which is accomplished by finding the direction of maximal variance through each dimension. This is equivalent to using the least squares method to find the line of best fit. This new axis is the first principal component of the data set. Next we use orthogonal projection to project the coordinates onto the new axis. Once this is done we obtain a second principal component (and principal coordinate axis) by finding the direction of the second largest variance in the data, this axis is orthogonal to our first PC. These two PCs define a plane onto which we can project further coordinates onto (Richardson).</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -277,8 +289,8 @@ H --&gt; I
 </div>
 </div>
 </div>
-<section id="assumptions" class="level3">
-<h3 data-anchor-id="assumptions">Assumptions</h3>
+<section id="sec-assumptions" class="level3">
+<h3 data-anchor-id="sec-assumptions">Assumptions</h3>
 <ul>
 <li>Variables should be continuous, interval or ratio level of measurement (ordinal variables, such as likert-scale, are also often used)</li>
 <li>Variables should all be the same scale/units (<a href="#eq-stdzData">Equation&nbsp;1</a>)</li>
@@ -508,7 +520,7 @@ Note
 <section id="packages" class="level3">
 <h3 data-anchor-id="packages">Packages</h3>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(ggplot2)</span>
@@ -527,13 +539,13 @@ Note
 </section>
 <section id="data" class="level3">
 <h3 data-anchor-id="data">Data</h3>
-<p>Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies. Sampled from a nationally representative survey in 2011. (Replication data and code may be found at the AJPS Dataverse website - <a href="">https://thedata.harvard.edu/dvn/dv/ajps</a>) <span class="citation" data-cites="originalConspiracyData">(<a href="#ref-originalConspiracyData" role="doc-biblioref">Oliver and Wood 2013</a>)</span></p>
+<p>Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies. Sampled from a nationally representative survey in 2011. <span class="citation" data-cites="originalConspiracyData">(<a href="#ref-originalConspiracyData" role="doc-biblioref">Oliver and Wood 2013</a>)</span></p>
 <p><strong>SCALE LEVELS:</strong></p>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+.tg td{border-color:#8B814C;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+.tg th{border-color:#8B814C;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-baqh{text-align:center;vertical-align:top}
 .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
@@ -622,7 +634,7 @@ Strongly Agree
 <section id="sec-cleanData" class="level4">
 <h4 data-anchor-id="sec-cleanData">Read &amp; Clean Data</h4>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># READ DATA FROM A GITHUB CSV FILE</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>conspiracy<span class="ot">&lt;-</span> (<span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/bjcarr08/sampleData/main/kaggleConspiracyTheoriesData.csv"</span>, <span class="at">stringsAsFactors =</span> T))[,<span class="sc">-</span><span class="dv">1</span>]</span>
@@ -637,10 +649,10 @@ Strongly Agree
 </section>
 <section id="sec-linearity" class="level4">
 <h4 data-anchor-id="sec-linearity">Visualize Data</h4>
-<p>Visually checking if linearity between variables assumption is met (not a strictly help assumption, especially when using ordinal data).</p>
+<p>Visually checking if linearity between variables assumption is met (see <a href="#sec-assumptions">Section&nbsp;2.1</a> for assumptions). This is not a strictly held assumption, especially when using ordinal data.</p>
 <p>The correlation matrix plots show enough of a relationship between variables to meet the assumption of linearity.</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># SCATTER PLOT MATRICES: TO CHECK LINEARITY ASSUMPTION</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
@@ -654,7 +666,7 @@ Strongly Agree
 </div>
 </div>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># TRANSFORM TO LONG DATA FOR PLOTS</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>conspiracy.Long<span class="ot">&lt;-</span> conspiracy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>y, <span class="at">names_to=</span><span class="st">"conspiracy"</span>, <span class="at">values_to=</span><span class="st">"score"</span>, <span class="at">values_transform=</span><span class="fu">list</span>(<span class="at">score=</span>as.numeric))</span>
@@ -679,13 +691,13 @@ Strongly Agree
 <p><img src="index_files/figure-html/plot1-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
-<p>Looking at the distribution plots above, we can see that all variables are measured in the same scale/units &amp; do not need to be standardized.</p>
+<p>Looking at the distribution plots above, we can see that all variables are measured in the same scale/units &amp; do not need to be standardized (see <a href="#sec-assumptions">Section&nbsp;2.1</a> for assumptions).</p>
 </section>
 </section>
 <section id="pca" class="level3">
 <h3 data-anchor-id="pca">PCA</h3>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">100</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
@@ -720,7 +732,7 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 <h4 data-anchor-id="scree-plot">Scree-Plot</h4>
 <p>This plot visually represents the ‘Proportion of Variance’ from the previous table. Here it is easy to see the drop off after the second PC. This type of plot can be used to help decide how many PC’s should be used/kept.</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">"#8B814C"</span>,<span class="at">col.lab=</span><span class="st">"#8B814C"</span>,<span class="at">col.main=</span><span class="st">"#8B814C"</span>,<span class="at">col.sub=</span><span class="st">"#8B814C"</span>,<span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">screeplot</span>(<span class="fu">princomp</span>(df), <span class="at">type=</span><span class="st">"lines"</span>, <span class="at">bg=</span><span class="st">"transparent"</span>, <span class="at">col=</span><span class="st">"#8B814C"</span>, <span class="at">main=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -730,11 +742,11 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 </div>
 </div>
 </section>
-<section id="biplot" class="level4">
-<h4 data-anchor-id="biplot">Biplot</h4>
-<p>In this plot we see the eigenvectors (points) &amp; eigenvalues (arrows). PCA can only be interpreted in either the x direction (horizontal distances) or in the y direction (vertical distances), but not both. Although the first PC is about 43% of variance, there is no distinction between political ideology groups in the horizontal plane. But, we do see a pattern in the vertical direction, specifically obamabirth &amp; sorosplot consisting of more conservative ideology, and iraqjews and truther911 with more liberal ideology.</p>
+<section id="sec-biplot" class="level4">
+<h4 data-anchor-id="sec-biplot">Biplot</h4>
+<p>In this plot we see the eigenvectors or points (<a href="#eq-eigenvec">Equation&nbsp;5</a>) &amp; eigenvalues or arrows (<a href="#eq-eigenval">Equation&nbsp;6</a>). PCA can only be interpreted in either the x direction (horizontal distances) or in the y direction (vertical distances), but not both. Although the first PC is about 43% of variance, there is no distinction between political ideology groups in the horizontal plane. But, we do see a pattern in the vertical direction, specifically obamabirth &amp; sorosplot consisting of more conservative ideology, and iraqjews and truther911 with more liberal ideology.</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">autoplot</span>(pc1,</span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="co"># AUTOPLOT OPTIONS</span></span>
@@ -765,7 +777,7 @@ Cumulative Proportion  0.4256 0.6284 0.71917 0.7861 0.84913 0.90880 0.96093 1.00
 <h4 data-anchor-id="loadings">Loadings</h4>
 <p>The matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors).</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>(<span class="fu">princomp</span>(df))<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -806,7 +818,7 @@ Cumulative Var  0.125  0.250  0.375  0.500  0.625  0.750  0.875  1.000</code></p
 </ul>
 <p>From these variables we exclude gender and children while calculating the PC’s because they do not fit the assumptions of PCA. However the following biplot was color coded according to gender.</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Load data</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">data</span>(Affairs)</span>
@@ -822,15 +834,15 @@ Standard deviation     1.4339 1.2445 1.1301 0.8714 0.83306 0.67735 0.45370
 Proportion of Variance 0.2937 0.2212 0.1825 0.1085 0.09914 0.06554 0.02941
 Cumulative Proportion  0.2937 0.5150 0.6974 0.8059 0.90505 0.97059 1.00000</code></pre>
 </div>
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Histogram of PC's</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="fu">plot</span>(affairs.pca, <span class="at">col=</span><span class="st">'pink'</span>, <span class="at">lwd =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">"Histogram of Principal Components"</span>, <span class="at">col.main =</span> <span class="st">'black'</span>, <span class="at">xlab=</span> <span class="st">"PC's 1 - 7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1152"></p>
 </div>
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Rename</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>Affairs<span class="sc">$</span>affairs2<span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Affairs<span class="sc">$</span>affairs<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No Affair"</span>, <span class="st">"Affair"</span>)</span>
@@ -841,7 +853,7 @@ Cumulative Proportion  0.2937 0.5150 0.6974 0.8059 0.90505 0.97059 1.00000</code
 <span id="cb15-7"><a href="#cb15-7"></a>         <span class="at">loadings=</span>T, <span class="at">loadings.label=</span>T, <span class="at">loadings.colour=</span><span class="st">"darkgray"</span>, <span class="at">loadings.label.colour=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 <p>From the biplot and histogram above we can see that the first PC only accounts for 29.37% of the variance in the data, alongside the clustering producing results that don’t have any clear meaning or groups associated with any of the variables. One may be tempted to say that occupation and education make up a trend in the data but the second PC only accounts for 22.12% of the variance in the data which is much less than is required to make such claims.</p>
@@ -879,6 +891,9 @@ Jones, Payton, Patrick Mair, and Richard McNally. 2018. <span>“Visualizing Psy
 </div>
 <div id="ref-lang2021applied" class="csl-entry" role="doc-biblioentry">
 Lang, WU, and Jin Qiu. 2021. <em>Applied Multivariate Statistical Analysis and Related Topics with r</em>. edp sciences.
+</div>
+<div id="ref-process" class="csl-entry" role="doc-biblioentry">
+Makesh Manral. 2022. <span>“Principal Component Analysis | Dimension Reduction (1).”</span>
 </div>
 <div id="ref-originalConspiracyData" class="csl-entry" role="doc-biblioentry">
 Oliver, J. Eric, and Thomas J. Wood. 2013. <span>“<span class="nocase">Replication data for: Conspiracy Theories and the Paranoid Style(s) of Mass Opinion</span>.”</span> Harvard Dataverse. <a href="https://doi.org/10.7910/DVN/22976">https://doi.org/10.7910/DVN/22976</a>.

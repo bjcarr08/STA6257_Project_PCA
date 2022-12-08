@@ -17,7 +17,7 @@ format:
     headercolor: "#191970"
     code-line-numbers: true
     code-block-bg: "FFFFFF"
-    code-fold: show
+    code-fold: true
     code-background: true
     cap-location: top
     margin-left: "0in"
@@ -48,7 +48,7 @@ editor:
 
 [Website](https://bjcarr08.github.io/STA6257_Project_PCA/)
 
-[Slides](slides.html)
+[Slides](https://bjcarr08.github.io/STA6257_Project_PCA/slides)
 
 <style>
  .title {
@@ -97,17 +97,14 @@ features makes it easier to graphically visualize hidden patterns in the data, i
 encountering a high number of predictor variables or highly correlated variables when running a
 regression model [@lang2021applied]. After the data has been transformed with PCA, using a clustering 
 algorithm such as k-means can provide additional power to the analysis of high dimensional data containing 
-linearly correlated features [@Alkha].
+linearly correlated features [@Alkha]. Because PCA projects high dimensional data into lower dimensions (often 2 or 3), is one of the most common (and useful) methods used for exploratory analysis. Plotting the data using 2 dimensions, we are now able to visualize trends, jumps, clusters, patterns and outliers which would have previously been hidden among the original (high dimensional) data.
 
-The most important use of PCA is to represent a multivariate data table as smaller set of variables
-(summary indices) to observe hidden trends, jumps, clusters, patterns and outliers.
-
-PCA is a broadly used statistical method whose use stretches across many scientific disciplines, and
+PCA is a broadly used statistical method whose use stretches across many scientific disciplines and
 in turn many different adaptations of PCA have been developed based on the variation in goals and
 data types associated with each respective discipline. PCA was developed first by Pearson (1901) and
 Hotelling (1933) [@Camargo]. This technique transforms some number of possibly correlated variables
 into a smaller number of variables, the variables in this smaller matrix are referred to as the
-Principal Components (PC). This is achieved using a vector space transform. By mathematical
+Principal Components (PC). This is achieved using a vector space transform (see @fig-process). By mathematical
 projection we can interpret the original data set with just a few variables, namely the principal
 components achieved through calculation. Reducing dimension size in large data sets makes it easier to 
 spot trends, patterns, and outliers in data where that information would have previously been hidden by 
@@ -118,6 +115,8 @@ much variability as possible we should
 successively maximize variance and that are uncorrelated with each other" [@Jolliffe]. PCA assumes
 no distribution in data in a descriptive context, one of it's key features that makes it so
 widely adaptive as an exploratory method across disciplines and data types [@Jolliffe]. 
+
+![Simplified PCA Process [@process]](index_files/figure-html/pca_process.png){#fig-process}
 
 To lists all of PCA's applications would be tedious and excessive, but some examples where PCA has been 
 used is in image analysis, analysis of web data, and cyber security analysis.
@@ -145,6 +144,11 @@ without much loss in variation. This is the main concept behind PCA except varia
 manually regrouped but instead the new variables (principal components) are derived from certain
 linear combinations of the original variables [@lang2021applied].
 
+Although PCA is commonly used as a first step in exploratory analysis, it does have a few limitations. From @fig-vizMethods we can see that visualization of the first 2 principal components is interpretable in either the x or y direction separately. The distance between x and y is uninterpretable; they cannot be interpreted simultaneously (@sec-biplot). Another drawback of PCA is that because the new variables (principal components) are linear combinations or the original variables, you might now be able to visualize hidden patterns, but reading and understanding which of the original variables contribute to each principal component can be difficult. One of the assumptions (@sec-assumptions) when using PCA is that the original variables must have some linear relationship, since calculations rely on either the covariance or correlation matrices. PCA does not preform as well as other dimension reduction tools when the variables are independent (not linearly related) since it will simply just order the variables by their variances as the principal components. 
+
+![Comparing Visualization Methods: What to Use When [@Jones]](index_files/figure-html/pca_vizualizationMethods.jpg){#fig-vizMethods fig-align="left"}
+
+
 ![Machine Learning](index_files/figure-html/machineLearning_fig1.png){#fig-machineLearning}
 
 ## Methods
@@ -162,7 +166,7 @@ project the coordinates onto the new axis. Once this is done we obtain a second 
 (and principal coordinate axis) by finding the direction of the second largest variance in the data, this 
 axis is orthogonal to our first PC. These two PCs define a plane onto which we can project further coordinates onto (Richardson).
 
-```{mermaid, code-fold: hide}
+```{mermaid}
 
 %%{init: {'theme': 'base', 'themeVariables': { 'background': '#FAFAF5', 'primaryColor': '#EAEAD6', 'nodeBorder': '#8B814C', 'lineColor': '#8B814C', 'primaryTextColor': '#191970', 'textColor': '#191970', 'fontSize': '12px', 'width': '100%'}}}%%
 
@@ -180,7 +184,7 @@ H --> I
 
 ```
 
-### Assumptions
+### Assumptions {#sec-assumptions}
 
 -   Variables should be continuous, interval or ratio level of measurement (ordinal variables, such
     as likert-scale, are also often used)
@@ -324,16 +328,16 @@ library(gridExtra)
 
 ### Data
 
-Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies. Sampled from a nationally representative survey in 2011. (Replication data and code may be found at the AJPS Dataverse website - <a>https://thedata.harvard.edu/dvn/dv/ajps</a>) [@originalConspiracyData]
+Results of 2000 respondents answering a 5-point Likert scale of their belief in various conspiracies. Sampled from a nationally representative survey in 2011. [@originalConspiracyData]
 
 
 **SCALE LEVELS:**
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+.tg td{border-color:#8B814C;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+.tg th{border-color:#8B814C;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-baqh{text-align:center;vertical-align:top}
 .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
@@ -419,7 +423,7 @@ conspiracy<- conspiracy[complete.cases(conspiracy),] %>% filter(y!="Not Sure")
 
 #### Visualize Data {#sec-linearity}
 
-Visually checking if linearity between variables assumption is met (not a strictly help assumption, especially when using ordinal data).
+Visually checking if linearity between variables assumption is met (see @sec-assumptions for assumptions). This is not a strictly held assumption, especially when using ordinal data.
 
 The correlation matrix plots show enough of a relationship between variables to meet the assumption of linearity.
 
@@ -453,7 +457,7 @@ ggplot(conspiracy.Long, aes(score, fill=conspiracy, color=conspiracy)) +
         axis.ticks = element_line(color = "#8B814C"))
 ```
 
-Looking at the distribution plots above, we can see that all variables are measured in the same scale/units & do not need to be standardized.
+Looking at the distribution plots above, we can see that all variables are measured in the same scale/units & do not need to be standardized (see @sec-assumptions for assumptions).
 
 ### PCA
 
@@ -491,9 +495,9 @@ par(col.axis="#8B814C",col.lab="#8B814C",col.main="#8B814C",col.sub="#8B814C",pc
 screeplot(princomp(df), type="lines", bg="transparent", col="#8B814C", main="")
 ```
 
-#### Biplot
+#### Biplot {#sec-biplot}
 
-In this plot we see the eigenvectors (points) & eigenvalues (arrows). PCA can only be interpreted in either the x direction (horizontal distances) or in the y direction (vertical distances), but not both. Although the first PC is about 43% of variance, there is no distinction between political ideology groups in the horizontal plane. But, we do see a pattern in the vertical direction, specifically obamabirth & sorosplot consisting of more conservative ideology, and iraqjews and truther911 with more liberal ideology. 
+In this plot we see the eigenvectors or points (@eq-eigenvec) & eigenvalues or arrows (@eq-eigenval). PCA can only be interpreted in either the x direction (horizontal distances) or in the y direction (vertical distances), but not both. Although the first PC is about 43% of variance, there is no distinction between political ideology groups in the horizontal plane. But, we do see a pattern in the vertical direction, specifically obamabirth & sorosplot consisting of more conservative ideology, and iraqjews and truther911 with more liberal ideology. 
 
 
 ```{r, plot3, fig.height=8, fig.width=12}
